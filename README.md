@@ -35,15 +35,26 @@ Name the secret "GH_TOKEN" and paste in the token you copied in the previous ste
 
 ### 5.
 Course{
+
 course_id: string;
+
 course_title: string;
+
 course_credit: number;
+
 course_description: string;
+
 }
 
+
 Plan{ // Course interface is included in Plan
+
 Year: string;
+
 Plan_id(Summer, Fall, Winter, Spring): String;
+
 courseList(semester): Course[];
+
 publish: boolean;
+
 }
