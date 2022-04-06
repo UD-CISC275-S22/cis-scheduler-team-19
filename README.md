@@ -32,3 +32,18 @@ Name the secret "GH_TOKEN" and paste in the token you copied in the previous ste
 ![Page3 4](https://user-images.githubusercontent.com/55119395/161885480-1106c277-4a25-4d50-a178-7180235e11b9.jpg)
 ![Page2 4](https://user-images.githubusercontent.com/55119395/161885481-9f73ee11-fa4a-43b7-b358-b461c577d3d6.jpg)
 ![Page1 4](https://user-images.githubusercontent.com/55119395/161885482-d80ba724-48e2-4e12-b5d7-1db2973523fa.jpg)
+
+### 5.
+Course{
+course_id: string;
+course_title: string;
+course_credit: number;
+course_description: string;
+}
+
+Plan{ // Course interface is included in Plan
+Year: string;
+Plan_id(Summer, Fall, Winter, Spring): String;
+courseList(semester): Course[];
+publish: boolean;
+}
