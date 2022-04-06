@@ -25,3 +25,10 @@ Name the secret "GH_TOKEN" and paste in the token you copied in the previous ste
 2.I am a Computer Science BS student in Sophemore year. And I have taken CISC108 and 181 in my Freshmen Year. My main goal is to accomplish 42 credits from the list of CISC core courses and CISC elective courses within three years. My barrier is to take the 14 CISC courses in the remaining 6 semesters so that I can finish them with less stress.
 
 3.I am a Computer Science BA student in Freshmen year. My main goal is to graduate on time and organize CISC courses appropriately throughout my bachelor career. My barrier is to balance the CISC core courses and other required elective courses during each semester.
+
+
+### 4.
+![Page4 4](https://user-images.githubusercontent.com/55119395/161885479-d5d4a9a2-c455-4b96-be98-aa4caaa2ab8a.jpg)
+![Page3 4](https://user-images.githubusercontent.com/55119395/161885480-1106c277-4a25-4d50-a178-7180235e11b9.jpg)
+![Page2 4](https://user-images.githubusercontent.com/55119395/161885481-9f73ee11-fa4a-43b7-b358-b461c577d3d6.jpg)
+![Page1 4](https://user-images.githubusercontent.com/55119395/161885482-d80ba724-48e2-4e12-b5d7-1db2973523fa.jpg)
