@@ -17,3 +17,11 @@ You will, however, need to finish setting up the deployment.
 Back in this repository, go to `settings` -> `secrets` -> `Actions` and click the `New repository secret` button in the topright.
 
 Name the secret "GH_TOKEN" and paste in the token you copied in the previous step.
+
+### 3. Personas
+
+1.I am a Computer Science BA student in junior year. Main goal is to finish another 5 CISC301+ course. Barrier is to finish them and capstone in 2 years.
+
+2.I am a Computer Science BS student in Sophemore year. And I have taken CISC108 and 181 in my Freshmen Year. My main goal is to accomplish 42 credits from the list of CISC core courses and CISC elective courses within three years. My barrier is to take the 14 CISC courses in the remaining 6 semesters so that I can finish them with less stress.
+
+3. I am a Computer Science BA student in Freshmen year. My main goal is to graduate on time and organize CISC courses appropriately throughout my bachelor career. My barrier is to balance the CISC core courses and other required elective courses during each semester.
