@@ -7,4 +7,8 @@ export interface Course {
     course_credit: number;
     /** The general introduction of the course */
     course_description: string;
+    /** A list of the courses required to take this course */
+    preReq: string[];
+    /** Whether or not this course has been taken */
+    taken: boolean;
 }

@@ -5,7 +5,7 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-const YEARS = ["2022", "2023", "2024", "2025", "2026", "2027"];
+const YEARS = ["Freshmen", "Sophomore", "Junior", "Senior", "Graduate"];
 const DEFAULT_YEAR = YEARS[0];
 
 export function InputInfo(): JSX.Element {
