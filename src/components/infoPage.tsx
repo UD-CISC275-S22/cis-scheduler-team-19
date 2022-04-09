@@ -24,7 +24,7 @@ export function InputInfo(): JSX.Element {
         <div>
             <Form.Group controlId="FormName" as={Row}>
                 <Form.Label column sm={2}>
-                    Name:
+                    Your Name:
                 </Form.Label>
                 <Col>
                     <Form.Control
