@@ -8,14 +8,10 @@ type ChangeEvent = React.ChangeEvent<
 const YEARS = ["Freshmen", "Sophomore", "Junior", "Senior", "Graduate"];
 const DEFAULT_YEAR = YEARS[0];
 
-export function InputInfo({
-    startEdit
-}: {
-    startEdit: () => void;
-}): JSX.Element {
+export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
-    const [confirm, setConfirm] = useState<boolean>(false);
+    const [editing, setEditing] = useState<boolean>(false);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -25,8 +21,8 @@ export function InputInfo({
         setYear(event.target.value);
     }
 
-    function changeConfirm() {
-        setConfirm(!confirm);
+    function startEditing() {
+        setEditing(!editing);
     }
 
     return (
@@ -63,7 +59,7 @@ export function InputInfo({
                 </Col>
             </Form.Group>
             <div>
-                <Button className="m-4" onClick={changeConfirm}>
+                <Button className="m-4" onClick={startEditing}>
                     Confirm
                 </Button>
             </div>
