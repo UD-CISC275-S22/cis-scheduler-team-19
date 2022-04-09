@@ -8,9 +8,14 @@ type ChangeEvent = React.ChangeEvent<
 const YEARS = ["Freshmen", "Sophomore", "Junior", "Senior", "Graduate"];
 const DEFAULT_YEAR = YEARS[0];
 
-export function InputInfo(): JSX.Element {
+export function InputInfo({
+    startEdit
+}: {
+    startEdit: () => void;
+}): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
+    const [confirm, setConfirm] = useState<boolean>(false);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -18,6 +23,10 @@ export function InputInfo(): JSX.Element {
 
     function updateYear(event: ChangeEvent) {
         setYear(event.target.value);
+    }
+
+    function changeConfirm() {
+        setConfirm(!confirm);
     }
 
     return (
@@ -28,6 +37,7 @@ export function InputInfo(): JSX.Element {
                 </Form.Label>
                 <Col>
                     <Form.Control
+                        style={{ padding: 6 }}
                         value={name}
                         onChange={updateName}
                         placeholder="Enter Name"
@@ -39,7 +49,11 @@ export function InputInfo(): JSX.Element {
                     Academic Year:
                 </Form.Label>
                 <Col>
-                    <Form.Select value={year} onChange={updateYear}>
+                    <Form.Select
+                        style={{ padding: 6 }}
+                        value={year}
+                        onChange={updateYear}
+                    >
                         {YEARS.map((year: string) => (
                             <option key={year} value={year}>
                                 {year}
@@ -49,7 +63,9 @@ export function InputInfo(): JSX.Element {
                 </Col>
             </Form.Group>
             <div>
-                <Button>Confirm</Button>
+                <Button className="m-4" onClick={changeConfirm}>
+                    Confirm
+                </Button>
             </div>
         </div>
     );
