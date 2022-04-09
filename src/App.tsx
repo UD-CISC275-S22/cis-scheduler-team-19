@@ -9,7 +9,7 @@ function App(): JSX.Element {
                 UD CISC275 with React Hooks and TypeScript Hexuan Jiang, Yiming
                 Wang, Ziyang Jiang
             </header>
-            <p>Welcome to the scheduler system!</p>
+            <p>Welcome to the scheduler system made for CISC students!</p>
             <InputInfo></InputInfo>
         </div>
     );
