@@ -1,0 +1,130 @@
+[
+    {
+    "course_id": "CISC108",
+    "course_title": "Introduction to Computer Science I",
+    "course_credit": 3,
+    "course_description": "Computing and principles of programming with an emphasis on systematic program design.",
+    "preReq": "N/A",
+    "taken": false
+    }, 
+    {
+    "course_id": "CISC181",
+    "course_title": "Introduction to Computer Science II",
+    "course_credit": 3,
+    "course_description": "Principles of computer science illustrated and applied through programming in an object oriented language.",
+    "preReq": "CISC108",
+    "taken": false
+    },
+    {
+    "course_id": "CISC210",
+    "course_title": "Introduction to Systems Programming",
+    "course_credit": 3,
+    "course_description": "Principles of computer systems programming for software and hardware platforms to achieve efficient resource usage.",
+    "preReq": "CISC108",
+    "taken": false
+    },
+    {
+    "course_id": "CISC220",
+    "course_title": "Data Structures",
+    "course_credit": 3,
+    "course_description": "Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.",
+    "preReq": "A minimum grade of C- in CISC 210",
+    "taken": false
+    },
+    {
+    "course_id": "CISC260",
+    "course_title": "Machine Organization and Assembly Language",
+    "course_credit": 3,
+    "course_description": "Introduction to the basics of machine organization. Programming tools and techniques at the machine and assembly levels.",
+    "preReq": "A minimum grade of C- in CISC 210",
+    "taken": false
+    },
+    {
+    "course_id": "CISC275",
+    "course_title": "Introduction to Software Engineering",
+    "course_credit": 3,
+    "course_description": "Object oriented software design and development through use of an object oriented programming language.",
+    "preReq": "Minimum grade of C- in CISC 181 and CISC 220",
+    "taken": false
+    },
+    {
+    "course_id": "CISC303",
+    "course_title": "Automata Theory",
+    "course_credit": 3,
+    "course_description": "Automata and formal language theory. Background for advanced applications in compilers, computer networks, operating systems, and natural language processing.",
+    "preReq": "A minimum grade of C- in both MATH 210 and CISC 220",
+    "taken": false
+    },
+    {
+    "course_id": "CISC320",
+    "course_title": "Introduction to Algorithms",
+    "course_credit": 3,
+    "course_description": "Design and analysis of algorithms: worst/average case analysis, proofs for correctness and performance of algorithms.",
+    "preReq": "MATH 210 and a minimum grade of C- in CISC 220",
+    "taken": false
+    },
+    {
+    "course_id": "CISC361",
+    "course_title": "Operating Systems",
+    "course_credit": 3,
+    "course_description": "Principles and techniques employed in the development of operating systems and their control programs. Includes management of memory, processors, I/O devices.",
+    "preReq": "MATH 210 and a minimum grade of C- in CISC 220",
+    "taken": false
+    },
+    {
+    "course_id": "CISC372",
+    "course_title": "Parallel Computing",
+    "course_credit": 3,
+    "course_description": "Introduction to parallel computing concepts, methodologies, and tools. Programming and algorithmic techniques for code that will run simultaneously on parallel computing architectures.",
+    "preReq": "C- or better in both CISC 220 and CISC 260",
+    "taken": false
+    },
+    {
+    "course_id": "CISC355",
+    "course_title": "Computers, Ethics and Society",
+    "course_credit": 3,
+    "course_description": "Explains relationships among information technology, society and ethics by examining issues raised by increasingly widespread use of computers.",
+    "preReq": "N/A",
+    "taken": false
+    },
+    {
+    "course_id": "CISC356",
+    "course_title": "Intellectual Property in the Digital Age",
+    "course_credit": 3,
+    "course_description": "Explore economic, philosophical, social, and technical approaches to intellectual property.",
+    "preReq": "N/A",
+    "taken": false
+    },
+    {
+    "course_id": "CISC357",
+    "course_title": "Engaging Youth in Computing",
+    "course_credit": 3,
+    "course_description": "Develop communication, leadership, and teaching skills while working with youth to broaden participation in computing.",
+    "preReq": "CISC108",
+    "taken": false
+    },
+    {
+    "course_id": "CISC465",
+    "course_title": "Introduction to Cybersecurity",
+    "course_credit": 3,
+    "course_description": "This cybersecurity course is an introduction to computer and network security and covers the foundation security policies and methods to provide confidentiality, integrity, and availability, as well as cryptography, auditing, and user security.",
+    "preReq": "N/A",
+    "taken": false
+    },
+    {
+    "course_id": "CISC498",
+    "course_title": "Computer Science Senior Design Project I",
+    "course_credit": 3,
+    "course_description": "First semester of two-semester senior software design course.  Students work in teams to develop solutions to real-world problems for a client.",
+    "preReq": "CISC 275 and CISC 320",
+    "taken": false
+    },
+    {
+    "course_id": "CISC499",
+    "course_title": "Computer Science Senior Design Project II",
+    "course_credit": 3,
+    "course_description": "Second semester of two-semester senior software design course.",
+    "preReq": "CISC 498",
+    "taken": false
+    }
+]
