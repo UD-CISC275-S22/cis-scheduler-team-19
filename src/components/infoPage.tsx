@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { PlanList } from "../components/planList";
+import { Plan } from "../interfaces/plan";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -12,6 +14,7 @@ export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [editing, setEditing] = useState<boolean>(false);
+    const [plans, setPlans] = useState<Plan[]>([]);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -25,7 +28,28 @@ export function InputInfo(): JSX.Element {
         setEditing(!editing);
     }
 
-    return (
+    function addPlan(plan_id: string, newPlan: Plan) {
+        setPlans(
+            plans.map(
+                (plan: Plan): Plan =>
+                    plan.plan_id === plan_id ? newPlan : plan
+            )
+        );
+    }
+
+    function clearPlans(plan_id: string) {
+        setPlans(
+            plans.filter((plan: Plan): boolean => plan.plan_id !== plan_id)
+        );
+    }
+
+    return editing ? (
+        <PlanList
+            plans={plans}
+            addPlan={addPlan}
+            clearPlans={clearPlans}
+        ></PlanList>
+    ) : (
         <div>
             <Form.Group controlId="FormName" as={Row}>
                 <Form.Label column sm={2}>
