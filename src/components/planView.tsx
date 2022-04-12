@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Plan } from "../interfaces/plan";
 
-export function planView(): JSX.Element {
+export function PlanView({ plan }: { plan: Plan }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
 
     return (

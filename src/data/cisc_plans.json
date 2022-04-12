@@ -1,0 +1,41 @@
+[
+    {
+        "plan_id": "Plan_1",
+        "semester": [
+            {
+                "semester_id": "Fall Semester",
+                "courseList": [
+                    {
+                        "course_id": "MATH241",
+                        "course_title": "Analytic Geometry and Calculus A",
+                        "course_credit": 4,
+                        "course_description": "Functions, limits, continuity, derivatives. Polynomial, rational, exponential, hyperbolic, logarithmic, trigonometric and inverse trigonometric functions.",
+                        "preReq": "MATH117 or acceptable score on the MATH Placement Exam",
+                        "taken": false
+                    },
+                    {
+                        "course_id": "CISC108",
+                        "course_title": "Inroduction to Computer Science I",
+                        "course_credit": 3,
+                        "course_description": "Computing and principles of programming with an emphasis on systematic program design.",
+                        "preReq": "MATH115, MATH117, or higher math course or math placement",
+                        "taken": false
+                    }
+                ]
+            },
+            {
+                "semester_id": "Winter Semester",
+                "courseList": [
+                    {
+                        "course_id": "MATH242",
+                        "course_title": "Analytic Geometry and Calculus B",
+                        "course_credit": 4,
+                        "course_description": "Brief review of MATH241; evaluation of limits by L'Hospital's rule; etc.",
+                        "preReq": "MATH241 or MATH231",
+                        "taken": false
+                    }
+                ]
+            }
+        ]
+    }
+]
