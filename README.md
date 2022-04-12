@@ -28,8 +28,8 @@ Name the secret "GH_TOKEN" and paste in the token you copied in the previous ste
 
 
 ### 4.
+![Page3](https://user-images.githubusercontent.com/55119395/163049284-41345136-2cee-4367-9027-51c102703c56.jpg)
 ![Page2](https://user-images.githubusercontent.com/55119395/163049189-a68640c4-b44a-4831-b560-1fc6e4b5ebda.jpg)
-
 ![Page1 4](https://user-images.githubusercontent.com/55119395/161885482-d80ba724-48e2-4e12-b5d7-1db2973523fa.jpg)
 
 ### 5.
