@@ -35,7 +35,7 @@ Name the secret "GH_TOKEN" and paste in the token you copied in the previous ste
 ### 5.
 Course{
 
-course_id: string;
+course_id: number;
 
 course_title: string;
 
@@ -43,16 +43,31 @@ course_credit: number;
 
 course_description: string;
 
+preReq: string;
+
+taken: boolean;
+
 }
 
+Semester{
+
+semester_id: number;
+
+semester_title: string;
+
+semester_year: string;
+
+courseList: Course[];
+
+}
 
 Plan{ // Course interface is included in Plan
 
 Year: string;
 
-Plan_id(Summer, Fall, Winter, Spring): String;
+plan_id: number;
 
-courseList(semester): Course[];
+semester: Semester[];
 
 publish: boolean;
 
