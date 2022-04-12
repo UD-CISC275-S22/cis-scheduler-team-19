@@ -63,9 +63,9 @@ courseList: Course[];
 
 Plan{ // Course interface is included in Plan
 
-Year: string;
-
 plan_id: number;
+
+plan_title: string;
 
 semester: Semester[];
 
