@@ -7,7 +7,14 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-const YEARS = ["Freshmen", "Sophomore", "Junior", "Senior", "Graduate"];
+const YEARS = [
+    "Choose your Academic Year",
+    "Freshman",
+    "Sophomore",
+    "Junior",
+    "Senior",
+    "Graduate"
+];
 const DEFAULT_YEAR = YEARS[0];
 
 export function InputInfo(): JSX.Element {
@@ -25,10 +32,18 @@ export function InputInfo(): JSX.Element {
     }
 
     function startEditing() {
-        setEditing(!editing);
+        if (name == "") {
+            alert("empty");
+        }
+        if (year == "Choose your Academic Year") {
+            alert("Please choose your Academic");
+        } else {
+            setEditing(!editing);
+        }
+        return;
     }
 
-    function addPlan(plan_id: string, newPlan: Plan) {
+    function addPlan(plan_id: number, newPlan: Plan) {
         setPlans(
             plans.map(
                 (plan: Plan): Plan =>
@@ -37,7 +52,7 @@ export function InputInfo(): JSX.Element {
         );
     }
 
-    function clearPlans(plan_id: string) {
+    function clearPlans(plan_id: number) {
         setPlans(
             plans.filter((plan: Plan): boolean => plan.plan_id !== plan_id)
         );
@@ -60,7 +75,7 @@ export function InputInfo(): JSX.Element {
                         style={{ padding: 6 }}
                         value={name}
                         onChange={updateName}
-                        placeholder="Enter Name"
+                        placeholder="Enter your Name"
                     />
                 </Col>
             </Form.Group>

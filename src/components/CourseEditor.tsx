@@ -11,18 +11,20 @@ export function CourseEditor({
 }: {
     changeEditing: () => void;
     course: Course;
-    editCourse: (id: string, title: string, credit: number) => void;
-    deleteCourse: (id: string) => void;
+    editCourse: (id: number, title: string, credit: number) => void;
+    deleteCourse: (id: number) => void;
 }): JSX.Element {
-    const [id, setId] = useState<string>(course.course_id);
+    const [id, setId] = useState<number>(course.course_id);
     const [title, setTitle] = useState<string>(course.course_title);
-    return
+    return (
         <Container>
-            <><Row>
+            <Row>
                 <Col></Col>
-            </Row><Row>
-                    <Col></Col>
-                    <Col></Col>
-                </Row></>
+            </Row>
+            <Row>
+                <Col></Col>
+                <Col></Col>
+            </Row>
         </Container>
-})
+    );
+}

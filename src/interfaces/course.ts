@@ -1,6 +1,6 @@
 export interface Course {
     /** A unique identifier for the course */
-    course_id: string;
+    course_id: number;
     /** The brief title of the course */
     course_title: string;
     /** How many credits this course is worth */
@@ -8,7 +8,7 @@ export interface Course {
     /** The general introduction of the course */
     course_description: string;
     /** A list of the courses required to take this course */
-    preReq: string[];
+    preReq: string;
     /** Whether or not this course has been taken */
     taken: boolean;
 }
