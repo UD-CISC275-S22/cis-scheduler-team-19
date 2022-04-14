@@ -4,10 +4,10 @@ import { Plan } from "../interfaces/plan";
 import { PlanView } from "./planView";
 
 export function PlanList({
-    plans,
-    addPlan,
-    clearPlans
-}: {
+    plans
+}: // addPlan,
+// clearPlans
+{
     plans: Plan[];
     addPlan: (plan_id: number, newPlan: Plan) => void;
     clearPlans: (plan_id: number) => void;
