@@ -6,13 +6,12 @@ export function CourseEditor({
     changeEditing,
     course,
     editCourse,
-    removeCourse,
-    //moveCourse
-}:  
+    removeCourse
+}: //moveCourse
 {
     changeEditing: () => void;
     course: Course;
-    editCourse: (id: number, code: string, title: string, credit: string, description: string) => void;
+    editCourse: (id: number, newCourse: Course) => void;
     removeCourse: (id: number) => void;
     //moveCourse: ()
 }): JSX.Element {
@@ -21,7 +20,7 @@ export function CourseEditor({
     const [credit, setCredit] = useState<string>(course.credit);
     const [description, setDescription] = useState<string>(course.description);
 
-    function save(){
+    function save() {
         editCourse(course.id, {
             ...course,
             code: code,

@@ -4,22 +4,22 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Plan } from "../interfaces/plan";
 import { PlanEditor } from "./planEditor";
 
-export function PlanView({ 
+export function PlanView({
     plan,
     editPlan,
     removePlan,
     clearPlan,
-    unfulfilledPlan,
-}: { 
+    unfulfilledPlan
+}: {
     plan: Plan;
     editPlan: (id: number) => void;
     removePlan: (id: number) => void;
     clearPlan: (id: number) => void;
-    unfulfilledPlan: () => Plan;
+    unfulfilledPlan: (id: number) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
 
-    function changeEditing(){
+    function changeEditing() {
         setEditing(!editing);
     }
     return editing ? (
@@ -29,7 +29,7 @@ export function PlanView({
             editPlan={editPlan}
             removePlan={removePlan}
             clearPlan={clearPlan}
-            unfulfilledPlan: () => Plan;
+            unfulfilledPlan={unfulfilledPlan}
         ></PlanEditor>
     ) : (
         <Container>
