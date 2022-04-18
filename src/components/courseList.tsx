@@ -16,10 +16,7 @@ export function CourseList({
         <div>
             <Stack gap={3}>
                 {courses.map((course: Course) => (
-                    <div
-                        key={course.id}
-                        className="bg-light border m-2 p-2"
-                    >
+                    <div key={course.id} className="bg-light border m-2 p-2">
                         <CourseView course={course}></CourseView>
                     </div>
                 ))}

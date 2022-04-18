@@ -79,20 +79,16 @@ export function InputInfo(): JSX.Element {
         );
     }
     */
-    function addCourse(course_id: number, newCourse: Course) {
+    function addCourse(id: number, newCourse: Course) {
         setCourses(
             courses.map(
                 (course: Course): Course =>
-                    course.course_id === course_id ? newCourse : course
+                    course.id === id ? newCourse : course
             )
         );
     }
-    function clearCourse(course_id: number) {
-        setCourses(
-            courses.filter(
-                (course: Course): boolean => course.course_id !== course_id
-            )
-        );
+    function clearCourse(id: number) {
+        setCourses(courses.filter((course: Course): boolean => id !== id));
     }
 
     return editing ? (

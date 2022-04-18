@@ -7,10 +7,10 @@ export function CourseView({ course }: { course: Course }): JSX.Element {
             <table>
                 <thead>
                     <tr>
-                        <th>{course.course_id}</th>
-                        <th>{course.course_title}</th>
-                        <th>{course.course_description}</th>
-                        <th>{course.course_credit}</th>
+                        <th>{course.id}</th>
+                        <th>{course.title}</th>
+                        <th>{course.description}</th>
+                        <th>{course.credit}</th>
                     </tr>
                 </thead>
             </table>
