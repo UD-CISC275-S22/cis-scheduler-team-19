@@ -9,15 +9,15 @@ export function CourseList({
 // clearCourse
 {
     courses: Course[];
-    addCourse: (course_id: number, newCourse: Course) => void;
-    clearCourse: (course_id: number) => void;
+    addCourse: (id: number, newCourse: Course) => void;
+    clearCourse: (id: number) => void;
 }): JSX.Element {
     return (
         <div>
             <Stack gap={3}>
                 {courses.map((course: Course) => (
                     <div
-                        key={course.course_id}
+                        key={course.id}
                         className="bg-light border m-2 p-2"
                     >
                         <CourseView course={course}></CourseView>
