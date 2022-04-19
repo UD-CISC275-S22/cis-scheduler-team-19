@@ -1,62 +1,32 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Course } from "../interfaces/course";
+import { Semester } from "../interfaces/semester";
 
-export function CourseEditor({
+export function SemesterEditor({
     changeEditing,
-    course,
-    editCourse,
-    removeCourse // remove this course in a semester
-}: //moveCourse
-{
+    semester,
+    editSemester, 
+    clearCourses, //clear all courses in this semester
+    insertCourse //insert a course in this semester
+}: {
     changeEditing: () => void;
-    course: Course;
-    editCourse: (id: number, newCourse: Course) => void;
-    removeCourse: (id: number) => void;
-    //moveCourse: ()
+    semester: Semester;
+    editSemester: (id: number, newSemseter: Semester) => void;
+    clearCourses: (id: number) => void;
+    insertCourse: (id: number) => void;
 }): JSX.Element {
-    const [code, setCode] = useState<string>(course.code);
-    const [title, setTitle] = useState<string>(course.title);
-    const [credit, setCredit] = useState<string>(course.credit);
-    const [description, setDescription] = useState<string>(course.description);
-
-    function save() {
-        editCourse(course.id, {
-            ...course,
-            code: code,
-            title: title,
-            credit: credit,
-            description: description
-        });
-        changeEditing();
-    }
-
-    function cancel() {
-        changeEditing();
-    }
+    const [title, setTitle] = useState<string>(semester.title);
+    const [year, setYear] = useState<string>(semester.year);
+    const [courseList, setCourseList] = useState<Course[]>(semester.courseList);
 
     return (
         <Container>
             <Row>
                 <Col>
-                    {/* Code */}
-                    <Form.Group controlId="formCourseCode" as={Row}>
-                        <Form.Label column sm={2}>
-                            Course Code:
-                        </Form.Label>
-                        <Col>
-                            <Form.Control
-                                value={code}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setCode(event.target.value)}
-                            />
-                        </Col>
-                    </Form.Group>
                     {/* Title */}
-                    <Form.Group controlId="formCourseTitle" as={Row}>
+                    <Form.Group controlId="formSemesterTitle" as={Row}>
                         <Form.Label column sm={2}>
-                            Couurse Title:
                         </Form.Label>
                         <Col>
                             <Form.Control
@@ -67,24 +37,46 @@ export function CourseEditor({
                             />
                         </Col>
                     </Form.Group>
-                    {/* Credit */}
-                    <Form.Group controlId="formCourseCredit" as={Row}>
+                    {/* Release Year */}
+                    <Form.Group controlId="formMovieRelease" as={Row}>
                         <Form.Label column sm={2}>
-                            Course Credit:
+                            Release Year:
                         </Form.Label>
                         <Col>
                             <Form.Control
-                                value={credit}
+                                type="number"
+                                value={releaseYear}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
-                                ) => setTitle(event.target.value)}
+                                ) => setReleaseYear(event.target.value)}
                             />
                         </Col>
                     </Form.Group>
-                    {/* Description */}
-                    <Form.Group controlId="formCourseDescription" as={Row}>
+                    {/* Rating */}
+                    <Form.Group controlId="formMovieRating" as={Row}>
                         <Form.Label column sm={2}>
-                            Course Description:
+                            Release Year:
+                        </Form.Label>
+                        <Col>
+                            <Form.Select
+                                value={rating}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLSelectElement>
+                                ) => setRating(event.target.value)}
+                            >
+                                <option value="0">✰✰✰✰✰</option>
+                                <option value="2">⭐✰✰✰✰</option>
+                                <option value="4">⭐⭐✰✰✰</option>
+                                <option value="6">⭐⭐⭐✰✰</option>
+                                <option value="8">⭐⭐⭐⭐✰</option>
+                                <option value="10">⭐⭐⭐⭐⭐</option>
+                            </Form.Select>
+                        </Col>
+                    </Form.Group>
+                    {/* Description */}
+                    <Form.Group controlId="formMovieDescription" as={Row}>
+                        <Form.Label column sm={2}>
+                            Description:
                         </Form.Label>
                         <Col>
                             <Form.Control
@@ -97,6 +89,11 @@ export function CourseEditor({
                             />
                         </Col>
                     </Form.Group>
+                    {/* Soundtrack */}
+                    <SoundtrackEditor
+                        songs={soundtrack}
+                        setSongs={setSoundtrack}
+                    ></SoundtrackEditor>
                     {/* Save/Cancel */}
                     <Button onClick={save} variant="success" className="me-4">
                         Save
@@ -105,11 +102,11 @@ export function CourseEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => removeCourse(course.id)}
+                        onClick={() => deleteMovie(movie.id)}
                         variant="danger"
                         className="me-8"
                     >
-                        Remove
+                        Delete
                     </Button>
                 </Col>
             </Row>
