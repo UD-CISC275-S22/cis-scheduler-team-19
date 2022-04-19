@@ -26,9 +26,11 @@ export function CourseList({
                 <tbody>
                     {courses.map((course: Course) => (
                         <tr key={course.id} className="bg-light border m-2 p-2">
-                            <td>
-                                <CourseView course={course}></CourseView>
-                            </td>
+                            <td>{course.code}</td>
+                            <td>{course.title}</td>
+                            <td>{course.description}</td>
+                            <td>{course.credit}</td>
+                            {/* <CourseView course={course}></CourseView> */}
                         </tr>
                     ))}
                 </tbody>
