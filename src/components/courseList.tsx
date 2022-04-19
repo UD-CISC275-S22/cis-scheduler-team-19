@@ -4,7 +4,9 @@ import { Course } from "../interfaces/course";
 import { CourseView } from "./courseView";
 
 export function CourseList({
-    courses
+    courses,
+    addCourse,
+    clearCourse
 }: // addCourse,
 // clearCourse
 {

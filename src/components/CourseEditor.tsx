@@ -6,7 +6,7 @@ export function CourseEditor({
     changeEditing,
     course,
     editCourse,
-    removeCourse
+    removeCourse // remove this course in a semester
 }: //moveCourse
 {
     changeEditing: () => void;
