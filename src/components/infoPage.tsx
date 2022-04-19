@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-// import { PlanList } from "../components/planList";
+import { PlanList } from "../components/planList";
 import { CourseList } from "./courseList";
 import { Plan } from "../interfaces/plan";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
-import cisc from "../data/cisc_plans.json";
+import ciscData from "../data/cisc_plans.json";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -20,27 +20,42 @@ const YEARS = [
     "Graduate"
 ];
 const DEFAULT_YEAR = YEARS[0];
-/*
-const COURSE = cisc.map(
-    (plan): Plan => ({ 
-        ...plan, 
+
+const COURSE = ciscData.map(
+    (plan): Plan => ({
+        ...plan,
+        id: plan.id,
+        title: plan.title,
+        publish: plan.publish,
         semester: plan.semester.map(
-            (semester: Semester): Semester => ({
-                ...semester, 
-                courseList: semester.course.map(
-                    (course: Course): Course => { ...course })
-            )
-        })
-    )
-})
+            (semester): Semester => ({
+                ...semester,
+                id: semester.id,
+                title: plan.title,
+                year: semester.year,
+                courseList: semester.courseList.map(
+                    (course): Course => ({
+                        ...course,
+                        id: course.id,
+                        code: course.code,
+                        title: course.title,
+                        credit: course.credit,
+                        description: course.description,
+                        preReq: course.preReq,
+                        taken: course.taken
+                    })
+                )
+            })
+        )
+    })
 );
-*/
 
 export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [editing, setEditing] = useState<boolean>(false);
-    // const [plans, setPlans] = useState<Plan[]>([]);
+    //const [plans, setPlans] = useState<Plan[]>(COURSE);
+    //const [semesters, setSemesters] = useState<Semester[]>([]);
     const [courses, setCourses] = useState<Course[]>([]);
 
     function updateName(event: ChangeEvent) {
@@ -92,11 +107,11 @@ export function InputInfo(): JSX.Element {
     }
 
     return editing ? (
-        // <PlanList
-        // plans={plans}
-        // addPlan={addPlan}
-        // clearPlans={clearPlans}
-        // ></PlanList>
+        //<PlanList
+        //plans={plans}
+        //addPlan={addPlan}
+        //clearPlans={clearPlans}
+        //></PlanList>
         <CourseList
             courses={courses}
             addCourse={addCourse}
