@@ -1,41 +1,50 @@
 [
     {
-        "plan_id": "Plan_1",
+        "id": 1,
+        "title": "Plan_1",
         "semester": [
             {
-                "semester_id": "Fall Semester",
+                "id": 3,
+                "title": "Fall Semester",
+                "year": "2022",
                 "courseList": [
                     {
-                        "course_id": "MATH241",
-                        "course_title": "Analytic Geometry and Calculus A",
-                        "course_credit": 4,
-                        "course_description": "Functions, limits, continuity, derivatives. Polynomial, rational, exponential, hyperbolic, logarithmic, trigonometric and inverse trigonometric functions.",
+                        "id": 1,
+                        "code": "MATH241",
+                        "title": "Analytic Geometry and Calculus A",
+                        "credit": "4",
+                        "description": "Functions, limits, continuity, derivatives. Polynomial, rational, exponential, hyperbolic, logarithmic, trigonometric and inverse trigonometric functions.",
                         "preReq": "MATH117 or acceptable score on the MATH Placement Exam",
                         "taken": false
                     },
                     {
-                        "course_id": "CISC108",
-                        "course_title": "Inroduction to Computer Science I",
-                        "course_credit": 3,
-                        "course_description": "Computing and principles of programming with an emphasis on systematic program design.",
+                        "id": 3,
+                        "code": "CISC108",
+                        "title": "Inroduction to Computer Science I",
+                        "credit": "3",
+                        "description": "Computing and principles of programming with an emphasis on systematic program design.",
                         "preReq": "MATH115, MATH117, or higher math course or math placement",
                         "taken": false
                     }
                 ]
             },
             {
-                "semester_id": "Winter Semester",
+                "id": 4,
+                "title": "Winter Semester",
+                "year": "2022",
                 "courseList": [
                     {
-                        "course_id": "MATH242",
-                        "course_title": "Analytic Geometry and Calculus B",
-                        "course_credit": 4,
-                        "course_description": "Brief review of MATH241; evaluation of limits by L'Hospital's rule; etc.",
+                        "id": 2,
+                        "code": "MATH242",
+                        "title": "Analytic Geometry and Calculus B",
+                        "credit": "4",
+                        "description": "Brief review of MATH241; evaluation of limits by L'Hospital's rule; etc.",
                         "preReq": "MATH241 or MATH231",
                         "taken": false
                     }
                 ]
             }
-        ]
+        ],
+        "publish": true
     }
 ]

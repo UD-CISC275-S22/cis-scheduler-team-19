@@ -7,7 +7,7 @@ export function CourseView({ course }: { course: Course }): JSX.Element {
             <table>
                 <thead>
                     <tr>
-                        <th>{course.id}</th>
+                        <th>{course.code}</th>
                         <th>{course.title}</th>
                         <th>{course.description}</th>
                         <th>{course.credit}</th>
