@@ -1,9 +1,10 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
 export function CourseView({ course }: { course: Course }): JSX.Element {
     return (
-        <fieldset>
+        <Container>
             <table>
                 <thead>
                     <tr>
@@ -14,6 +15,6 @@ export function CourseView({ course }: { course: Course }): JSX.Element {
                     </tr>
                 </thead>
             </table>
-        </fieldset>
+        </Container>
     );
 }
