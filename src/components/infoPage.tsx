@@ -56,7 +56,9 @@ export function InputInfo(): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
     //const [plans, setPlans] = useState<Plan[]>(COURSE);
     //const [semesters, setSemesters] = useState<Semester[]>([]);
-    const [courses, setCourses] = useState<Course[]>([]);
+    const [courses, setCourses] = useState<Course[]>(
+        COURSE[0].semester[0].courseList
+    );
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);

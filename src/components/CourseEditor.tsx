@@ -56,7 +56,7 @@ export function CourseEditor({
                     {/* Title */}
                     <Form.Group controlId="formCourseTitle" as={Row}>
                         <Form.Label column sm={2}>
-                            Couurse Title:
+                            Course Title:
                         </Form.Label>
                         <Col>
                             <Form.Control
