@@ -9,8 +9,8 @@ export function CourseList({
 // clearCourse
 {
     courses: Course[];
-    addCourse: (id: number, newCourse: Course) => void;
-    clearCourse: (id: number) => void;
+    //addCourse: (id: number, newCourse: Course) => void;
+    //clearCourse: (id: number) => void;
 }): JSX.Element {
     return (
         <div>

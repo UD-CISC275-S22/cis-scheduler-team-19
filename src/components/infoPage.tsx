@@ -114,11 +114,7 @@ export function InputInfo(): JSX.Element {
         //addPlan={addPlan}
         //clearPlans={clearPlans}
         //></PlanList>
-        <CourseList
-            courses={courses}
-            addCourse={addCourse}
-            clearCourse={clearCourse}
-        ></CourseList>
+        <CourseList courses={courses}></CourseList>
     ) : (
         <div>
             <Form.Group controlId="FormName" as={Row}>
