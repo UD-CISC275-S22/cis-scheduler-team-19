@@ -1,26 +1,27 @@
-import React from "react";
-import { Stack, Button, Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
-import { CourseView } from "./courseView";
+import { CourseEditor } from "./courseEditor";
 
 export function CourseList({
-    courses
-}: // addCourse,
-// clearCourse
-{
+    courses,
+    editCourse,
+    removeCourse
+}: {
     courses: Course[];
-    //addCourse: (id: number, newCourse: Course) => void;
-    //clearCourse: (id: number) => void;
+    editCourse: (id: number, newCourse: Course) => void;
+    removeCourse: (id: number) => void;
 }): JSX.Element {
     return (
         <div>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Course Code</th>
-                        <th>Course Title</th>
-                        <th>Course Description</th>
-                        <th>Course Credit</th>
+                        <th scope="col">Course Code</th>
+                        <th scope="col">Course Title</th>
+                        <th scope="col">Course Description</th>
+                        <th scope="col">Course Credit</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +31,13 @@ export function CourseList({
                             <td>{course.title}</td>
                             <td>{course.description}</td>
                             <td>{course.credit}</td>
-                            {/* <CourseView course={course}></CourseView> */}
+                            <td>
+                                <CourseEditor
+                                    course={course}
+                                    editCourse={editCourse}
+                                    removeCourse={removeCourse}
+                                ></CourseEditor>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

@@ -96,7 +96,7 @@ export function InputInfo(): JSX.Element {
         );
     }
     */
-    function addCourse(id: number, newCourse: Course) {
+    function editCourse(id: number, newCourse: Course) {
         setCourses(
             courses.map(
                 (course: Course): Course =>
@@ -104,8 +104,10 @@ export function InputInfo(): JSX.Element {
             )
         );
     }
-    function clearCourse(id: number) {
-        setCourses(courses.filter((course: Course): boolean => id !== id));
+    function removeCourse(id: number) {
+        setCourses(
+            courses.filter((course: Course): boolean => course.id !== id)
+        );
     }
 
     return editing ? (
@@ -114,7 +116,11 @@ export function InputInfo(): JSX.Element {
         //addPlan={addPlan}
         //clearPlans={clearPlans}
         //></PlanList>
-        <CourseList courses={courses}></CourseList>
+        <CourseList
+            courses={courses}
+            editCourse={editCourse}
+            removeCourse={removeCourse}
+        ></CourseList>
     ) : (
         <div>
             <Form.Group controlId="FormName" as={Row}>
