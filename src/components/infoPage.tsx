@@ -96,19 +96,17 @@ export function InputInfo(): JSX.Element {
         );
     }
     */
-    function addCourse(course_id: number, newCourse: Course) {
+    function editCourse(id: number, newCourse: Course) {
         setCourses(
             courses.map(
                 (course: Course): Course =>
-                    course.id === course_id ? newCourse : course
+                    course.id === course.id ? newCourse : course
             )
         );
     }
-    function clearCourse(course_id: number) {
+    function removeCourse(id: number) {
         setCourses(
-            courses.filter(
-                (course: Course): boolean => course.course_id !== course_id
-            )
+            courses.filter((course: Course): boolean => course.id !== id)
         );
     }
 
@@ -120,8 +118,8 @@ export function InputInfo(): JSX.Element {
         //></PlanList>
         <CourseList
             courses={courses}
-            addCourse={addCourse}
-            clearCourse={clearCourse}
+            editCourse={editCourse}
+            removeCourse={removeCourse}
         ></CourseList>
     ) : (
         <div>

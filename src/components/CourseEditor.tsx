@@ -3,13 +3,11 @@ import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
 export function CourseEditor({
-    changeEditing,
     course,
     editCourse,
     removeCourse // remove this course in a semester
 }: //moveCourse
 {
-    changeEditing: () => void;
     course: Course;
     editCourse: (id: number, newCourse: Course) => void;
     removeCourse: (id: number) => void;
@@ -17,8 +15,9 @@ export function CourseEditor({
 }): JSX.Element {
     const [code, setCode] = useState<string>(course.code);
     const [title, setTitle] = useState<string>(course.title);
-    const [credit, setCredit] = useState<string>(course.credit);
     const [description, setDescription] = useState<string>(course.description);
+    const [credit, setCredit] = useState<string>(course.credit);
+    const [editing, setEditing] = useState<boolean>(true);
 
     function save() {
         editCourse(course.id, {
@@ -35,7 +34,13 @@ export function CourseEditor({
         changeEditing();
     }
 
-    return (
+    function changeEditing() {
+        setEditing(!editing);
+    }
+
+    return editing ? (
+        <Button onClick={changeEditing}>Edit</Button>
+    ) : (
         <Container>
             <Row>
                 <Col>
@@ -77,7 +82,7 @@ export function CourseEditor({
                                 value={credit}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
-                                ) => setTitle(event.target.value)}
+                                ) => setCredit(event.target.value)}
                             />
                         </Col>
                     </Form.Group>
