@@ -15,8 +15,8 @@ export function CourseEditor({
 }): JSX.Element {
     const [code, setCode] = useState<string>(course.code);
     const [title, setTitle] = useState<string>(course.title);
-    const [credit, setCredit] = useState<string>(course.credit);
     const [description, setDescription] = useState<string>(course.description);
+    const [credit, setCredit] = useState<string>(course.credit);
     const [editing, setEditing] = useState<boolean>(true);
 
     function save() {

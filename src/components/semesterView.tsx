@@ -1,18 +1,29 @@
-import React from "react";
-import { Stack } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
 
-export function semesterView(): JSX.Element {
+export function semesterView({
+    semester,
+    courses,
+    editCourse,
+    removeCourse
+}: {
+    semester: Semester[];
+    courses: Course[];
+    editCourse: (id: number, newCourse: Course) => void;
+    removeCourse: (id: number) => void;
+}): JSX.Element {
     return (
         <div>
-            {/* <Stack gap={3}> */}
-            {/* {semester.map((plan: Plan) => ( */}
-            {/* <div key={plan.id} className="bg-light border m-2 p-2"> */}
-            {/* <CourseList courses={courses}></CourseList> */}
-            {/* </div> */}
-            {/* ))} */}
-            {/* </Stack> */}
+            <div>
+                <CourseList
+                    courses={courses}
+                    editCourse={editCourse}
+                    removeCourse={removeCourse}
+                ></CourseList>
+            </div>
         </div>
     );
 }

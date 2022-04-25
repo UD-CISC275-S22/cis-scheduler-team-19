@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { CourseEditor } from "./courseEditor";
+import { CourseAddModal } from "./courseAddModal";
 
 export function CourseList({
     courses,
@@ -12,9 +13,33 @@ export function CourseList({
     editCourse: (id: number, newCourse: Course) => void;
     removeCourse: (id: number) => void;
 }): JSX.Element {
+    const [course, setCourse] = useState<Course[]>(courses);
+    const [showAddModal, setShowAddModal] = useState(false);
+
+    const handleCloseAddModal = () => setShowAddModal(false);
+    const handleShowAddModal = () => setShowAddModal(true);
+
+    function addCourse(newCourse: Course) {
+        const existing = course.find(
+            (course: Course): boolean => course.id === newCourse.id
+        );
+        if (existing === undefined) {
+            setCourse([...course, newCourse]);
+        }
+    }
+
+    function deleteCourse(id: number) {
+        setCourse(course.filter((course: Course): boolean => course.id !== id));
+        setShowAddModal(false);
+    }
+
+    function deleteAllCourse() {
+        setCourse([]);
+    }
+
     return (
         <div>
-            <Table striped bordered hover>
+            <Table striped bordered hover id="courseTable">
                 <thead>
                     <tr>
                         <th scope="col">Course Code</th>
@@ -42,8 +67,26 @@ export function CourseList({
                     ))}
                 </tbody>
             </Table>
-            <Button>Add new</Button>
-            <Button>Clear All</Button>
+            <div>
+                <Button
+                    variant="success"
+                    className="m-4"
+                    onClick={handleShowAddModal}
+                >
+                    Add New
+                </Button>
+                <Button
+                    variant="danger"
+                    className="m-4"
+                    onClick={deleteAllCourse}
+                >
+                    Clear All
+                </Button>
+                <CourseAddModal
+                    show={showAddModal}
+                    handleClose={handleCloseAddModal}
+                ></CourseAddModal>
+            </div>
         </div>
     );
 }
