@@ -5,7 +5,7 @@ import { Course } from "../interfaces/course";
 export function CourseEditor({
     course,
     editCourse,
-    removeCourse
+    removeCourse // remove this course in a semester
 }: //moveCourse
 {
     course: Course;

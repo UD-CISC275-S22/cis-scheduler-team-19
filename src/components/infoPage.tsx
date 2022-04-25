@@ -100,7 +100,7 @@ export function InputInfo(): JSX.Element {
         setCourses(
             courses.map(
                 (course: Course): Course =>
-                    course.id === id ? newCourse : course
+                    course.id === course.id ? newCourse : course
             )
         );
     }
