@@ -4,21 +4,18 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 
 export function SemesterEditor({
-    changeEditing,
     semester,
     editSemester,
-    clearCourses, //clear all courses in this semester
-    insertCourse //insert a course in this semester
+    clearCourses //clear all the courses in a semester
 }: {
-    changeEditing: () => void;
     semester: Semester;
     editSemester: (id: number, newSemseter: Semester) => void;
     clearCourses: (id: number) => void;
-    insertCourse: (id: number) => void;
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
     const [courseList, setCourseList] = useState<Course[]>(semester.courseList);
+    
 
     return <div></div>;
 }

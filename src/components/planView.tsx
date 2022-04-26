@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Plan } from "../interfaces/plan";
 import { PlanEditor } from "./planEditor";
-import { semesterList } from "./semesterList";
+import { SemesterList } from "./semesterList";
 
 export function PlanView({
     plan,

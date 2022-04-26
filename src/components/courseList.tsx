@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
-import { CourseEditor } from "./courseEditor";
+import { CourseEditor } from "./CourseEditor";
 import { CourseAddModal } from "./courseAddModal";
 
 export function CourseList({

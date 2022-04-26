@@ -6,6 +6,7 @@ import { Plan } from "../interfaces/plan";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import ciscData from "../data/cisc_plans.json";
+import { SemesterList } from "./semesterList";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -55,7 +56,7 @@ export function InputInfo(): JSX.Element {
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [editing, setEditing] = useState<boolean>(false);
     //const [plans, setPlans] = useState<Plan[]>(COURSE);
-    //const [semesters, setSemesters] = useState<Semester[]>([]);
+    const [semesters, setSemesters] = useState<Semester[]>([]);
     const [courses, setCourses] = useState<Course[]>(
         COURSE[0].semester[0].courseList
     );
@@ -116,11 +117,12 @@ export function InputInfo(): JSX.Element {
         //addPlan={addPlan}
         //clearPlans={clearPlans}
         //></PlanList>
-        <CourseList
+        <SemesterList
+            semesters={semesters}
             courses={courses}
             editCourse={editCourse}
             removeCourse={removeCourse}
-        ></CourseList>
+        ></SemesterList>
     ) : (
         <div>
             <Form.Group controlId="FormName" as={Row}>

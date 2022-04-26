@@ -1,29 +1,45 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col, Container } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
+import { SemesterEditor } from "./semesterEditor";
 
-export function semesterView({
+export function SemesterView({
     semester,
     courses,
     editCourse,
     removeCourse
+    //editSemester,
+    //clearCourses //clear all courses in a semester
 }: {
-    semester: Semester[];
+    semester: Semester;
     courses: Course[];
     editCourse: (id: number, newCourse: Course) => void;
     removeCourse: (id: number) => void;
+    //editSemester: (id: number, newSemseter: Semester) => void;
+    //clearCourses: (id: number) => void;
 }): JSX.Element {
-    return (
-        <div>
-            <div>
-                <CourseList
-                    courses={courses}
-                    editCourse={editCourse}
-                    removeCourse={removeCourse}
-                ></CourseList>
-            </div>
-        </div>
+    
+    const [editing, setEditing] = useState<boolean>(false);
+
+    function changeEditing(){
+        setEditing(!editing);
+    }
+
+    return editing ? (
+       <Button onClick={changeEditing}>Edit</Button>
+    ) : (<Container>
+            <Row>
+                <Col>
+                    <h3>{semester.title}</h3>
+                    <CourseList
+                        courses = {courses}
+                        editCourse={editCourse}
+                        removeCourse={removeCourse}
+                    ></CourseList>
+                </Col>
+            </Row>
+        </Container>
     );
 }
