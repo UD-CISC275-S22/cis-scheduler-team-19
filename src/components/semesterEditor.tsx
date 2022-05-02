@@ -85,7 +85,7 @@ export function SemesterEditor({
                     </Form.Group>
                     {/* CourseList */}
                     <CourseEditor
-                        course={courseList}
+                        course={...courseList}
                         editCourse={editCourse}
                         removeCourse={removeCourse}
                     ></CourseEditor>

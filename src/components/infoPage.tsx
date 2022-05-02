@@ -55,6 +55,7 @@ export function InputInfo(): JSX.Element {
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [editing, setEditing] = useState<boolean>(false);
     const [plans, setPlans] = useState<Plan[]>(PLAN);
+    const [showAddModal, setShowAddModal] = useState(false);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -76,13 +77,14 @@ export function InputInfo(): JSX.Element {
         return;
     }
 
-    // function addPlan(plan_id: number, newPlan: Plan) {
-    //     setPlans(
-    //         plans.map(
-    //             (plan: Plan): Plan => (plan.id === plan_id ? newPlan : plan)
-    //         )
-    //     );
-    // }
+    function addPlan(newPlan: Plan) {
+        const existing = plans.find(
+            (plan: Plan): boolean => plan.id === newPlan.id
+        );
+        if (existing === undefined) {
+            setPlans([...plans, newPlan]);
+        }
+    }
 
     function deletePlan(id: number) {
         setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
@@ -93,6 +95,13 @@ export function InputInfo(): JSX.Element {
             plans.map((plan: Plan): Plan => (plan.id === id ? newPlan : plan))
         );
     }
+
+    function deleteAllPlan() {
+        setPlans([]);
+    }
+
+    const handleCloseAddModal = () => setShowAddModal(false);
+    const handleShowAddModal = () => setShowAddModal(true);
 
     // function editCourse(id: number, newCourse: Course) {
     //     setPlans(
@@ -163,33 +172,35 @@ export function InputInfo(): JSX.Element {
     // }
 
     return editing ? (
-        <PlanList
-            plans={plans}
-            editPlan={editPlan}
-            deletePlan={deletePlan}
-        ></PlanList>
+        <div>
+            <PlanList
+                plans={plans}
+                editPlan={editPlan}
+                deletePlan={deletePlan}
+            ></PlanList>
+            <div>
+                <Button
+                    variant="success"
+                    className="m-4"
+                    onClick={handleShowAddModal}
+                >
+                    NEW PLAN
+                </Button>
+                <Button
+                    variant="danger"
+                    className="m-4"
+                    onClick={deleteAllPlan}
+                >
+                    Clear All PLAN
+                </Button>
+                <PlanAddModal
+                    show={showAddModal}
+                    handleClose={handleCloseAddModal}
+                    addPlan={addPlan}
+                ></PlanAddModal>
+            </div>
+        </div>
     ) : (
-        // <div>
-        //     <Button
-        //         variant="success"
-        //         className="m-4"
-        //         onClick={handleShowAddModal}
-        //     >
-        //         Add New
-        //             </Button>
-        //             <Button
-        //                 variant="danger"
-        //                 className="m-4"
-        //                 onClick={deleteAllCourse}
-        //             >
-        //                 Clear All
-        //             </Button>
-        //     <PlanAddModal
-        //     show={showAddModal}
-        //     handleClose={handleCloseAddModal}
-        //     addPlan={addPlan}>
-        // </PlanAddModal>
-        // </div>
         <div>
             <Form.Group controlId="FormName" as={Row}>
                 <Form.Label column sm={2}>

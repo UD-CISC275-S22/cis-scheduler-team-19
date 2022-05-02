@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Plan } from "../interfaces/plan";
-import { SemesterEditor } from "./semesterEditot";
+import { SemesterEditor } from "./semesterEditor";
 
 export function PlanEditor({
     changeEditing,
@@ -72,9 +72,9 @@ export function PlanEditor({
                     {/* Semester */}
                     <SemesterEditor
                         changeEditing={changeEditing}
-                        semester={semester}
                         editSemester={editSemester}
                         deleteSemester={deleteSemester}
+                        semester={semester}
                     ></SemesterEditor>
                     {/* Save/Cancel */}
                     <Button onClick={save} variant="success" className="me-4">
