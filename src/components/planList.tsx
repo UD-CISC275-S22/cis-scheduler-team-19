@@ -1,33 +1,17 @@
 import React from "react";
-import { Stack, Button } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
 import { Plan } from "../interfaces/plan";
 import { PlanView } from "./planView";
 
 export function PlanList({
-    plans
-}: // addPlan,
-// clearPlans
-{
+    plans,
+    deletePlan,
+    editPlan
+}: {
     plans: Plan[];
-    addPlan: (plan_id: number, newPlan: Plan) => void;
-    clearPlans: (plan_id: number) => void;
+    deletePlan: (id: number) => void;
+    editPlan: (id: number, newPlan: Plan) => void;
 }): JSX.Element {
-    function editPlan() {
-        return null;
-    }
-
-    function removePlan() {
-        return null;
-    }
-
-    function clearPlan() {
-        return null;
-    }
-
-    function unfulfilledPlan() {
-        return plans.map((plan: Plan) => plan);
-    }
-
     return (
         <div>
             <Stack gap={3}>
@@ -36,15 +20,11 @@ export function PlanList({
                         <PlanView
                             plan={plan}
                             editPlan={editPlan}
-                            removePlan={removePlan}
-                            clearPlan={clearPlan}
-                            unfulfilledPlan={unfulfilledPlan}
+                            deletePlan={deletePlan}
                         ></PlanView>
                     </div>
                 ))}
             </Stack>
-            <Button>Add new</Button>
-            <Button>Clear All</Button>
         </div>
     );
 }
