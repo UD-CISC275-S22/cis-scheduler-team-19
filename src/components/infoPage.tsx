@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { PlanList } from "../components/planList";
-import { CourseList } from "./courseList";
 import { Plan } from "../interfaces/plan";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import ciscData from "../data/cisc_plans.json";
+import { PlanAddModal } from "./planAddModal";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -21,24 +21,24 @@ const YEARS = [
 ];
 const DEFAULT_YEAR = YEARS[0];
 
-const COURSE = ciscData.map(
+const PLAN = ciscData.map(
     (plan): Plan => ({
         ...plan,
-        id: plan.id,
-        title: plan.title,
-        publish: plan.publish,
+        // id: plan.id,
+        // title: plan.title,
+        // publish: plan.publish,
         semester: plan.semester.map(
             (semester): Semester => ({
                 ...semester,
-                id: semester.id,
-                title: plan.title,
-                year: semester.year,
+                //id: semester.id,
+                // title: semester.title,
+                // year: semester.year,
                 courseList: semester.courseList.map(
                     (course): Course => ({
                         ...course,
-                        id: course.id,
-                        code: course.code,
-                        title: course.title,
+                        // id: course.id,
+                        // code: course.code,
+                        // title: course.title,
                         credit: course.credit,
                         description: course.description,
                         preReq: course.preReq,
@@ -54,11 +54,7 @@ export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [editing, setEditing] = useState<boolean>(false);
-    //const [plans, setPlans] = useState<Plan[]>(COURSE);
-    //const [semesters, setSemesters] = useState<Semester[]>([]);
-    const [courses, setCourses] = useState<Course[]>(
-        COURSE[0].semester[0].courseList
-    );
+    const [plans, setPlans] = useState<Plan[]>(PLAN);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -79,49 +75,121 @@ export function InputInfo(): JSX.Element {
         }
         return;
     }
-    /*
-    function addPlan(plan_id: number, newPlan: Plan) {
+
+    // function addPlan(plan_id: number, newPlan: Plan) {
+    //     setPlans(
+    //         plans.map(
+    //             (plan: Plan): Plan => (plan.id === plan_id ? newPlan : plan)
+    //         )
+    //     );
+    // }
+
+    function deletePlan(id: number) {
+        setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
+    }
+
+    function editPlan(id: number, newPlan: Plan) {
         setPlans(
-            plans.map(
-                (plan: Plan): Plan =>
-                    plan.plan_id === plan_id ? newPlan : plan
-            )
-        );
-    }
-    */
-    /*
-    function clearPlans(plan_id: number) {
-        setPlans(
-            plans.filter((plan: Plan): boolean => plan.plan_id !== plan_id)
-        );
-    }
-    */
-    function editCourse(id: number, newCourse: Course) {
-        setCourses(
-            courses.map(
-                (course: Course): Course =>
-                    course.id === course.id ? newCourse : course
-            )
-        );
-    }
-    function removeCourse(id: number) {
-        setCourses(
-            courses.filter((course: Course): boolean => course.id !== id)
+            plans.map((plan: Plan): Plan => (plan.id === id ? newPlan : plan))
         );
     }
 
+    // function editCourse(id: number, newCourse: Course) {
+    //     setPlans(
+    //         plans.map((plan: Plan): Plan => {
+    //             return {
+    //                 ...plan,
+    //                 semester: plan.semester.map(
+    //                     (semester: Semester): Semester => {
+    //                         {
+    //                             return {
+    //                                 ...semester,
+    //                                 courseList: semester.courseList.map(
+    //                                     (course: Course): Course =>
+    //                                         course.id === id
+    //                                             ? newCourse
+    //                                             : course
+    //                                 )
+    //                             };
+    //                         }
+    //                     }
+    //                 )
+    //             };
+    //         })
+    //     );
+    // }
+
+    // function removeCourse(id: number) {
+    //     setPlans(
+    //         plans.filter((plan: Plan): Plan => {
+    //             return {
+    //                 ...plan,
+    //                 semester: plan.semester.filter(
+    //                     (semester: Semester): Semester => {
+    //                         return {
+    //                             ...semester,
+    //                             courseList: semester.courseList.filter(
+    //                                 (course: Course): boolean =>
+    //                                     course.id !== id
+    //                             )
+    //                         };
+    //                     }
+    //                 )
+    //             };
+    //         })
+    //     );
+    // }
+
+    // function clearPlans(id: number) {
+    //     setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
+    // }
+
+    // function clearSemester(id: number) {
+    //     setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
+    // }
+
+    // function editSemester(id: number, newSemester: Semester) {
+    //     setPlans(
+    //         plans.map((plan: Plan): Plan => {
+    //             return {
+    //                 ...plan,
+    //                 semester: plan.semester.map(
+    //                     (semester: Semester): Semester =>
+    //                         semester.id === semester.id ? newSemester : semester
+    //                 )
+    //             };
+    //         })
+    //     );
+    // }
+
     return editing ? (
-        //<PlanList
-        //plans={plans}
-        //addPlan={addPlan}
-        //clearPlans={clearPlans}
-        //></PlanList>
-        <CourseList
-            courses={courses}
-            editCourse={editCourse}
-            removeCourse={removeCourse}
-        ></CourseList>
+        <PlanList
+            plans={plans}
+            editPlan={editPlan}
+            deletePlan={deletePlan}
+        ></PlanList>
     ) : (
+        // <div>
+        //     <Button
+        //         variant="success"
+        //         className="m-4"
+        //         onClick={handleShowAddModal}
+        //     >
+        //         Add New
+        //             </Button>
+        //             <Button
+        //                 variant="danger"
+        //                 className="m-4"
+        //                 onClick={deleteAllCourse}
+        //             >
+        //                 Clear All
+        //             </Button>
+        //     <PlanAddModal
+        //     show={showAddModal}
+        //     handleClose={handleCloseAddModal}
+        //     addPlan={addPlan}>
+        // </PlanAddModal>
+        // </div>
         <div>
             <Form.Group controlId="FormName" as={Row}>
                 <Form.Label column sm={2}>
