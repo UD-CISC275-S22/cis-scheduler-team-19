@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
 import { Plan } from "../interfaces/plan";
 import { PlanEditor } from "./planEditor";
 import { SemesterList } from "./semesterList";
+import { SemesterAddModal } from "./semesterAddModal";
+import { Button } from "react-bootstrap";
 
 export function PlanView({
     plan,
@@ -17,8 +17,9 @@ export function PlanView({
     deletePlan: (id: number) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [courses, setCourses] = useState<Course[]>();
+    // const [courses, setCourses] = useState<Course[]>();
     const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
+    const [showAddModal, setShowAddModal] = useState(false);
 
     function changeEditing() {
         setEditing(!editing);
@@ -41,6 +42,22 @@ export function PlanView({
         );
     }
 
+    function addSemester(newSemester: Semester) {
+        const existing = semesters.find(
+            (semester: Semester): boolean => semester.id === newSemester.id
+        );
+        if (existing === undefined) {
+            setSemesters([...semesters, newSemester]);
+        }
+    }
+
+    function deleteAllSemester() {
+        setSemesters([]);
+    }
+
+    const handleCloseAddModal = () => setShowAddModal(false);
+    const handleShowAddModal = () => setShowAddModal(true);
+
     return editing ? (
         <PlanEditor
             changeEditing={changeEditing}
@@ -53,10 +70,31 @@ export function PlanView({
             <div>
                 <h3>{plan.title}</h3>
                 <SemesterList
-                    semesters={plan.semester}
+                    semesters={semesters}
                     editSemester={editSemester}
                     deleteSemester={deleteSemester}
                 ></SemesterList>
+                <div>
+                    <Button
+                        variant="success"
+                        className="m-4"
+                        onClick={handleShowAddModal}
+                    >
+                        New Semester
+                    </Button>
+                    <Button
+                        variant="danger"
+                        className="m-4"
+                        onClick={deleteAllSemester}
+                    >
+                        Clear All Semester
+                    </Button>
+                    <SemesterAddModal
+                        show={showAddModal}
+                        handleClose={handleCloseAddModal}
+                        addSemester={addSemester}
+                    ></SemesterAddModal>
+                </div>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
 import { CourseAddModal } from "./courseAddModal";
-import { SemesterEditor } from "./semesterEditot";
+import { SemesterEditor } from "./semesterEditor";
 
 export function SemesterView({
     semester,
@@ -71,7 +71,9 @@ export function SemesterView({
     ) : (
         <div>
             <div>
-                <h3>{semester.title}</h3>
+                <h3>
+                    {semester.title} {semester.year}
+                </h3>
                 <CourseList
                     courses={courses}
                     editCourse={editCourse}
@@ -83,14 +85,14 @@ export function SemesterView({
                         className="m-4"
                         onClick={handleShowAddModal}
                     >
-                        Add New
+                        New Course
                     </Button>
                     <Button
                         variant="danger"
                         className="m-4"
                         onClick={deleteAllCourse}
                     >
-                        Clear All
+                        Clear All Courses
                     </Button>
                     <CourseAddModal
                         show={showAddModal}
