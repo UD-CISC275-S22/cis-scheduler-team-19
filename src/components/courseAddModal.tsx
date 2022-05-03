@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Col, Row } from "react-bootstrap";
-import { CourseEditor } from "./CourseEditor";
+import { Course } from "../interfaces/course";
 
 export function CourseAddModal({
     show,
-    handleClose
+    handleClose,
+    addCourse
 }: {
     show: boolean;
     handleClose: () => void;
+    addCourse: (newCourse: Course) => void;
 }) {
     const [code, setCode] = useState<string>("");
     const [title, setTitle] = useState<string>("");
@@ -15,21 +17,15 @@ export function CourseAddModal({
     const [credit, setCredit] = useState<string>("");
 
     function saveChanges() {
-        const table = document.getElementById(
-            "courseTable"
-        ) as HTMLTableElement;
-        const row = table.insertRow(table.rows.length);
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        const cell3 = row.insertCell(2);
-        const cell4 = row.insertCell(3);
-        const cell5 = row.insertCell(4);
-        cell1.innerHTML = code;
-        cell2.innerHTML = title;
-        cell3.innerHTML = description;
-        cell4.innerHTML = credit;
-        cell5.innerHTML = "<button>Edit</button>";
-
+        addCourse({
+            id: 0,
+            code: code,
+            title: title,
+            credit: credit,
+            description: description,
+            preReq: "",
+            taken: true
+        });
         handleClose();
     }
 

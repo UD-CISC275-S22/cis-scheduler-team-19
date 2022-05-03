@@ -1,24 +1,23 @@
 import React from "react";
-import { Stack, Button } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
-import { SemesterView } from "./semesterView";
 import { Course } from "../interfaces/course";
-import { CourseList } from "./courseList";
+import { SemesterView } from "./semesterView";
 
 export function SemesterList({
     semesters,
     courses,
     editCourse,
-    removeCourse
-    //editSemester,
-    //removeSemester, //remove this semester from the plan,
+    removeCourse,
+    editSemester,
+    clearSemester
 }: {
     semesters: Semester[];
     courses: Course[];
     editCourse: (id: number, newCourse: Course) => void;
     removeCourse: (id: number) => void;
-    //editSemester: (id: number, newSemseter: Semester) => void;
-    //removeSemester: (id: number) => void;
+    editSemester: (id: number, newSemseter: Semester) => void;
+    clearSemester: (id: number) => void;
 }): JSX.Element {
     return (
         <Stack gap={3}>
@@ -29,8 +28,8 @@ export function SemesterList({
                         courses={courses}
                         editCourse={editCourse}
                         removeCourse={removeCourse}
-                        //removeSemester={removeSemester}
-                        //editSemester={editSemester}
+                        clearSemester={clearSemester}
+                        editSemester={editSemester}
                     ></SemesterView>
                 </div>
             ))}
