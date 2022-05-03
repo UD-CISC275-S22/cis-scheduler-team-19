@@ -19,7 +19,7 @@ export function SemesterAddModal({
             id: 0,
             title: title,
             year: year,
-            courseList: []
+            courses: []
         });
         handleClose();
     }
@@ -37,12 +37,26 @@ export function SemesterAddModal({
                             Semester:
                         </Form.Label>
                         <Col>
-                            <Form.Control
+                            <Form.Select
                                 value={title}
                                 onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
+                                    event: React.ChangeEvent<HTMLSelectElement>
                                 ) => setTitle(event.target.value)}
-                            />
+                            >
+                                <option value="Blank"></option>
+                                <option value="Spring Semester">
+                                    Spring Semester
+                                </option>
+                                <option value="Summer Semester">
+                                    Summer Semester
+                                </option>
+                                <option value="Fall Semester">
+                                    Fall Semester
+                                </option>
+                                <option value="Winter Semester">
+                                    Winter Semester
+                                </option>
+                            </Form.Select>
                         </Col>
                     </Row>
                     {/* Year */}

@@ -33,7 +33,7 @@ const PLAN = ciscData.map(
                 //id: semester.id,
                 // title: semester.title,
                 // year: semester.year,
-                courseList: semester.courseList.map(
+                courses: semester.courses.map(
                     (course): Course => ({
                         ...course,
                         // id: course.id,
@@ -173,7 +173,7 @@ export function InputInfo(): JSX.Element {
 
     return editing ? (
         <div>
-            <h5>Hi, {name}!</h5>
+            <label>Hi, {name}!</label>
             <PlanList
                 plans={plans}
                 editPlan={editPlan}

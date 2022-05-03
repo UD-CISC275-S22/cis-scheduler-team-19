@@ -22,7 +22,7 @@ export function SemesterView({
     deleteSemester: (id: number) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [courses, setCourse] = useState<Course[]>(semester.courseList);
+    const [courses, setCourse] = useState<Course[]>(semester.courses);
     const [showAddModal, setShowAddModal] = useState(false);
 
     function changeEditing() {

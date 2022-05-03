@@ -25,7 +25,7 @@ export function SemesterEditor({
             ...semester,
             title: title,
             year: year,
-            courseList: semester.courseList
+            courses: semester.courses
         });
         changeEditing();
     }

@@ -8,5 +8,5 @@ export interface Semester {
     /** The year where user arranges their academic plan */
     year: string;
     /** The list of several courses */
-    courseList: Course[];
+    courses: Course[];
 }
