@@ -3,17 +3,16 @@ import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 import { CourseEditor } from "./courseEditor";
+import { CourseList } from "./courseList";
 
 export function SemesterEditor({
     changeEditing,
     semester,
-    course,
     editSemester,
     deleteSemester
 }: {
     changeEditing: () => void;
     semester: Semester;
-    course: Course;
     editSemester: (id: number, newSemseter: Semester) => void;
     deleteSemester: (id: number) => void;
 }): JSX.Element {
@@ -85,7 +84,7 @@ export function SemesterEditor({
                     </Form.Group>
                     {/* CourseList */}
                     <CourseEditor
-                        course={course}
+                        course={CourseList}
                         editCourse={editCourse}
                         removeCourse={removeCourse}
                     ></CourseEditor>
