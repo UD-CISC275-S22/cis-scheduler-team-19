@@ -173,6 +173,7 @@ export function InputInfo(): JSX.Element {
 
     return editing ? (
         <div>
+            <h5>Hi, {name}!</h5>
             <PlanList
                 plans={plans}
                 editPlan={editPlan}
