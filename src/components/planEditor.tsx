@@ -20,8 +20,6 @@ export function PlanEditor({
     const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
     // const [publish, setPublish] = useState<boolean>(plan.publish);
 
-    const semester = semesters.map((semester: Semester): Semester => semester);
-
     function save() {
         editPlan(plan.id, {
             ...plan,
