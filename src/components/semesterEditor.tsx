@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import { Course } from "../interfaces/course";
+// import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-import { CourseEditor } from "./courseEditor";
+// import { CourseEditor } from "./courseEditor";
 
 export function SemesterEditor({
     changeEditing,
@@ -17,14 +17,15 @@ export function SemesterEditor({
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
-    const [courses, setCourses] = useState<Course[]>(semester.courseList);
+    // const [courses, setCourses] = useState<Course[]>(semester.courseList);
+    // const [editing, setEditing] = useState<boolean>(true);
 
     function save() {
         editSemester(semester.id, {
             ...semester,
             title: title,
             year: year,
-            courseList: courses
+            courseList: semester.courseList
         });
         changeEditing();
     }
@@ -33,20 +34,24 @@ export function SemesterEditor({
         changeEditing();
     }
 
-    function editCourse(id: number, newCourse: Course) {
-        setCourses(
-            courses.map(
-                (course: Course): Course =>
-                    course.id === id ? newCourse : course
-            )
-        );
-    }
+    // function editCourse(id: number, newCourse: Course) {
+    //     setCourses(
+    //         courses.map(
+    //             (course: Course): Course =>
+    //                 course.id === id ? newCourse : course
+    //         )
+    //     );
+    // }
 
-    function removeCourse(id: number) {
-        setCourses(
-            courses.filter((course: Course): boolean => course.id !== id)
-        );
-    }
+    // function removeCourse(id: number) {
+    //     setCourses(
+    //         courses.filter((course: Course): boolean => course.id !== id)
+    //     );
+    // }
+
+    // function changeEditing() {
+    //     setEditing(!editing);
+    // }
 
     return (
         <Container>
@@ -82,11 +87,11 @@ export function SemesterEditor({
                         </Col>
                     </Form.Group>
                     {/* CourseList */}
-                    <CourseEditor
+                    {/* <CourseEditor
                         course={course}
                         editCourse={editCourse}
                         removeCourse={removeCourse}
-                    ></CourseEditor>
+                    ></CourseEditor> */}
                     {/* Save/Cancel */}
                     <Button onClick={save} variant="success" className="me-4">
                         Save
