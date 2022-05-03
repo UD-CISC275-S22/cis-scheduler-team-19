@@ -8,14 +8,14 @@ import { SemesterEditor } from "./semesterEditor";
 
 export function SemesterView({
     semester,
-    course,
+    // course,
     //editCourse,
     //removeCourse,
     editSemester,
     deleteSemester
 }: {
     semester: Semester;
-    course: Course;
+    // course: Course;
     //editCourse: (id: number, newCourse: Course) => void;
     //removeCourse: (id: number) => void;
     editSemester: (id: number, newSemseter: Semester) => void;
@@ -65,7 +65,6 @@ export function SemesterView({
         <SemesterEditor
             changeEditing={changeEditing}
             semester={semester}
-            course={course}
             editSemester={editSemester}
             deleteSemester={deleteSemester}
         ></SemesterEditor>
