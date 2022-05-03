@@ -26,7 +26,7 @@ export function PlanAddModal({
     return (
         <Modal show={show} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-                <Modal.Title>Add New Movie</Modal.Title>
+                <Modal.Title>Add New Plan</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {/* Title */}

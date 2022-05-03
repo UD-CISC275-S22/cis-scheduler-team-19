@@ -1,18 +1,19 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
+import { Course } from "../interfaces/course";
 import { SemesterView } from "./semesterView";
 
 export function SemesterList({
     semesters,
-    //courses,
+    // course,
     //editCourse,
     //removeCourse,
     editSemester,
     deleteSemester
 }: {
     semesters: Semester[];
-    //courses: Course[];
+    // course: Course;
     //editCourse: (id: number, newCourse: Course) => void;
     //removeCourse: (id: number) => void;
     editSemester: (id: number, newSemseter: Semester) => void;
@@ -24,7 +25,7 @@ export function SemesterList({
                 <div key={semester.id} className="bg-light border m-2 p-2">
                     <SemesterView
                         semester={semester}
-                        //courses={courses}
+                        // course={course}
                         //editCourse={editCourse}
                         //removeCourse={removeCourse}
                         deleteSemester={deleteSemester}

@@ -7,24 +7,26 @@ import { CourseEditor } from "./courseEditor";
 export function SemesterEditor({
     changeEditing,
     semester,
+    course,
     editSemester,
     deleteSemester
 }: {
     changeEditing: () => void;
     semester: Semester;
+    course: Course;
     editSemester: (id: number, newSemseter: Semester) => void;
     deleteSemester: (id: number) => void;
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
-    const [courseList, setCourseList] = useState<Course[]>(semester.courseList);
+    const [courses, setCourses] = useState<Course[]>(semester.courseList);
 
     function save() {
         editSemester(semester.id, {
             ...semester,
             title: title,
             year: year,
-            courseList: courseList
+            courseList: courses
         });
         changeEditing();
     }
@@ -33,20 +35,18 @@ export function SemesterEditor({
         changeEditing();
     }
 
-    function editCourse(id: number, newCourseList: Course) {
-        setCourseList(
-            courseList.map(
-                (courseList: Course): Course =>
-                    courseList.id === id ? newCourseList : courseList
+    function editCourse(id: number, newCourse: Course) {
+        setCourses(
+            courses.map(
+                (course: Course): Course =>
+                    course.id === id ? newCourse : course
             )
         );
     }
 
     function removeCourse(id: number) {
-        setCourseList(
-            courseList.filter(
-                (courseList: Course): boolean => courseList.id !== id
-            )
+        setCourses(
+            courses.filter((course: Course): boolean => course.id !== id)
         );
     }
 
@@ -85,7 +85,7 @@ export function SemesterEditor({
                     </Form.Group>
                     {/* CourseList */}
                     <CourseEditor
-                        course={...courseList}
+                        course={course}
                         editCourse={editCourse}
                         removeCourse={removeCourse}
                     ></CourseEditor>
