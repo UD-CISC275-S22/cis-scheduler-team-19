@@ -1,17 +1,14 @@
 import React from "react";
 import "./App.css";
+import { InputInfo } from "./components/infoPage";
 
 function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript Hexuan Jiang, Yiming
-                Wang, Ziyang Jiang
+                Welcome to the scheduler system made for CISC students!
             </header>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
+            <InputInfo></InputInfo>
         </div>
     );
 }
