@@ -3,7 +3,7 @@
 > react-scripts test "--coverage"
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (54 ms)
+  ✕ renders the course name somewhere (64 ms)
 
   ● renders the course name somewhere
 
@@ -18,7 +18,7 @@ FAIL src/App.test.tsx
           [36m<header[39m
             [33mclass[39m=[32m"App-header"[39m
           [36m>[39m
-            [0mWelcome to the scheduler system made for CISC students![0m
+            [0mWelcome to the scheduler system made for CISC undergraduate students![0m
           [36m</header>[39m
           [36m<div>[39m
             [36m<div[39m
@@ -84,11 +84,6 @@ FAIL src/App.test.tsx
                   [36m>[39m
                     [0mSenior[0m
                   [36m</option>[39m
-                  [36m<option[39m
-                    [33mvalue[39m=[32m"Graduate"[39m
-                  [36m>[39m
-                    [0mGraduate[0m
-                  [36m</option>[39m
                 [36m</select>[39m
               [36m</div>[39m
             [36m</div>[39m
@@ -130,15 +125,15 @@ All files              |   12.12 |     4.16 |    7.59 |    12.8 |
  src                   |     100 |      100 |     100 |     100 |                   
   App.tsx              |     100 |      100 |     100 |     100 |                   
  src/components        |   11.45 |     4.16 |    6.41 |   12.09 |                   
-  courseAddModal.tsx   |       0 |      100 |       0 |       0 | 15-92             
+  courseAddModal.tsx   |       0 |      100 |       0 |       0 | 14-90             
   courseEditor.tsx     |       0 |        0 |       0 |       0 | 16-119            
   courseList.tsx       |       0 |      100 |       0 |       0 | 15-28             
-  infoPage.tsx         |   44.11 |       10 |   29.41 |   48.38 | 61-100            
-  planAddModal.tsx     |       0 |      100 |       0 |       0 | 14-42             
+  infoPage.tsx         |   44.11 |       10 |   29.41 |   48.38 | 60-101            
+  planAddModal.tsx     |       0 |      100 |       0 |       0 | 14-41             
   planEditor.tsx       |       0 |      100 |       0 |       0 | 19-85             
   planList.tsx         |       0 |      100 |       0 |       0 | 15-19             
-  planView.tsx         |       0 |        0 |       0 |       0 | 19-61             
-  semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-72             
+  planView.tsx         |       0 |        0 |       0 |       0 | 19-62             
+  semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-71             
   semesterEditor.tsx   |       0 |      100 |       0 |       0 | 18-103            
   semesterList.tsx     |       0 |      100 |       0 |       0 | 21-24             
   semesterView.tsx     |       0 |        0 |       0 |       0 | 24-65             
@@ -150,5 +145,5 @@ All files              |   12.12 |     4.16 |    7.59 |    12.8 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.626 s
+Time:        3.193 s
 Ran all test suites.
