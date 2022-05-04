@@ -9,8 +9,8 @@ export function CourseEditor({
 }: //moveCourse
 {
     course: Course;
-    editCourse: (id: number, newCourse: Course) => void;
-    removeCourse: (id: number) => void;
+    editCourse: (code: string, newCourse: Course) => void;
+    removeCourse: (code: string) => void;
     //moveCourse: ()
 }): JSX.Element {
     const [code, setCode] = useState<string>(course.code);
@@ -20,7 +20,7 @@ export function CourseEditor({
     const [editing, setEditing] = useState<boolean>(true);
 
     function save() {
-        editCourse(course.id, {
+        editCourse(course.code, {
             ...course,
             code: code,
             title: title,
@@ -116,7 +116,7 @@ export function CourseEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => removeCourse(course.id)}
+                        onClick={() => removeCourse(course.code)}
                         variant="danger"
                         className="me-8"
                     >

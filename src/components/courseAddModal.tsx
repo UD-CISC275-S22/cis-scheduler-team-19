@@ -11,7 +11,6 @@ export function CourseAddModal({
     handleClose: () => void;
     addCourse: (newCourse: Course) => void;
 }) {
-    // const [id, setId] = useState<number>(0);
     const [code, setCode] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -19,7 +18,6 @@ export function CourseAddModal({
 
     function saveChanges() {
         addCourse({
-            id: 0,
             code: code,
             title: title,
             credit: credit,

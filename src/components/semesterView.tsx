@@ -18,8 +18,8 @@ export function SemesterView({
     // course: Course;
     //editCourse: (id: number, newCourse: Course) => void;
     //removeCourse: (id: number) => void;
-    editSemester: (id: number, newSemseter: Semester) => void;
-    deleteSemester: (id: number) => void;
+    editSemester: (title: string, newSemseter: Semester) => void;
+    deleteSemester: (title: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
     const [courses, setCourse] = useState<Course[]>(semester.courses);
@@ -31,7 +31,7 @@ export function SemesterView({
 
     function addCourse(newCourse: Course) {
         const existing = courses.find(
-            (course: Course): boolean => course.id === newCourse.id
+            (course: Course): boolean => course.code === newCourse.code
         );
         console.log(existing);
         if (existing === undefined) {
@@ -39,18 +39,18 @@ export function SemesterView({
         }
     }
 
-    function editCourse(id: number, newCourse: Course) {
+    function editCourse(code: string, newCourse: Course) {
         setCourse(
             courses.map(
                 (course: Course): Course =>
-                    course.id === id ? newCourse : course
+                    course.code === code ? newCourse : course
             )
         );
     }
 
-    function removeCourse(id: number) {
+    function removeCourse(code: string) {
         setCourse(
-            courses.filter((course: Course): boolean => course.id !== id)
+            courses.filter((course: Course): boolean => course.code !== code)
         );
         setShowAddModal(false);
     }

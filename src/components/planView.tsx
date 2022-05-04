@@ -13,8 +13,8 @@ export function PlanView({
     deletePlan
 }: {
     plan: Plan;
-    editPlan: (id: number, newPlan: Plan) => void;
-    deletePlan: (id: number) => void;
+    editPlan: (code: string, newPlan: Plan) => void;
+    deletePlan: (code: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
     // const [courses, setCourses] = useState<Course[]>();
@@ -25,26 +25,27 @@ export function PlanView({
         setEditing(!editing);
     }
 
-    function editSemester(id: number, newSemester: Semester) {
+    function editSemester(title: string, newSemester: Semester) {
         setSemesters(
             semesters.map(
                 (semester: Semester): Semester =>
-                    semester.id === id ? newSemester : semester
+                    semester.title === title ? newSemester : semester
             )
         );
     }
 
-    function deleteSemester(id: number) {
+    function deleteSemester(title: string) {
         setSemesters(
             semesters.filter(
-                (semester: Semester): boolean => semester.id !== id
+                (semester: Semester): boolean => semester.title !== title
             )
         );
     }
 
     function addSemester(newSemester: Semester) {
         const existing = semesters.find(
-            (semester: Semester): boolean => semester.id === newSemester.id
+            (semester: Semester): boolean =>
+                semester.title === newSemester.title
         );
         if (existing === undefined) {
             setSemesters([...semesters, newSemester]);

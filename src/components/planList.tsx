@@ -9,14 +9,14 @@ export function PlanList({
     editPlan
 }: {
     plans: Plan[];
-    deletePlan: (id: number) => void;
-    editPlan: (id: number, newPlan: Plan) => void;
+    deletePlan: (title: string) => void;
+    editPlan: (title: string, newPlan: Plan) => void;
 }): JSX.Element {
     return (
         <div>
             <Stack gap={3}>
                 {plans.map((plan: Plan) => (
-                    <div key={plan.id} className="bg-light border m-2 p-2">
+                    <div key={plan.title} className="bg-light border m-2 p-2">
                         <PlanView
                             plan={plan}
                             editPlan={editPlan}

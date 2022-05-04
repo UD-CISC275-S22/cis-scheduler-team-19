@@ -6,7 +6,8 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                Welcome to the scheduler system made for CISC students!
+                Welcome to the scheduler system made for CISC undergraduate
+                students!
             </header>
             <InputInfo></InputInfo>
         </div>

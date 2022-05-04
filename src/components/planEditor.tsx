@@ -12,8 +12,8 @@ export function PlanEditor({
 }: {
     changeEditing: () => void;
     plan: Plan;
-    editPlan: (id: number, newPlan: Plan) => void;
-    deletePlan: (id: number) => void;
+    editPlan: (title: string, newPlan: Plan) => void;
+    deletePlan: (title: string) => void;
 }): JSX.Element {
     // const [id, setId] = useState<number>(plan.id);
     const [title, setTitle] = useState<string>(plan.title);
@@ -21,7 +21,7 @@ export function PlanEditor({
     // const [publish, setPublish] = useState<boolean>(plan.publish);
 
     function save() {
-        editPlan(plan.id, {
+        editPlan(plan.title, {
             ...plan,
             title: title,
             semester: plan.semester,
@@ -82,7 +82,7 @@ export function PlanEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => deletePlan(plan.id)}
+                        onClick={() => deletePlan(plan.title)}
                         variant="danger"
                         className="me-8"
                     >

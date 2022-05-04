@@ -15,7 +15,6 @@ export function PlanAddModal({
 
     function saveChanges() {
         addPlan({
-            id: 0,
             title: title,
             semester: [],
             publish: true

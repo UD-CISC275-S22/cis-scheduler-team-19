@@ -9,8 +9,8 @@ export function CourseList({
     removeCourse
 }: {
     courses: Course[];
-    editCourse: (id: number, newCourse: Course) => void;
-    removeCourse: (id: number) => void;
+    editCourse: (code: string, newCourse: Course) => void;
+    removeCourse: (code: string) => void;
 }): JSX.Element {
     return (
         <div>
@@ -25,7 +25,10 @@ export function CourseList({
                 </thead>
                 <tbody>
                     {courses.map((course: Course) => (
-                        <tr key={course.id} className="bg-light border m-2 p-2">
+                        <tr
+                            key={course.code}
+                            className="bg-light border m-2 p-2"
+                        >
                             <td>{course.code}</td>
                             <td>{course.title}</td>
                             <td>{course.description}</td>

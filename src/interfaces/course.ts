@@ -1,6 +1,4 @@
 export interface Course {
-    /** A unique identifier for the course */
-    id: number;
     /** Ex: CISC108 */
     code: string;
     /** The brief title of the course */

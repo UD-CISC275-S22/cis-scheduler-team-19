@@ -16,7 +16,6 @@ export function SemesterAddModal({
 
     function saveChanges() {
         addSemester({
-            id: 0,
             title: title,
             year: year,
             courses: []

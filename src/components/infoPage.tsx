@@ -16,8 +16,7 @@ const YEARS = [
     "Freshman",
     "Sophomore",
     "Junior",
-    "Senior",
-    "Graduate"
+    "Senior"
 ];
 const DEFAULT_YEAR = YEARS[0];
 
@@ -79,20 +78,22 @@ export function InputInfo(): JSX.Element {
 
     function addPlan(newPlan: Plan) {
         const existing = plans.find(
-            (plan: Plan): boolean => plan.id === newPlan.id
+            (plan: Plan): boolean => plan.title === newPlan.title
         );
         if (existing === undefined) {
             setPlans([...plans, newPlan]);
         }
     }
 
-    function deletePlan(id: number) {
-        setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
+    function deletePlan(title: string) {
+        setPlans(plans.filter((plan: Plan): boolean => plan.title !== title));
     }
 
-    function editPlan(id: number, newPlan: Plan) {
+    function editPlan(title: string, newPlan: Plan) {
         setPlans(
-            plans.map((plan: Plan): Plan => (plan.id === id ? newPlan : plan))
+            plans.map(
+                (plan: Plan): Plan => (plan.title === title ? newPlan : plan)
+            )
         );
     }
 

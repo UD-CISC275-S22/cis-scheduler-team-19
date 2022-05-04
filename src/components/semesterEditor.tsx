@@ -12,8 +12,8 @@ export function SemesterEditor({
 }: {
     changeEditing: () => void;
     semester: Semester;
-    editSemester: (id: number, newSemseter: Semester) => void;
-    deleteSemester: (id: number) => void;
+    editSemester: (code: string, newSemseter: Semester) => void;
+    deleteSemester: (code: string) => void;
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
@@ -21,7 +21,7 @@ export function SemesterEditor({
     // const [editing, setEditing] = useState<boolean>(true);
 
     function save() {
-        editSemester(semester.id, {
+        editSemester(semester.title, {
             ...semester,
             title: title,
             year: year,
@@ -100,7 +100,7 @@ export function SemesterEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => deleteSemester(semester.id)}
+                        onClick={() => deleteSemester(semester.title)}
                         variant="danger"
                         className="me-8"
                     >
