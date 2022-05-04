@@ -126,22 +126,22 @@ FAIL src/App.test.tsx
 -----------------------|---------|----------|---------|---------|-------------------
 File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------|---------|----------|---------|---------|-------------------
-All files              |   12.21 |     4.16 |    7.59 |    12.9 |                   
+All files              |   12.12 |     4.16 |    7.59 |    12.8 |                   
  src                   |     100 |      100 |     100 |     100 |                   
   App.tsx              |     100 |      100 |     100 |     100 |                   
- src/components        |   11.53 |     4.16 |    6.41 |   12.19 |                   
+ src/components        |   11.45 |     4.16 |    6.41 |   12.09 |                   
   courseAddModal.tsx   |       0 |      100 |       0 |       0 | 15-92             
-  courseEditor.tsx     |       0 |        0 |       0 |       0 | 16-113            
+  courseEditor.tsx     |       0 |        0 |       0 |       0 | 16-119            
   courseList.tsx       |       0 |      100 |       0 |       0 | 15-28             
   infoPage.tsx         |   44.11 |       10 |   29.41 |   48.38 | 61-100            
   planAddModal.tsx     |       0 |      100 |       0 |       0 | 14-42             
   planEditor.tsx       |       0 |      100 |       0 |       0 | 19-85             
   planList.tsx         |       0 |      100 |       0 |       0 | 15-19             
   planView.tsx         |       0 |        0 |       0 |       0 | 19-61             
-  semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-58             
+  semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-72             
   semesterEditor.tsx   |       0 |      100 |       0 |       0 | 18-103            
   semesterList.tsx     |       0 |      100 |       0 |       0 | 21-24             
-  semesterView.tsx     |       0 |        0 |       0 |       0 | 24-64             
+  semesterView.tsx     |       0 |        0 |       0 |       0 | 24-65             
  src/interfaces        |       0 |        0 |       0 |       0 |                   
   course.ts            |       0 |        0 |       0 |       0 |                   
   plan.ts              |       0 |        0 |       0 |       0 |                   
@@ -150,5 +150,5 @@ All files              |   12.21 |     4.16 |    7.59 |    12.9 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.511 s
+Time:        2.626 s
 Ran all test suites.
