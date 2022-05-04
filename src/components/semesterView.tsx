@@ -33,6 +33,7 @@ export function SemesterView({
         const existing = courses.find(
             (course: Course): boolean => course.id === newCourse.id
         );
+        console.log(existing);
         if (existing === undefined) {
             setCourse([...courses, newCourse]);
         }
