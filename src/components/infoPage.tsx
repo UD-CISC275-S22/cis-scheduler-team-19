@@ -52,8 +52,8 @@ const PLAN = ciscData.map(
 export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
-    const [editing, setEditing] = useState<boolean>(false);
     const [plans, setPlans] = useState<Plan[]>(PLAN);
+    const [submit, setSubmit] = useState<boolean>(false);
     const [showAddModal, setShowAddModal] = useState(false);
 
     function updateName(event: ChangeEvent) {
@@ -71,7 +71,7 @@ export function InputInfo(): JSX.Element {
         if (year == "Choose your Academic Year") {
             alert("Please choose your Academic Year");
         } else {
-            setEditing(!editing);
+            setSubmit(!submit);
         }
         return;
     }
@@ -172,7 +172,7 @@ export function InputInfo(): JSX.Element {
     //     );
     // }
 
-    return editing ? (
+    return submit ? (
         <div>
             <label>Hi, {name}!</label>
             <PlanList

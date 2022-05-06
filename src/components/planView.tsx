@@ -70,6 +70,7 @@ export function PlanView({
         <div>
             <div>
                 <h3>{plan.title}</h3>
+                <Button onClick={changeEditing}>Edit Plan</Button>
                 <SemesterList
                     semesters={semesters}
                     editSemester={editSemester}

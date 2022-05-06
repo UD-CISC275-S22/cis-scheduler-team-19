@@ -33,7 +33,6 @@ export function SemesterView({
         const existing = courses.find(
             (course: Course): boolean => course.code === newCourse.code
         );
-        console.log(existing);
         if (existing === undefined) {
             setCourse([...courses, newCourse]);
         }
@@ -75,6 +74,7 @@ export function SemesterView({
                 <h3>
                     {semester.title} {semester.year}
                 </h3>
+                <Button onClick={changeEditing}>Edit Semester</Button>
                 <CourseList
                     courses={courses}
                     editCourse={editCourse}
