@@ -55,9 +55,7 @@ export function CourseEditor({
             <Modal.Body>
                 {/* Code */}
                 <Form.Group controlId="formCourseCode" as={Row}>
-                    <Form.Label column sm={2}>
-                        Course Code:
-                    </Form.Label>
+                    <Form.Label sm={2}>Course Code:</Form.Label>
                     <Col>
                         <Form.Control
                             value={code}
@@ -69,9 +67,7 @@ export function CourseEditor({
                 </Form.Group>
                 {/* Title */}
                 <Form.Group controlId="formCourseTitle" as={Row}>
-                    <Form.Label column sm={2}>
-                        Course Title:
-                    </Form.Label>
+                    <Form.Label sm={2}>Course Title:</Form.Label>
                     <Col>
                         <Form.Control
                             value={title}
@@ -83,9 +79,7 @@ export function CourseEditor({
                 </Form.Group>
                 {/* Credit */}
                 <Form.Group controlId="formCourseCredit">
-                    <Form.Label column sm={2}>
-                        Course Credit:
-                    </Form.Label>
+                    <Form.Label sm={2}>Course Credit:</Form.Label>
                     <Col>
                         <Form.Select
                             value={credit}
@@ -103,9 +97,7 @@ export function CourseEditor({
                 </Form.Group>
                 {/* Description */}
                 <Form.Group controlId="formCourseDescription" as={Row}>
-                    <Form.Label column sm={2}>
-                        Course Description:
-                    </Form.Label>
+                    <Form.Label sm={2}>Course Description:</Form.Label>
                     <Col>
                         <Form.Control
                             as="textarea"

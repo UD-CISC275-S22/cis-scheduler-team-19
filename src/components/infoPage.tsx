@@ -6,6 +6,7 @@ import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import ciscData from "../data/cisc_plans.json";
 import { PlanAddModal } from "./planAddModal";
+import { CoursePool } from "./coursePool";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -175,32 +176,39 @@ export function InputInfo(): JSX.Element {
     return submit ? (
         <div>
             <label>Hi, {name}!</label>
-            <PlanList
-                plans={plans}
-                editPlan={editPlan}
-                deletePlan={deletePlan}
-            ></PlanList>
-            <div>
-                <Button
-                    variant="success"
-                    className="m-4"
-                    onClick={handleShowAddModal}
-                >
-                    NEW PLAN
-                </Button>
-                <Button
-                    variant="danger"
-                    className="m-4"
-                    onClick={deleteAllPlan}
-                >
-                    Clear All PLAN
-                </Button>
-                <PlanAddModal
-                    show={showAddModal}
-                    handleClose={handleCloseAddModal}
-                    addPlan={addPlan}
-                ></PlanAddModal>
-            </div>
+            <Row>
+                <Col>
+                    <CoursePool></CoursePool>
+                </Col>
+                <Col>
+                    <PlanList
+                        plans={plans}
+                        editPlan={editPlan}
+                        deletePlan={deletePlan}
+                    ></PlanList>
+                    <div>
+                        <Button
+                            variant="success"
+                            className="m-4"
+                            onClick={handleShowAddModal}
+                        >
+                            NEW PLAN
+                        </Button>
+                        <Button
+                            variant="danger"
+                            className="m-4"
+                            onClick={deleteAllPlan}
+                        >
+                            Clear All PLAN
+                        </Button>
+                        <PlanAddModal
+                            show={showAddModal}
+                            handleClose={handleCloseAddModal}
+                            addPlan={addPlan}
+                        ></PlanAddModal>
+                    </div>
+                </Col>
+            </Row>
         </div>
     ) : (
         <div>

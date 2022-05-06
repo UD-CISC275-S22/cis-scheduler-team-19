@@ -20,7 +20,7 @@
                     {
                         "id": 3,
                         "code": "CISC108",
-                        "title": "Inroduction to Computer Science I",
+                        "title": "Introduction to Computer Science I",
                         "credit": "3",
                         "description": "Computing and principles of programming with an emphasis on systematic program design.",
                         "preReq": "MATH115, MATH117, or higher math course or math placement",
