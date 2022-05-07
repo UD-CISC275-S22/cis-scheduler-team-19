@@ -8,16 +8,10 @@ import { SemesterEditor } from "./semesterEditor";
 
 export function SemesterView({
     semester,
-    // course,
-    //editCourse,
-    //removeCourse,
     editSemester,
     deleteSemester
 }: {
     semester: Semester;
-    // course: Course;
-    //editCourse: (id: number, newCourse: Course) => void;
-    //removeCourse: (id: number) => void;
     editSemester: (title: string, newSemseter: Semester) => void;
     deleteSemester: (title: string) => void;
 }): JSX.Element {

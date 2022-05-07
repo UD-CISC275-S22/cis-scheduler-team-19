@@ -8,16 +8,14 @@ export function CourseEditor({
     handleClose,
     course,
     editCourse,
-    removeCourse // remove this course in a semester
-}: //moveCourse
-{
+    removeCourse
+}: {
     show: boolean;
     handleClose: () => void;
     course: Course;
     editCourse: (code: string, newCourse: Course) => void;
     removeCourse: (code: string) => void;
     setShowAddModal: (show: boolean) => void;
-    //moveCourse: ()
 }): JSX.Element {
     const [code, setCode] = useState<string>(course.code);
     const [title, setTitle] = useState<string>(course.title);

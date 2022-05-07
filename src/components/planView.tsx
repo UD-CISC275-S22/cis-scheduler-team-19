@@ -17,7 +17,6 @@ export function PlanView({
     deletePlan: (code: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    // const [courses, setCourses] = useState<Course[]>();
     const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
     const [showAddModal, setShowAddModal] = useState(false);
 
@@ -60,43 +59,44 @@ export function PlanView({
     const handleShowAddModal = () => setShowAddModal(true);
 
     return editing ? (
-        <PlanEditor
-            changeEditing={changeEditing}
-            plan={plan}
-            editPlan={editPlan}
-            deletePlan={deletePlan}
-        ></PlanEditor>
+        <>
+            <PlanEditor
+                changeEditing={changeEditing}
+                plan={plan}
+                editPlan={editPlan}
+                deletePlan={deletePlan}
+            ></PlanEditor>
+        </>
     ) : (
         <div>
             <div>
-                <h3>{plan.title}</h3>
-                <Button onClick={changeEditing}>Edit Plan</Button>
+                <Button onClick={changeEditing} variant="dark">
+                    {plan.title}
+                </Button>
                 <SemesterList
                     semesters={semesters}
                     editSemester={editSemester}
                     deleteSemester={deleteSemester}
                 ></SemesterList>
-                <div>
-                    <Button
-                        variant="success"
-                        className="m-4"
-                        onClick={handleShowAddModal}
-                    >
-                        New Semester
-                    </Button>
-                    <Button
-                        variant="danger"
-                        className="m-4"
-                        onClick={deleteAllSemester}
-                    >
-                        Clear All Semester
-                    </Button>
-                    <SemesterAddModal
-                        show={showAddModal}
-                        handleClose={handleCloseAddModal}
-                        addSemester={addSemester}
-                    ></SemesterAddModal>
-                </div>
+                <Button
+                    className="m-4"
+                    onClick={handleShowAddModal}
+                    variant="outline-success"
+                >
+                    New Semester
+                </Button>
+                <Button
+                    className="m-4"
+                    onClick={deleteAllSemester}
+                    variant="outline-danger"
+                >
+                    Clear All Semester
+                </Button>
+                <SemesterAddModal
+                    show={showAddModal}
+                    handleClose={handleCloseAddModal}
+                    addSemester={addSemester}
+                ></SemesterAddModal>
             </div>
         </div>
     );

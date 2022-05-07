@@ -17,8 +17,6 @@ export function SemesterEditor({
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
-    // const [courses, setCourses] = useState<Course[]>(semester.courseList);
-    // const [editing, setEditing] = useState<boolean>(true);
 
     function save() {
         editSemester(semester.title, {
@@ -33,25 +31,6 @@ export function SemesterEditor({
     function cancel() {
         changeEditing();
     }
-
-    // function editCourse(id: number, newCourse: Course) {
-    //     setCourses(
-    //         courses.map(
-    //             (course: Course): Course =>
-    //                 course.id === id ? newCourse : course
-    //         )
-    //     );
-    // }
-
-    // function removeCourse(id: number) {
-    //     setCourses(
-    //         courses.filter((course: Course): boolean => course.id !== id)
-    //     );
-    // }
-
-    // function changeEditing() {
-    //     setEditing(!editing);
-    // }
 
     return (
         <Container>
@@ -86,13 +65,6 @@ export function SemesterEditor({
                             />
                         </Col>
                     </Form.Group>
-                    {/* CourseList */}
-                    {/* <CourseEditor
-                        course={course}
-                        editCourse={editCourse}
-                        removeCourse={removeCourse}
-                    ></CourseEditor> */}
-                    {/* Save/Cancel */}
                     <Button onClick={save} variant="success" className="me-4">
                         Save
                     </Button>

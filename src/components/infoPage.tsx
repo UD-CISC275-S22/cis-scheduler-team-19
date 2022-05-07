@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Row,
+    Container,
+    Form,
+    FormControl,
+    Nav,
+    Navbar
+} from "react-bootstrap";
 import { PlanList } from "../components/planList";
 import { Plan } from "../interfaces/plan";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import ciscData from "../data/cisc_plans.json";
 import { PlanAddModal } from "./planAddModal";
-import { CoursePool } from "./coursePool";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -24,21 +32,12 @@ const DEFAULT_YEAR = YEARS[0];
 const PLAN = ciscData.map(
     (plan): Plan => ({
         ...plan,
-        // id: plan.id,
-        // title: plan.title,
-        // publish: plan.publish,
         semester: plan.semester.map(
             (semester): Semester => ({
                 ...semester,
-                //id: semester.id,
-                // title: semester.title,
-                // year: semester.year,
                 courses: semester.courses.map(
                     (course): Course => ({
                         ...course,
-                        // id: course.id,
-                        // code: course.code,
-                        // title: course.title,
                         credit: course.credit,
                         description: course.description,
                         preReq: course.preReq,
@@ -105,111 +104,59 @@ export function InputInfo(): JSX.Element {
     const handleCloseAddModal = () => setShowAddModal(false);
     const handleShowAddModal = () => setShowAddModal(true);
 
-    // function editCourse(id: number, newCourse: Course) {
-    //     setPlans(
-    //         plans.map((plan: Plan): Plan => {
-    //             return {
-    //                 ...plan,
-    //                 semester: plan.semester.map(
-    //                     (semester: Semester): Semester => {
-    //                         {
-    //                             return {
-    //                                 ...semester,
-    //                                 courseList: semester.courseList.map(
-    //                                     (course: Course): Course =>
-    //                                         course.id === id
-    //                                             ? newCourse
-    //                                             : course
-    //                                 )
-    //                             };
-    //                         }
-    //                     }
-    //                 )
-    //             };
-    //         })
-    //     );
-    // }
-
-    // function removeCourse(id: number) {
-    //     setPlans(
-    //         plans.filter((plan: Plan): Plan => {
-    //             return {
-    //                 ...plan,
-    //                 semester: plan.semester.filter(
-    //                     (semester: Semester): Semester => {
-    //                         return {
-    //                             ...semester,
-    //                             courseList: semester.courseList.filter(
-    //                                 (course: Course): boolean =>
-    //                                     course.id !== id
-    //                             )
-    //                         };
-    //                     }
-    //                 )
-    //             };
-    //         })
-    //     );
-    // }
-
-    // function clearPlans(id: number) {
-    //     setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
-    // }
-
-    // function clearSemester(id: number) {
-    //     setPlans(plans.filter((plan: Plan): boolean => plan.id !== id));
-    // }
-
-    // function editSemester(id: number, newSemester: Semester) {
-    //     setPlans(
-    //         plans.map((plan: Plan): Plan => {
-    //             return {
-    //                 ...plan,
-    //                 semester: plan.semester.map(
-    //                     (semester: Semester): Semester =>
-    //                         semester.id === semester.id ? newSemester : semester
-    //                 )
-    //             };
-    //         })
-    //     );
-    // }
-
     return submit ? (
-        <div>
-            <label>Hi, {name}!</label>
-            <Row>
-                <Col>
-                    <CoursePool></CoursePool>
-                </Col>
-                <Col>
-                    <PlanList
-                        plans={plans}
-                        editPlan={editPlan}
-                        deletePlan={deletePlan}
-                    ></PlanList>
-                    <div>
-                        <Button
-                            variant="success"
-                            className="m-4"
-                            onClick={handleShowAddModal}
-                        >
-                            NEW PLAN
-                        </Button>
-                        <Button
-                            variant="danger"
-                            className="m-4"
-                            onClick={deleteAllPlan}
-                        >
-                            Clear All PLAN
-                        </Button>
-                        <PlanAddModal
-                            show={showAddModal}
-                            handleClose={handleCloseAddModal}
-                            addPlan={addPlan}
-                        ></PlanAddModal>
-                    </div>
-                </Col>
-            </Row>
-        </div>
+        <>
+            <Navbar expand="lg" bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Collapse id="navbarScroll">
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Nav className="me-auto">
+                            {plans.map((plan: Plan) => (
+                                <Nav.Link
+                                    href="#action1"
+                                    key={plan.title}
+                                ></Nav.Link>
+                            ))}
+                        </Nav>
+                        <Form className="d-flex">
+                            <FormControl
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            <PlanList
+                plans={plans}
+                editPlan={editPlan}
+                deletePlan={deletePlan}
+            ></PlanList>
+            <div>
+                <Button
+                    variant="success"
+                    className="m-4"
+                    onClick={handleShowAddModal}
+                >
+                    NEW PLAN
+                </Button>
+                <Button
+                    variant="danger"
+                    className="m-4"
+                    onClick={deleteAllPlan}
+                >
+                    Clear All PLAN
+                </Button>
+                <PlanAddModal
+                    show={showAddModal}
+                    handleClose={handleCloseAddModal}
+                    addPlan={addPlan}
+                ></PlanAddModal>
+            </div>
+        </>
     ) : (
         <div>
             <Form.Group controlId="FormName" as={Row}>
