@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, Tab, Tabs } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import { Plan } from "../interfaces/plan";
 import { PlanView } from "./planView";
 
@@ -13,28 +13,20 @@ export function PlanList({
     editPlan: (title: string, newPlan: Plan) => void;
 }): JSX.Element {
     return (
-        <Tabs
-            defaultActiveKey="home"
-            transition={false}
-            id="noanim-tab-example"
-            className="mb-3"
-        >
+        <Accordion defaultActiveKey={["0"]} alwaysOpen>
             {plans.map((plan: Plan) => (
-                <Tab eventKey="home" title={plan.title} key={plan.title}>
-                    <Nav.Link eventKey="first">{plan.title}</Nav.Link>
-                </Tab>
-            ))}
-            <Tab.Content>
-                {plans.map((plan: Plan) => (
-                    <Tab.Pane eventKey="first" key={plan.title}>
+                // how to increase the value of eventKey when add new plan ?
+                <Accordion.Item eventKey="0" key={plan.title}>
+                    <Accordion.Header>{plan.title}</Accordion.Header>
+                    <Accordion.Body>
                         <PlanView
                             plan={plan}
                             editPlan={editPlan}
                             deletePlan={deletePlan}
                         ></PlanView>
-                    </Tab.Pane>
-                ))}
-            </Tab.Content>
-        </Tabs>
+                    </Accordion.Body>
+                </Accordion.Item>
+            ))}
+        </Accordion>
     );
 }

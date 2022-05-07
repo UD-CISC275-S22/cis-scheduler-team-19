@@ -32,7 +32,14 @@ export function CoursePool(): JSX.Element {
         <>
             {" "}
             <Button onClick={handleShow}>Course Search</Button>
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas
+                show={show}
+                onHide={handleClose}
+                scroll={true}
+                backdrop={false}
+                placement="end"
+                header="Right"
+            >
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Courses Search Engine</Offcanvas.Title>
                 </Offcanvas.Header>

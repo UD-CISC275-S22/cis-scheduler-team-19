@@ -147,7 +147,7 @@ export function InputInfo(): JSX.Element {
                 deletePlan={deletePlan}
             ></PlanList>
             <Button variant="danger" className="m-0" onClick={deleteAllPlan}>
-                ❌
+                🗑
             </Button>
             <Button
                 variant="light"
