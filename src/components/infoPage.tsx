@@ -106,27 +106,30 @@ export function InputInfo(): JSX.Element {
 
     return submit ? (
         <>
-            <Navbar expand="lg" bg="dark" variant="dark">
-                <Container>
+            <Navbar expand="lg" bg="primary" variant="dark">
+                <Container fluid>
+                    <Navbar.Brand
+                        href="https://www.cis.udel.edu/"
+                        target="popup"
+                    >
+                        UD CISC
+                    </Navbar.Brand>
                     <Navbar.Collapse id="navbarScroll">
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Nav className="me-auto">
-                            {plans.map((plan: Plan) => (
-                                <Nav.Link
-                                    href="#action1"
-                                    key={plan.title}
-                                ></Nav.Link>
-                            ))}
+                        <Nav className="me-3">
+                            <Nav.Link
+                                href="https://catalog.udel.edu/preview_program.php?catoid=47&poid=34727"
+                                target="popup"
+                            >
+                                CS BS
+                            </Nav.Link>
+                            <Nav.Link
+                                href="https://catalog.udel.edu/preview_program.php?catoid=47&poid=34726"
+                                target="popup"
+                            >
+                                CS BA
+                            </Nav.Link>
                         </Nav>
-                        <Form className="d-flex">
-                            <FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -135,27 +138,21 @@ export function InputInfo(): JSX.Element {
                 editPlan={editPlan}
                 deletePlan={deletePlan}
             ></PlanList>
-            <div>
-                <Button
-                    variant="success"
-                    className="m-4"
-                    onClick={handleShowAddModal}
-                >
-                    NEW PLAN
-                </Button>
-                <Button
-                    variant="danger"
-                    className="m-4"
-                    onClick={deleteAllPlan}
-                >
-                    Clear All PLAN
-                </Button>
-                <PlanAddModal
-                    show={showAddModal}
-                    handleClose={handleCloseAddModal}
-                    addPlan={addPlan}
-                ></PlanAddModal>
-            </div>
+            <Button variant="danger" className="m-0" onClick={deleteAllPlan}>
+                ❌
+            </Button>
+            <Button
+                variant="light"
+                className="m-0"
+                onClick={handleShowAddModal}
+            >
+                ➕
+            </Button>
+            <PlanAddModal
+                show={showAddModal}
+                handleClose={handleCloseAddModal}
+                addPlan={addPlan}
+            ></PlanAddModal>
         </>
     ) : (
         <div>

@@ -34,7 +34,7 @@ export function CoursePool(): JSX.Element {
             <Button onClick={handleShow}>Course Search</Button>
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Courses</Offcanvas.Title>
+                    <Offcanvas.Title>Courses Search Engine</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Stack gap={3}>
@@ -67,7 +67,7 @@ export function CoursePool(): JSX.Element {
                         })}
                         <Row>
                             <Col>
-                                <strong>Course Pool:</strong>
+                                <span>Course Pool: </span>
                                 {courses.map((course: Course) => (
                                     <li key={course.code}>{course.code}</li>
                                 ))}

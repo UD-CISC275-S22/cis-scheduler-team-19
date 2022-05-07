@@ -15,7 +15,9 @@
 
 .App-header {
     width: 100%;
-    background-color: #282c34;
+    background-image: url("ud.webp");
+    background-size: 100% 100%;
+    background-color: #cccccc;
     min-height: 40vh;
     display: flex;
     flex-direction: column;

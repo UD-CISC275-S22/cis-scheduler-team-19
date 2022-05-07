@@ -70,7 +70,7 @@ export function PlanView({
     ) : (
         <div>
             <div>
-                <Button onClick={changeEditing} variant="dark">
+                <Button onClick={changeEditing} variant="light">
                     {plan.title}
                 </Button>
                 <SemesterList
