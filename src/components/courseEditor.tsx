@@ -21,6 +21,7 @@ export function CourseEditor({
     const [title, setTitle] = useState<string>(course.title);
     const [description, setDescription] = useState<string>(course.description);
     const [credit, setCredit] = useState<string>(course.credit);
+    const [preReq, setPreReq] = useState<string>(course.preReq);
     const [editing, setEditing] = useState<boolean>(true);
 
     function changeEditing() {
@@ -34,6 +35,7 @@ export function CourseEditor({
             code: code,
             title: title,
             credit: credit,
+            preReq: preReq,
             description: description
         });
         changeEditing();
@@ -104,6 +106,20 @@ export function CourseEditor({
                             onChange={(
                                 event: React.ChangeEvent<HTMLTextAreaElement>
                             ) => setDescription(event.target.value)}
+                        />
+                    </Col>
+                </Form.Group>
+                {/* preReq */}
+                <Form.Group controlId="formCourseDescription" as={Row}>
+                    <Form.Label sm={2}>Course PreReq:</Form.Label>
+                    <Col>
+                        <Form.Control
+                            as="textarea"
+                            rows={3}
+                            value={preReq}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLTextAreaElement>
+                            ) => setPreReq(event.target.value)}
                         />
                     </Col>
                 </Form.Group>

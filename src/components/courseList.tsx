@@ -34,11 +34,8 @@ export function CourseList({
                     </tr>
                 </thead>
                 <tbody>
-                    {courses.map((course: Course) => (
-                        <tr
-                            key={course.code}
-                            className="bg-light border m-2 p-2"
-                        >
+                    {courses.map((course, index) => (
+                        <tr key={index} className="bg-light border m-2 p-2">
                             <td>{course.code}</td>
                             <td>{course.title}</td>
                             <td>{course.description}</td>

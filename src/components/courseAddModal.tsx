@@ -15,6 +15,7 @@ export function CourseAddModal({
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [credit, setCredit] = useState<string>("");
+    const [preReq, setPreReq] = useState<string>("");
 
     function saveChanges() {
         addCourse({
@@ -22,7 +23,7 @@ export function CourseAddModal({
             title: title,
             credit: credit,
             description: description,
-            preReq: "",
+            preReq: preReq,
             taken: true
         });
         handleClose();
@@ -74,6 +75,20 @@ export function CourseAddModal({
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setDescription(event.target.value)}
+                            />
+                        </Col>
+                    </Row>
+                    {/* PreReq */}
+                    <Row>
+                        <Form.Label column sm={3}>
+                            Course PreReq:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={preReq}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setPreReq(event.target.value)}
                             />
                         </Col>
                     </Row>
