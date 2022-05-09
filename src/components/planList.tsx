@@ -14,9 +14,8 @@ export function PlanList({
 }): JSX.Element {
     return (
         <Accordion defaultActiveKey={["0"]} alwaysOpen>
-            {plans.map((plan: Plan) => (
-                // how to increase the value of eventKey when add new plan ?
-                <Accordion.Item eventKey="0" key={plan.title}>
+            {plans.map((plan, index) => (
+                <Accordion.Item eventKey={index + ""} key={plan.title}>
                     <Accordion.Header>{plan.title}</Accordion.Header>
                     <Accordion.Body>
                         <PlanView

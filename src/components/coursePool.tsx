@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Stack, Offcanvas } from "react-bootstrap";
+import { Button, Row, Col, Stack, Offcanvas, Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import courseData from "../data/cisc_course.json";
 
@@ -44,11 +44,11 @@ export function CoursePool(): JSX.Element {
                     <Offcanvas.Title>Courses Search Engine</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <Stack gap={3}>
-                        <input
-                            placeholder="Search your course"
-                            onChange={(event) => setQuery(event.target.value)}
-                        />
+                    <input
+                        placeholder="Search your course"
+                        onChange={(event) => setQuery(event.target.value)}
+                    />
+                    <Stack>
                         {COURSEPOOL.filter((course) => {
                             if (query === "") {
                                 return courses;
@@ -60,20 +60,26 @@ export function CoursePool(): JSX.Element {
                                 return courses;
                             }
                         }).map((course) => {
-                            <div
-                                key={course.code}
-                                style={{ marginBottom: "4px" }}
-                            >
-                                <Button
-                                    onClick={() => chooseCourse(course)}
-                                    size="sm"
+                            return (
+                                <Container
+                                    key={course.code}
+                                    style={{ marginBottom: "4px" }}
                                 >
-                                    {course.code}
-                                </Button>
-                            </div>;
+                                    <Button
+                                        onClick={() => chooseCourse(course)}
+                                        size="sm"
+                                        variant="outline-secondary"
+                                    >
+                                        {course.code}
+                                    </Button>
+                                    <Button size="sm" variant="light">
+                                        ℹ️
+                                    </Button>
+                                </Container>
+                            );
                         })}
                     </Stack>
-                    <Stack gap={3}>
+                    <Stack>
                         <Row>
                             <Col>
                                 <span>Course Pool: </span>
