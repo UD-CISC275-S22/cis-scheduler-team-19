@@ -328,12 +328,12 @@ FAIL src/App.test.tsx
 -----------------------|---------|----------|---------|---------|-------------------------
 File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
 -----------------------|---------|----------|---------|---------|-------------------------
-All files              |   16.57 |    13.33 |       9 |   17.61 |                         
+All files              |   16.23 |    13.33 |    8.82 |   17.22 |                         
  src                   |     100 |      100 |     100 |     100 |                         
   App.tsx              |     100 |      100 |     100 |     100 |                         
- src/components        |   16.12 |    13.33 |    8.08 |   17.14 |                         
-  courseAddModal.tsx   |       0 |      100 |       0 |       0 | 14-90                   
-  courseEditor.tsx     |       0 |      100 |       0 |       0 | 20-119                  
+ src/components        |   15.78 |    13.33 |    7.92 |   16.75 |                         
+  courseAddModal.tsx   |       0 |      100 |       0 |       0 | 14-105                  
+  courseEditor.tsx     |       0 |      100 |       0 |       0 | 20-135                  
   courseList.tsx       |       0 |      100 |       0 |       0 | 16-38                   
   coursePool.tsx       |    9.52 |        0 |    9.09 |   10.52 | 14-92                   
   infoPage.tsx         |   58.33 |    33.33 |      35 |   62.22 | 57,74,88,94-122,129,222 
@@ -353,5 +353,5 @@ All files              |   16.57 |    13.33 |       9 |   17.61 |
 Test Suites: 2 failed, 2 total
 Tests:       2 failed, 3 passed, 5 total
 Snapshots:   0 total
-Time:        4.249 s
+Time:        3.467 s
 Ran all test suites.
