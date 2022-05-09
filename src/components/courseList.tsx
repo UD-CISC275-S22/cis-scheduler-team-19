@@ -29,6 +29,7 @@ export function CourseList({
                         <th>Course Code</th>
                         <th>Course Title</th>
                         <th>Course Description</th>
+                        <th>PreReq</th>
                         <th>Course Credit</th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@ export function CourseList({
                             <td>{course.code}</td>
                             <td>{course.title}</td>
                             <td>{course.description}</td>
+                            <td>{course.preReq}</td>
                             <td>{course.credit}</td>
                             <td>
                                 <Button onClick={handleShowAddModal}>

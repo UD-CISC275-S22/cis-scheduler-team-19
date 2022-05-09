@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
@@ -18,6 +18,10 @@ export function SemesterView({
     const [editing, setEditing] = useState<boolean>(false);
     const [courses, setCourse] = useState<Course[]>(semester.courses);
     const [showAddModal, setShowAddModal] = useState(false);
+    // alerts if users want to clear all course
+    const [show, setShow] = useState(false);
+    // after clearing courses, clear button disabled
+    const [disable, setDisable] = React.useState(false);
 
     function changeEditing() {
         setEditing(!editing);
@@ -50,6 +54,12 @@ export function SemesterView({
 
     function deleteAllCourse() {
         setCourse([]);
+        setShow(!show);
+        setDisable(true);
+    }
+
+    function cancel() {
+        setShow(!show);
     }
 
     const handleCloseAddModal = () => setShowAddModal(false);
@@ -66,9 +76,11 @@ export function SemesterView({
         <div>
             <div>
                 <h3>
-                    {semester.title} {semester.year}
+                    {semester.title} {semester.year}{" "}
+                    <Button variant="light " onClick={changeEditing}>
+                        ✏️
+                    </Button>
                 </h3>
-                <Button onClick={changeEditing}>Edit Semester</Button>
                 <CourseList
                     courses={courses}
                     editCourse={editCourse}
@@ -82,10 +94,27 @@ export function SemesterView({
                     >
                         New Course
                     </Button>
+                    <Alert show={show} variant="danger">
+                        <Alert.Heading>Warning ⚠️</Alert.Heading>
+                        <p>Are you sure to delete all courses?</p>
+                        <hr />
+                        <div className="d-flex justify-content-end">
+                            <Button onClick={cancel} variant="outline-success">
+                                Wait a second
+                            </Button>
+                            <Button
+                                onClick={deleteAllCourse}
+                                variant="outline-danger"
+                            >
+                                No doubt
+                            </Button>
+                        </div>
+                    </Alert>
                     <Button
                         variant="danger"
                         className="m-4"
-                        onClick={deleteAllCourse}
+                        disabled={disable}
+                        onClick={() => setShow(true)}
                     >
                         Clear All Courses
                     </Button>

@@ -31,7 +31,7 @@ export function CoursePool(): JSX.Element {
     return (
         <>
             {" "}
-            <Button onClick={handleShow}>Course Search</Button>
+            <Button onClick={handleShow}>Course Search 🔍</Button>
             <Offcanvas
                 show={show}
                 onHide={handleClose}
@@ -72,6 +72,8 @@ export function CoursePool(): JSX.Element {
                                 </Button>
                             </div>;
                         })}
+                    </Stack>
+                    <Stack gap={3}>
                         <Row>
                             <Col>
                                 <span>Course Pool: </span>

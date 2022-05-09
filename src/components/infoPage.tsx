@@ -6,7 +6,9 @@ import {
     Container,
     Form,
     Nav,
-    Navbar
+    Navbar,
+    FormControl,
+    Alert
 } from "react-bootstrap";
 import { PlanList } from "../components/planList";
 import { Plan } from "../interfaces/plan";
@@ -54,6 +56,10 @@ export function InputInfo(): JSX.Element {
     const [plans, setPlans] = useState<Plan[]>(PLAN);
     const [submit, setSubmit] = useState<boolean>(false);
     const [showAddModal, setShowAddModal] = useState(false);
+    // alerts if users want to clear all plans
+    const [show, setShow] = useState(false);
+    // after clearing courses, clear button disabled
+    const [disable, setDisable] = React.useState(false);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -98,6 +104,12 @@ export function InputInfo(): JSX.Element {
 
     function deleteAllPlan() {
         setPlans([]);
+        setShow(!show);
+        setDisable(true);
+    }
+
+    function cancel() {
+        setShow(!show);
     }
 
     const handleCloseAddModal = () => setShowAddModal(false);
@@ -113,9 +125,13 @@ export function InputInfo(): JSX.Element {
                     >
                         UD CISC
                     </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="navbarScroll">
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Nav className="me-3">
+                        <Nav
+                            className="me-auto my-2 my-lg-0"
+                            style={{ maxHeight: "100px" }}
+                            navbarScroll
+                        >
                             <Nav.Link
                                 href="https://catalog.udel.edu/preview_program.php?catoid=47&poid=34727"
                                 target="popup"
@@ -129,15 +145,16 @@ export function InputInfo(): JSX.Element {
                                 CS BA
                             </Nav.Link>
                         </Nav>
-                        {/* <Form className="d-flex">
+                        {/* This search bar doesn't work currently */}
+                        <Form className="d-flex">
                             <FormControl
                                 type="search"
                                 placeholder="Search"
-                                className="me-2"
+                                className="me-3"
                                 aria-label="Search"
                             />
                             <Button variant="outline-success">Search</Button>
-                        </Form> */}
+                        </Form>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -146,7 +163,25 @@ export function InputInfo(): JSX.Element {
                 editPlan={editPlan}
                 deletePlan={deletePlan}
             ></PlanList>
-            <Button variant="danger" className="m-0" onClick={deleteAllPlan}>
+            <Alert show={show} variant="danger">
+                <Alert.Heading>Warning ⚠️</Alert.Heading>
+                <p>Are you sure to delete all semesters?</p>
+                <hr />
+                <div className="d-flex justify-content-end">
+                    <Button onClick={cancel} variant="outline-success">
+                        Wait a second
+                    </Button>
+                    <Button onClick={deleteAllPlan} variant="outline-danger">
+                        No doubt
+                    </Button>
+                </div>
+            </Alert>
+            <Button
+                variant="danger"
+                className="m-0"
+                disabled={disable}
+                onClick={() => setShow(true)}
+            >
                 🗑
             </Button>
             <Button

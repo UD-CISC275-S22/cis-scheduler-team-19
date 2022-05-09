@@ -5,7 +5,7 @@ import { Plan } from "../interfaces/plan";
 import { PlanEditor } from "./planEditor";
 import { SemesterList } from "./semesterList";
 import { SemesterAddModal } from "./semesterAddModal";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 
 export function PlanView({
     plan,
@@ -19,6 +19,10 @@ export function PlanView({
     const [editing, setEditing] = useState<boolean>(false);
     const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
     const [showAddModal, setShowAddModal] = useState(false);
+    // alerts if users want to clear all semesters
+    const [show, setShow] = useState(false);
+    // after clearing courses, clear button disabled
+    const [disable, setDisable] = React.useState(false);
 
     function changeEditing() {
         setEditing(!editing);
@@ -53,6 +57,12 @@ export function PlanView({
 
     function deleteAllSemester() {
         setSemesters([]);
+        setShow(!show);
+        setDisable(true);
+    }
+
+    function cancel() {
+        setShow(!show);
     }
 
     const handleCloseAddModal = () => setShowAddModal(false);
@@ -85,9 +95,26 @@ export function PlanView({
                 >
                     New Semester
                 </Button>
+                <Alert show={show} variant="danger">
+                    <Alert.Heading>Warning ⚠️</Alert.Heading>
+                    <p>Are you sure to delete all semesters?</p>
+                    <hr />
+                    <div className="d-flex justify-content-end">
+                        <Button onClick={cancel} variant="outline-success">
+                            Wait a second
+                        </Button>
+                        <Button
+                            onClick={deleteAllSemester}
+                            variant="outline-danger"
+                        >
+                            No doubt
+                        </Button>
+                    </div>
+                </Alert>
                 <Button
                     className="m-4"
-                    onClick={deleteAllSemester}
+                    disabled={disable}
+                    onClick={() => setShow(true)}
                     variant="outline-danger"
                 >
                     Clear All Semester
