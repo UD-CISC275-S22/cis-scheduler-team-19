@@ -335,11 +335,11 @@ All files              |    14.6 |    10.71 |    9.18 |   15.56 |
   courseAddModal.tsx   |       0 |      100 |       0 |       0 | 14-90             
   courseEditor.tsx     |       0 |      100 |       0 |       0 | 20-119            
   courseList.tsx       |       0 |      100 |       0 |       0 | 16-38             
-  coursePool.tsx       |    9.52 |        0 |    9.09 |   10.52 | 14-81             
+  coursePool.tsx       |    9.52 |        0 |    9.09 |   10.52 | 14-87             
   infoPage.tsx         |    57.5 |       30 |   36.84 |   62.16 | 65,79,85-112,183  
   planAddModal.tsx     |       0 |      100 |       0 |       0 | 14-41             
   planEditor.tsx       |       0 |      100 |       0 |       0 | 16-55             
-  planList.tsx         |       0 |      100 |       0 |       0 | 15-19             
+  planList.tsx         |       0 |      100 |       0 |       0 | 15-18             
   planView.tsx         |       0 |        0 |       0 |       0 | 19-117            
   semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-71             
   semesterEditor.tsx   |       0 |      100 |       0 |       0 | 18-75             
@@ -353,5 +353,5 @@ All files              |    14.6 |    10.71 |    9.18 |   15.56 |
 Test Suites: 2 failed, 2 total
 Tests:       2 failed, 3 passed, 5 total
 Snapshots:   0 total
-Time:        4.609 s
+Time:        3.582 s
 Ran all test suites.
