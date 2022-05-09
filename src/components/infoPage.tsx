@@ -129,30 +129,30 @@ export function InputInfo(): JSX.Element {
         localStorage.setItem(saveDataKey, JSON.stringify(data));
     }
 
-    function arrayToCsv(Plan) {
-        return data
-            .map(
-                (row) =>
-                    row
-                        .map(String) // convert every value to String
-                        .map((v) => v.replaceAll('"', '""')) // escape double colons
-                        .map((v) => `"${v}"`) // quote it
-                        .join(",") // comma-separated
-            )
-            .join("\r\n");
-    }
+    // function arrayToCsv(Plan) {
+    //     return data
+    //         .map(
+    //             (row) =>
+    //                 row
+    //                     .map(String) // convert every value to String
+    //                     .map((v) => v.replaceAll('"', '""')) // escape double colons
+    //                     .map((v) => `"${v}"`) // quote it
+    //                     .join(",") // comma-separated
+    //         )
+    //         .join("\r\n");
+    // }
 
-    function downloadBlob(content, filename, contentType) {
-        // Create a blob
-        var blob = new Blob([content], { type: contentType });
-        var url = URL.createObjectURL(blob);
+    // function downloadBlob(content, filename, contentType) {
+    //     // Create a blob
+    //     var blob = new Blob([content], { type: contentType });
+    //     var url = URL.createObjectURL(blob);
 
-        // Create a link to download it
-        var pom = document.createElement("a");
-        pom.href = url;
-        pom.setAttribute("download", filename);
-        pom.click();
-    }
+    //     // Create a link to download it
+    //     var pom = document.createElement("a");
+    //     pom.href = url;
+    //     pom.setAttribute("download", filename);
+    //     pom.click();
+    // }
 
     return submit ? (
         <>
