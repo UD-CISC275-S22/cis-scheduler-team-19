@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Stack, Offcanvas, Container } from "react-bootstrap";
+import { Button, Row, Col, Offcanvas, Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import courseData from "../data/cisc_course.json";
 
@@ -45,55 +45,71 @@ export function CoursePool(): JSX.Element {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <input
+                        style={{ width: "370px" }}
                         placeholder="Search your course"
                         onChange={(event) => setQuery(event.target.value)}
                     />
-                    <Stack>
-                        {COURSEPOOL.filter((course) => {
-                            if (query === "") {
-                                return courses;
-                            } else if (
-                                course.code
-                                    .toLowerCase()
-                                    .includes(query.toLowerCase())
-                            ) {
-                                return courses;
-                            }
-                        }).map((course) => {
-                            return (
-                                <Container
-                                    key={course.code}
-                                    style={{ marginBottom: "4px" }}
-                                >
-                                    <Button
-                                        onClick={() => chooseCourse(course)}
-                                        size="sm"
-                                        variant="outline-secondary"
-                                    >
-                                        {course.code}
-                                    </Button>
-                                    <Button size="sm" variant="light">
-                                        ℹ️
-                                    </Button>
-                                </Container>
-                            );
-                        })}
-                    </Stack>
-                    <Stack>
+                    <Container>
                         <Row>
                             <Col>
-                                <span>Course Pool: </span>
-                                {courses.map((course: Course) => (
-                                    <li key={course.code}>{course.code}</li>
-                                ))}
-                                <div>
-                                    <Button onClick={clearCourses}>
-                                        Clear Course
-                                    </Button>
-                                </div>
+                                {COURSEPOOL.filter((course) => {
+                                    if (query === "") {
+                                        return courses;
+                                    } else if (
+                                        course.code
+                                            .toLowerCase()
+                                            .includes(query.toLowerCase())
+                                    ) {
+                                        return courses;
+                                    }
+                                }).map((course) => {
+                                    return (
+                                        <Container
+                                            key={course.code}
+                                            style={{ marginBottom: "4px" }}
+                                        >
+                                            <Button
+                                                onClick={() =>
+                                                    chooseCourse(course)
+                                                }
+                                                size="sm"
+                                                variant="outline-secondary"
+                                            >
+                                                {course.code}
+                                            </Button>
+                                            <Button size="sm" variant="light">
+                                                ℹ️
+                                            </Button>
+                                        </Container>
+                                    );
+                                })}
+                            </Col>
+                            <Col>
+                                <Row>
+                                    <Col>
+                                        <span>Course Pool: </span>
+                                        {courses.map((course: Course) => (
+                                            <li key={course.code}>
+                                                {course.code}
+                                            </li>
+                                        ))}
+                                        <div>
+                                            <Button size="sm">
+                                                Add Course
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant="danger"
+                                                onClick={clearCourses}
+                                            >
+                                                Clear Course
+                                            </Button>
+                                        </div>
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
-                    </Stack>
+                    </Container>
                 </Offcanvas.Body>
             </Offcanvas>
         </>

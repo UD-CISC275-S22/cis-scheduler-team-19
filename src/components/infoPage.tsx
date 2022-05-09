@@ -50,6 +50,13 @@ const PLAN = ciscData.map(
     })
 );
 
+let loadedData = PLAN;
+const saveDataKey = "MY-PAGE-DATA";
+const previousData = localStorage.getItem(saveDataKey);
+if (previousData !== null) {
+    loadedData = JSON.parse(previousData);
+}
+
 export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
@@ -60,6 +67,8 @@ export function InputInfo(): JSX.Element {
     const [show, setShow] = useState(false);
     // after clearing courses, clear button disabled
     const [disable, setDisable] = React.useState(false);
+    // after saving, the change will be kept on the website
+    const [data, setData] = useState<Plan[]>(loadedData);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -87,6 +96,7 @@ export function InputInfo(): JSX.Element {
         );
         if (existing === undefined) {
             setPlans([...plans, newPlan]);
+            setData([...plans, newPlan]);
         }
     }
 
@@ -114,6 +124,35 @@ export function InputInfo(): JSX.Element {
 
     const handleCloseAddModal = () => setShowAddModal(false);
     const handleShowAddModal = () => setShowAddModal(true);
+
+    function saveData() {
+        localStorage.setItem(saveDataKey, JSON.stringify(data));
+    }
+
+    function arrayToCsv(Plan) {
+        return data
+            .map(
+                (row) =>
+                    row
+                        .map(String) // convert every value to String
+                        .map((v) => v.replaceAll('"', '""')) // escape double colons
+                        .map((v) => `"${v}"`) // quote it
+                        .join(",") // comma-separated
+            )
+            .join("\r\n");
+    }
+
+    function downloadBlob(content, filename, contentType) {
+        // Create a blob
+        var blob = new Blob([content], { type: contentType });
+        var url = URL.createObjectURL(blob);
+
+        // Create a link to download it
+        var pom = document.createElement("a");
+        pom.href = url;
+        pom.setAttribute("download", filename);
+        pom.click();
+    }
 
     return submit ? (
         <>
@@ -196,6 +235,7 @@ export function InputInfo(): JSX.Element {
                 handleClose={handleCloseAddModal}
                 addPlan={addPlan}
             ></PlanAddModal>
+            <Button onClick={saveData}>💾</Button>
         </>
     ) : (
         <div>

@@ -61,6 +61,11 @@ export function SemesterView({
     function cancel() {
         setShow(!show);
     }
+    // This function is for skipSemester, but not quite sure if we need a addSemester at the same time,
+    // since for it bascially funtions as deleteSemester
+    function skipSemester() {
+        deleteSemester(semester.title);
+    }
 
     const handleCloseAddModal = () => setShowAddModal(false);
     const handleShowAddModal = () => setShowAddModal(true);
@@ -77,8 +82,15 @@ export function SemesterView({
             <div>
                 <h3>
                     {semester.title} {semester.year}{" "}
-                    <Button variant="light " onClick={changeEditing}>
+                    <Button variant="light" onClick={changeEditing}>
                         ✏️
+                    </Button>
+                    <Button
+                        variant="light"
+                        onClick={skipSemester}
+                        style={{ float: "right" }}
+                    >
+                        ⏭️
                     </Button>
                 </h3>
                 <CourseList
