@@ -33,7 +33,7 @@ const DEFAULT_YEAR = YEARS[0];
 const PLAN = ciscData.map(
     (plan): Plan => ({
         ...plan,
-        semester: plan.semester.map(
+        semesters: plan.semester.map(
             (semester): Semester => ({
                 ...semester,
                 courses: semester.courses.map(
@@ -184,7 +184,7 @@ export function InputInfo(): JSX.Element {
                                 CS BA
                             </Nav.Link>
                         </Nav>
-                        {/* This search bar doesn't work currently */}
+                        {/* This search bar doesn't work yet */}
                         <Form className="d-flex">
                             <FormControl
                                 type="search"

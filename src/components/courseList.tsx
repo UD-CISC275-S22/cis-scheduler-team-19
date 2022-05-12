@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Container, Table, Col } from "react-bootstrap";
+import React from "react";
+import { Container, Table, Col } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { CourseEditor } from "./courseEditor";
 import { CoursePool } from "./coursePool";
@@ -13,11 +13,6 @@ export function CourseList({
     editCourse: (code: string, newCourse: Course) => void;
     removeCourse: (code: string) => void;
 }): JSX.Element {
-    const [showAddModal, setShowAddModal] = useState(false);
-
-    const handleCloseAddModal = () => setShowAddModal(false);
-    const handleShowAddModal = () => setShowAddModal(true);
-
     return (
         <Container>
             <Col>
@@ -42,16 +37,10 @@ export function CourseList({
                             <td>{course.preReq}</td>
                             <td>{course.credit}</td>
                             <td>
-                                <Button onClick={handleShowAddModal}>
-                                    Edit
-                                </Button>
                                 <CourseEditor
-                                    show={showAddModal}
-                                    handleClose={handleCloseAddModal}
-                                    course={course}
                                     editCourse={editCourse}
+                                    course={course}
                                     removeCourse={removeCourse}
-                                    setShowAddModal={handleShowAddModal}
                                 ></CourseEditor>
                             </td>
                         </tr>

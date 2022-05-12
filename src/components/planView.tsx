@@ -17,7 +17,11 @@ export function PlanView({
     deletePlan: (code: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
+    const semesters = plan.semesters;
+    function setSemesters(newSemesters: Semester[]) {
+        editPlan(plan.title, { ...plan, semesters: newSemesters });
+    }
+    //const [semesters, setSemesters] = useState<Semester[]>(plan.semesters);
     const [showAddModal, setShowAddModal] = useState(false);
     // alerts if users want to clear all semesters
     const [show, setShow] = useState(false);
