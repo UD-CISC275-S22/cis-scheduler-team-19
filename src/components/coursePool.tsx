@@ -28,6 +28,10 @@ export function CoursePool(): JSX.Element {
         return setCourses([]);
     }
 
+    function addCourses() {
+        return setCourses([]);
+    }
+
     return (
         <>
             {" "}
@@ -94,7 +98,10 @@ export function CoursePool(): JSX.Element {
                                             </li>
                                         ))}
                                         <div>
-                                            <Button size="sm">
+                                            <Button
+                                                size="sm"
+                                                onClick={addCourses}
+                                            >
                                                 Add Course
                                             </Button>
                                             <Button

@@ -16,7 +16,10 @@ export function SemesterView({
     deleteSemester: (title: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [courses, setCourses] = useState<Course[]>(semester.courses);
+    const courses = semester.courses;
+    function setCourses(newCourses: Course[]) {
+        editSemester(semester.title, { ...semester, courses: newCourses });
+    }
     const [showAddModal, setShowAddModal] = useState(false);
     // alerts if users want to clear all course
     const [show, setShow] = useState(false);
