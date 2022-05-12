@@ -42,7 +42,7 @@ export function CourseEditor({
     return (
         <div>
             <Button onClick={handleShow}>Edit</Button>
-            <Modal show={showAddModal} onHide={handleClose} animation={false}>
+            <Modal show={showAddModal} onHide={handleClose} animation={true}>
                 <Modal.Header closeButton>
                     <Modal.Title>Course</Modal.Title>
                 </Modal.Header>
@@ -74,7 +74,7 @@ export function CourseEditor({
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) =>
                                     setTempCourse({
-                                        ...course,
+                                        ...tempCourse,
                                         title: event.target.value
                                     })
                                 }
@@ -91,7 +91,7 @@ export function CourseEditor({
                                     event: React.ChangeEvent<HTMLSelectElement>
                                 ) =>
                                     setTempCourse({
-                                        ...course,
+                                        ...tempCourse,
                                         credit: event.target.value
                                     })
                                 }
@@ -116,7 +116,7 @@ export function CourseEditor({
                                     event: React.ChangeEvent<HTMLTextAreaElement>
                                 ) =>
                                     setTempCourse({
-                                        ...course,
+                                        ...tempCourse,
                                         description: event.target.value
                                     })
                                 }
@@ -135,7 +135,7 @@ export function CourseEditor({
                                     event: React.ChangeEvent<HTMLTextAreaElement>
                                 ) =>
                                     setTempCourse({
-                                        ...course,
+                                        ...tempCourse,
                                         preReq: event.target.value
                                     })
                                 }
