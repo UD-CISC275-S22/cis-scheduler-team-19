@@ -16,7 +16,7 @@ export function SemesterView({
     deleteSemester: (title: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [courses, setCourse] = useState<Course[]>(semester.courses);
+    const [courses, setCourses] = useState<Course[]>(semester.courses);
     const [showAddModal, setShowAddModal] = useState(false);
     // alerts if users want to clear all course
     const [show, setShow] = useState(false);
@@ -32,12 +32,12 @@ export function SemesterView({
             (course: Course): boolean => course.code === newCourse.code
         );
         if (existing === undefined) {
-            setCourse([...courses, newCourse]);
+            setCourses([...courses, newCourse]);
         }
     }
 
     function editCourse(code: string, newCourse: Course) {
-        setCourse(
+        setCourses(
             courses.map(
                 (course: Course): Course =>
                     course.code === code ? newCourse : course
@@ -46,16 +46,18 @@ export function SemesterView({
     }
 
     function removeCourse(code: string) {
-        setCourse(
+        setCourses(
             courses.filter((course: Course): boolean => course.code !== code)
         );
         setShowAddModal(false);
     }
 
     function deleteAllCourse() {
-        setCourse([]);
+        setCourses([]);
         setShow(!show);
-        setDisable(true);
+        if (courses !== []) {
+            setDisable(!disable);
+        }
     }
 
     function cancel() {
