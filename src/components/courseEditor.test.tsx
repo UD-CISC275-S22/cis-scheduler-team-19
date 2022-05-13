@@ -1,4 +1,32 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CourseEditor } from "./courseEditor";
-import userEvent from "@testing-library/user-event";
+import { cleanup } from "@testing-library/react";
+
+describe("CourseList Component tests", () => {
+    beforeEach(() => {
+        const course = {
+            code: "",
+            title: "",
+            description: "",
+            preReq: "",
+            credit: "",
+            taken: true
+        };
+        render(
+            <CourseEditor
+                course={course}
+                editCourse={() => []}
+                removeCourse={() => []}
+            />
+        );
+    });
+    afterEach(cleanup);
+
+    test("There is a button labeled Edit", () => {
+        const EditButton = screen.getByRole("button", {
+            name: /Edit/i
+        });
+        expect(EditButton).toBeInTheDocument();
+    });
+});
