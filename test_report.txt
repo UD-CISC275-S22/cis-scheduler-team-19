@@ -9,35 +9,6 @@ FAIL src/components/infoPage.test.tsx
       Error: Not implemented: window.alert
           at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
           at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
-          at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:83:13)
-          at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
-          at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-          at innerInvokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-          at invokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-          at HTMLUnknownElementImpl._dispatch (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-          at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
-
-      81 |     function startEditing() {
-      82 |         if (name == "") {
-    > 83 |             alert("Please enter your name");
-         |             ^
-      84 |         }
-      85 |         if (year == "Choose your Academic Year") {
-      86 |             alert("Please choose your Academic Year");
-
-      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
-      at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
-      at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
-      at startEditing (src/components/infoPage.tsx:83:13)
-      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
-      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-
-    console.error
-      Error: Not implemented: window.alert
-          at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
-          at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
           at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:86:13)
           at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
           at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
@@ -47,18 +18,47 @@ FAIL src/components/infoPage.test.tsx
           at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
           at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
 
-      84 |         }
-      85 |         if (year == "Choose your Academic Year") {
-    > 86 |             alert("Please choose your Academic Year");
+      84 |     function startEditing() {
+      85 |         if (name == "") {
+    > 86 |             alert("Please enter your name");
          |             ^
-      87 |         } else {
-      88 |             setSubmit(!submit);
-      89 |         }
+      87 |         }
+      88 |         if (year == "Choose your Academic Year") {
+      89 |             alert("Please choose your Academic Year");
 
       at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
       at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
       at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
       at startEditing (src/components/infoPage.tsx:86:13)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+
+    console.error
+      Error: Not implemented: window.alert
+          at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
+          at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
+          at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:89:13)
+          at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+          at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+          at innerInvokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+          at invokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+          at HTMLUnknownElementImpl._dispatch (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+          at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
+
+      87 |         }
+      88 |         if (year == "Choose your Academic Year") {
+    > 89 |             alert("Please choose your Academic Year");
+         |             ^
+      90 |         } else {
+      91 |             setSubmit(!submit);
+      92 |         }
+
+      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
+      at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
+      at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
+      at startEditing (src/components/infoPage.tsx:89:13)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
       at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
@@ -93,35 +93,6 @@ FAIL src/components/infoPage.test.tsx
       Error: Not implemented: window.alert
           at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
           at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
-          at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:83:13)
-          at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
-          at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-          at innerInvokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-          at invokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-          at HTMLUnknownElementImpl._dispatch (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-          at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
-
-      81 |     function startEditing() {
-      82 |         if (name == "") {
-    > 83 |             alert("Please enter your name");
-         |             ^
-      84 |         }
-      85 |         if (year == "Choose your Academic Year") {
-      86 |             alert("Please choose your Academic Year");
-
-      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
-      at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
-      at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
-      at startEditing (src/components/infoPage.tsx:83:13)
-      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
-      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-
-    console.error
-      Error: Not implemented: window.alert
-          at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
-          at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
           at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:86:13)
           at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
           at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
@@ -131,18 +102,47 @@ FAIL src/components/infoPage.test.tsx
           at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
           at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
 
-      84 |         }
-      85 |         if (year == "Choose your Academic Year") {
-    > 86 |             alert("Please choose your Academic Year");
+      84 |     function startEditing() {
+      85 |         if (name == "") {
+    > 86 |             alert("Please enter your name");
          |             ^
-      87 |         } else {
-      88 |             setSubmit(!submit);
-      89 |         }
+      87 |         }
+      88 |         if (year == "Choose your Academic Year") {
+      89 |             alert("Please choose your Academic Year");
 
       at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
       at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
       at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
       at startEditing (src/components/infoPage.tsx:86:13)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+
+    console.error
+      Error: Not implemented: window.alert
+          at module.exports (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/not-implemented.js:9:17)
+          at alert (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
+          at startEditing (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/src/components/infoPage.tsx:89:13)
+          at HTMLUnknownElement.callCallback (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+          at HTMLUnknownElement.callTheUserObjectsOperation (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+          at innerInvokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+          at invokeEventListeners (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+          at HTMLUnknownElementImpl._dispatch (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+          at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-19/cis-scheduler-team-19/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34) undefined
+
+      87 |         }
+      88 |         if (year == "Choose your Academic Year") {
+    > 89 |             alert("Please choose your Academic Year");
+         |             ^
+      90 |         } else {
+      91 |             setSubmit(!submit);
+      92 |         }
+
+      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
+      at module.exports (node_modules/jsdom/lib/jsdom/browser/not-implemented.js:12:26)
+      at alert (node_modules/jsdom/lib/jsdom/browser/Window.js:866:7)
+      at startEditing (src/components/infoPage.tsx:89:13)
       at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
       at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
       at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
@@ -213,6 +213,7 @@ FAIL src/components/infoPage.test.tsx
 
       at Object.<anonymous> (src/components/infoPage.test.tsx:26:15)
 
+PASS src/components/courseEditor.test.tsx
 FAIL src/App.test.tsx
   ● renders the course name somewhere
 
@@ -328,15 +329,15 @@ FAIL src/App.test.tsx
 -----------------------|---------|----------|---------|---------|-------------------------
 File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
 -----------------------|---------|----------|---------|---------|-------------------------
-All files              |   16.23 |     12.5 |    8.57 |   17.22 |                         
+All files              |   18.75 |     12.5 |    9.25 |      20 |                         
  src                   |     100 |      100 |     100 |     100 |                         
   App.tsx              |     100 |      100 |     100 |     100 |                         
- src/components        |   15.78 |     12.5 |    7.69 |   16.75 |                         
+ src/components        |   18.32 |     12.5 |    8.41 |   19.55 |                         
   courseAddModal.tsx   |       0 |      100 |       0 |       0 | 14-105                  
-  courseEditor.tsx     |       0 |      100 |       0 |       0 | 16-154                  
-  courseList.tsx       |       0 |      100 |       0 |       0 | 16-33                   
-  coursePool.tsx       |    9.09 |        0 |    8.33 |      10 | 14-96                   
-  infoPage.tsx         |   58.33 |    33.33 |      35 |   62.22 | 57,74,88,94-122,129,222 
+  courseEditor.tsx     |   28.57 |      100 |    8.33 |   31.57 | 25-39,59-154            
+  courseList.tsx       |       0 |      100 |       0 |       0 | 15-29                   
+  coursePool.tsx       |    8.69 |        0 |    7.69 |    9.52 | 18-108                  
+  infoPage.tsx         |   58.69 |    33.33 |      35 |   62.79 | 57,77,91,97-124,131,224 
   planAddModal.tsx     |       0 |      100 |       0 |       0 | 14-41                   
   planEditor.tsx       |       0 |      100 |       0 |       0 | 16-55                   
   planList.tsx         |       0 |      100 |       0 |       0 | 15-18                   
@@ -344,14 +345,14 @@ All files              |   16.23 |     12.5 |    8.57 |   17.22 |
   semesterAddModal.tsx |       0 |      100 |       0 |       0 | 14-71                   
   semesterEditor.tsx   |       0 |      100 |       0 |       0 | 18-75                   
   semesterList.tsx     |       0 |      100 |       0 |       0 | 15-20                   
-  semesterView.tsx     |       0 |        0 |       0 |       0 | 18-134                  
+  semesterView.tsx     |       0 |        0 |       0 |       0 | 19-140                  
  src/interfaces        |       0 |        0 |       0 |       0 |                         
   course.ts            |       0 |        0 |       0 |       0 |                         
   plan.ts              |       0 |        0 |       0 |       0 |                         
   semester.ts          |       0 |        0 |       0 |       0 |                         
 -----------------------|---------|----------|---------|---------|-------------------------
-Test Suites: 2 failed, 2 total
-Tests:       2 failed, 3 passed, 5 total
+Test Suites: 2 failed, 1 passed, 3 total
+Tests:       2 failed, 4 passed, 6 total
 Snapshots:   0 total
-Time:        3.864 s
+Time:        3.908 s
 Ran all test suites.
