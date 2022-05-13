@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Table, Col } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { CourseEditor } from "./courseEditor";
-import { CoursePool } from "./coursePool";
 
 export function CourseList({
     courses,
@@ -15,9 +14,6 @@ export function CourseList({
 }): JSX.Element {
     return (
         <Container>
-            <Col>
-                <CoursePool></CoursePool>
-            </Col>
             <Table striped bordered hover id="courseTable">
                 <thead>
                     <tr>

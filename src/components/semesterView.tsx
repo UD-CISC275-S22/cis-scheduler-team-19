@@ -5,6 +5,7 @@ import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
 import { CourseAddModal } from "./courseAddModal";
 import { SemesterEditor } from "./semesterEditor";
+import { CoursePool } from "./coursePool";
 
 export function SemesterView({
     semester,
@@ -37,6 +38,10 @@ export function SemesterView({
         if (existing === undefined) {
             setCourses([...courses, newCourse]);
         }
+    }
+
+    function addCourseList(newCourses: Course[]) {
+        newCourses.map((course): void => addCourse(course));
     }
 
     function editCourse(code: string, newCourse: Course) {
@@ -98,6 +103,7 @@ export function SemesterView({
                         ⏭️
                     </Button>
                 </h3>
+                <CoursePool addCourseList={addCourseList}></CoursePool>
                 <CourseList
                     courses={courses}
                     editCourse={editCourse}
