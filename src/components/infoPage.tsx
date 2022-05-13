@@ -60,7 +60,7 @@ if (previousData !== null) {
 export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
-    const [plans, setPlans] = useState<Plan[]>(PLAN);
+    const [plans, setPlans] = useState<Plan[]>(loadedData);
     const [submit, setSubmit] = useState<boolean>(false);
     const [showAddModal, setShowAddModal] = useState(false);
     // alerts if users want to clear all plans
@@ -68,7 +68,10 @@ export function InputInfo(): JSX.Element {
     // after clearing courses, clear button disabled
     const [disable, setDisable] = React.useState(false);
     // after saving, the change will be kept on the website
-    const [data, setData] = useState<Plan[]>(loadedData);
+    // function setData() {
+    //     setPlans(loadedData);
+    // }
+    // console.log(data);
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -96,7 +99,6 @@ export function InputInfo(): JSX.Element {
         );
         if (existing === undefined) {
             setPlans([...plans, newPlan]);
-            setData([...plans, newPlan]);
         }
     }
 
@@ -126,7 +128,7 @@ export function InputInfo(): JSX.Element {
     const handleShowAddModal = () => setShowAddModal(true);
 
     function saveData() {
-        localStorage.setItem(saveDataKey, JSON.stringify(data));
+        localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
 
     // function arrayToCsv(Plan) {

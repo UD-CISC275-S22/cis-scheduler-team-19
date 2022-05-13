@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Offcanvas, Container } from "react-bootstrap";
+import { Button, Row, Col, Offcanvas, Container, Card } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import courseData from "../data/cisc_course.json";
 
@@ -10,7 +10,11 @@ const COURSEPOOL = courseData.map(
     })
 );
 
-export function CoursePool(): JSX.Element {
+export function CoursePool({
+    addCourseList
+}: {
+    addCourseList: (newCourse: Course[]) => void;
+}): JSX.Element {
     const [query, setQuery] = useState("");
     const [courses, setCourses] = useState<Course[]>([]);
     const [show, setShow] = useState(false);
@@ -29,7 +33,18 @@ export function CoursePool(): JSX.Element {
     }
 
     function addCourses() {
-        return setCourses([]);
+        courses.map((course): void =>
+            addCourseList([
+                {
+                    code: course.code,
+                    title: course.title,
+                    credit: course.credit,
+                    description: course.description,
+                    preReq: course.preReq,
+                    taken: true
+                }
+            ])
+        );
     }
 
     return (
@@ -81,9 +96,6 @@ export function CoursePool(): JSX.Element {
                                             >
                                                 {course.code}
                                             </Button>
-                                            <Button size="sm" variant="light">
-                                                ℹ️
-                                            </Button>
                                         </Container>
                                     );
                                 })}
@@ -93,9 +105,30 @@ export function CoursePool(): JSX.Element {
                                     <Col>
                                         <span>Course Pool: </span>
                                         {courses.map((course: Course) => (
-                                            <li key={course.code}>
-                                                {course.code}
-                                            </li>
+                                            <div key={course.code}>
+                                                <Card
+                                                    style={{ width: "18rem" }}
+                                                >
+                                                    <Card.Body>
+                                                        <Card.Title>
+                                                            {course.code}
+                                                        </Card.Title>
+                                                        <Card.Subtitle className="mb-2 text-muted">
+                                                            {course.title} (
+                                                            {course.credit}{" "}
+                                                            credits)
+                                                        </Card.Subtitle>
+                                                        <Card.Text>
+                                                            Description:{" "}
+                                                            {course.description}
+                                                        </Card.Text>
+                                                        <Card.Text className="mb-2 text-muted">
+                                                            Pre-requirement:{" "}
+                                                            {course.preReq}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </div>
                                         ))}
                                         <div>
                                             <Button
