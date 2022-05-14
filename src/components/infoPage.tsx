@@ -51,17 +51,17 @@ const PLAN = ciscData.map(
     })
 );
 
-let loadedData = PLAN;
-const saveDataKey = "MY-PAGE-DATA";
-const previousData = localStorage.getItem(saveDataKey);
-if (previousData !== null) {
-    loadedData = JSON.parse(previousData);
-}
+// let loadedData = PLAN;
+// const saveDataKey = "MY-PAGE-DATA";
+// const previousData = localStorage.getItem(saveDataKey);
+// if (previousData !== null) {
+//     loadedData = JSON.parse(previousData);
+// }
 
 export function InputInfo(): JSX.Element {
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
-    const [plans, setPlans] = useState<Plan[]>(loadedData);
+    const [plans, setPlans] = useState<Plan[]>(PLAN);
     const [submit, setSubmit] = useState<boolean>(false);
     const [showAddModal, setShowAddModal] = useState(false);
     // alerts if users want to clear all plans
@@ -125,9 +125,9 @@ export function InputInfo(): JSX.Element {
     const handleCloseAddModal = () => setShowAddModal(false);
     const handleShowAddModal = () => setShowAddModal(true);
 
-    function saveData() {
-        localStorage.setItem(saveDataKey, JSON.stringify(plans));
-    }
+    // function saveData() {
+    //     localStorage.setItem(saveDataKey, JSON.stringify(plans));
+    // }
 
     // function arrayToCsv(data: Plan[]) {
     //     return data
@@ -269,7 +269,7 @@ export function InputInfo(): JSX.Element {
                 handleClose={handleCloseAddModal}
                 addPlan={addPlan}
             ></PlanAddModal>
-            <Button onClick={saveData}>💾</Button>
+            {/* <Button onClick={saveData}>💾</Button> */}
             {/* <Button variant="light" onClick={() => downloadBlob(content.flat(), "Your Acaedmic Plan.CSV", )}>🚀</Button> */}
             {/* <div>
                 <pre style={{ overflow: "scroll", height: "100px" }}>
