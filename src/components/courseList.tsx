@@ -1,16 +1,20 @@
 import React from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { CourseEditor } from "./courseEditor";
 
 export function CourseList({
     courses,
     editCourse,
-    removeCourse
+    removeCourse,
+    moveCourse,
+    resetCourse
 }: {
     courses: Course[];
     editCourse: (code: string, newCourse: Course) => void;
     removeCourse: (code: string) => void;
+    moveCourse: (code: string) => void;
+    resetCourse: (code: string) => void;
 }): JSX.Element {
     return (
         <Container>
@@ -37,7 +41,15 @@ export function CourseList({
                                     editCourse={editCourse}
                                     course={course}
                                     removeCourse={removeCourse}
+                                    moveCourse={moveCourse}
                                 ></CourseEditor>
+                                <Button
+                                    onClick={() => resetCourse(course.code)}
+                                    className="reset-course-btn"
+                                    data-testid="reset-btn"
+                                >
+                                    Reset
+                                </Button>
                             </td>
                         </tr>
                     ))}

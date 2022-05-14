@@ -7,11 +7,13 @@ import { Course } from "../interfaces/course";
 export function CourseEditor({
     course,
     editCourse,
-    removeCourse
+    removeCourse,
+    moveCourse
 }: {
     course: Course;
     editCourse: (code: string, newCourse: Course) => void;
     removeCourse: (code: string) => void;
+    moveCourse: (code: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(true);
     const [tempCourse, setTempCourse] = useState<Course>(course);
@@ -144,6 +146,13 @@ export function CourseEditor({
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
+                    <Button
+                        onClick={() => moveCourse(course.code)}
+                        variant="light"
+                        className="me-4"
+                    >
+                        Move
+                    </Button>
                     <Button onClick={save} variant="success" className="me-4">
                         Save
                     </Button>

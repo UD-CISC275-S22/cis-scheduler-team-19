@@ -7,8 +7,9 @@ import {
     Form,
     Nav,
     Navbar,
-    FormControl,
     Alert
+    // Collapse,
+    // Card
 } from "react-bootstrap";
 import { PlanList } from "../components/planList";
 import { Plan } from "../interfaces/plan";
@@ -67,11 +68,8 @@ export function InputInfo(): JSX.Element {
     const [show, setShow] = useState(false);
     // after clearing courses, clear button disabled
     const [disable, setDisable] = React.useState(false);
-    // after saving, the change will be kept on the website
-    // function setData() {
-    //     setPlans(loadedData);
-    // }
-    // console.log(data);
+    const [open, setOpen] = useState(false);
+    // const [content, setContent] = useState<string>("No file data uploaded");
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -131,7 +129,7 @@ export function InputInfo(): JSX.Element {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
 
-    // function arrayToCsv(Plan) {
+    // function arrayToCsv(data: Plan[]) {
     //     return data
     //         .map(
     //             (row) =>
@@ -144,7 +142,11 @@ export function InputInfo(): JSX.Element {
     //         .join("\r\n");
     // }
 
-    // function downloadBlob(content, filename, contentType) {
+    // function downloadBlob(
+    //     content: Plan,
+    //     filename: string,
+    //     contentType: Plan[]
+    // ) {
     //     // Create a blob
     //     var blob = new Blob([content], { type: contentType });
     //     var url = URL.createObjectURL(blob);
@@ -154,6 +156,26 @@ export function InputInfo(): JSX.Element {
     //     pom.href = url;
     //     pom.setAttribute("download", filename);
     //     pom.click();
+    // }
+
+    // function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
+    //     // Might have removed the file, need to check that the files exist
+    //     if (event.target.files && event.target.files.length) {
+    //         // Get the first filename
+    //         const filename = event.target.files[0];
+    //         // Create a reader
+    //         const reader = new FileReader();
+    //         // Create lambda callback to handle when we read the file
+    //         reader.onload = (loadEvent) => {
+    //             // Target might be null, so provide default error value
+    //             const newContent =
+    //                 loadEvent.target?.result || "Data was not loaded";
+    //             // FileReader provides string or ArrayBuffer, force it to be string
+    //             setContent(newContent as string);
+    //         };
+    //         // Actually read the file
+    //         reader.readAsText(filename);
+    //     }
     // }
 
     return submit ? (
@@ -186,19 +208,29 @@ export function InputInfo(): JSX.Element {
                                 CS BA
                             </Nav.Link>
                         </Nav>
-                        {/* This search bar doesn't work yet */}
-                        <Form className="d-flex">
-                            <FormControl
-                                type="search"
-                                placeholder="Search"
+                        <>
+                            <Button
+                                onClick={() => setOpen(!open)}
+                                aria-controls="example-fade-text"
+                                aria-expanded={open}
                                 className="me-3"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                            >
+                                {name}
+                                {"'s"} schedule status
+                            </Button>
+                        </>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            {/* <div style={{ minHeight: "150px" }}>
+                <Collapse in={open} dimension="width">
+                    <div id="example-collapse-text">
+                        <Card body style={{ width: "400px" }}>
+
+                        </Card>
+                    </div>
+                </Collapse>
+            </div> */}
             <PlanList
                 plans={plans}
                 editPlan={editPlan}
@@ -238,6 +270,16 @@ export function InputInfo(): JSX.Element {
                 addPlan={addPlan}
             ></PlanAddModal>
             <Button onClick={saveData}>💾</Button>
+            {/* <Button variant="light" onClick={() => downloadBlob(content.flat(), "Your Acaedmic Plan.CSV", )}>🚀</Button> */}
+            {/* <div>
+                <pre style={{ overflow: "scroll", height: "100px" }}>
+                    {content}
+                </pre>
+                <Form.Group controlId="exampleForm">
+                    <Form.Label>Upload a file</Form.Label>
+                    <Form.Control type="file" onChange={uploadFile} />
+                </Form.Group>
+            </div> */}
         </>
     ) : (
         <div>
