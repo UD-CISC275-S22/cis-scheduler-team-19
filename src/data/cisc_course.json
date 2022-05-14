@@ -1,5 +1,101 @@
 [
     {
+        "code": "ARSC116",
+        "title": "FYS: Strategies for Academic Success",
+        "credit": "1",
+        "description": "Provides first semester students in the Associate in Arts Program with the social and academic skills for university success. Topics include UD resources, study skills, and major exploration.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "BHAN135",
+        "title": "Freshman Seminar",
+        "credit": "2",
+        "description": "Covers basic survival skills: effective coping strategies to meet personal,academic, career and social challenges. Enhances student success and developspositive lifelong learning skills",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "BMEG101",
+        "title": "Introduction to Biomedical Engineering",
+        "credit": "2",
+        "description": "Introduces first year students to college life and provides a learning experience vital to their success at the University, in Engineering, and in Biomedical Engineering. Course content includes that of the university First Year Seminar, technical skills for engineers, and career opportunities in biomedical engineering",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "BUAD110",
+        "title": "Basics of Business",
+        "credit": "3",
+        "description": "Introduction to business for majors to inform them about each of the functional areas of business through lectures, readings, discussions, guest speakers, cases and projects. Includes topics relating to operations, marketing, finance, management, accounting and management information systems, as well as business ethics, and critical thinking and decision making",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "EDUC100",
+        "title": "Introduction to Elementary and Middle School Education",
+        "credit": "2",
+        "description": "First year seminar covers issues in K-8 learning and instruction. Topics include overviews of discipline options within the ETE major and examinations of K-8 education practices. Ethics/academic honesty, responsible use of technology, academic policies, diversity, and safety and wellness are addressed.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "EGGG101",
+        "title": "Introduction to Engineering",
+        "credit": "2",
+        "description": "Introduction to profession, including disciplines of chemical, civil, computer, electrical, environmental, and mechanical engineering. Prepares students for success through integration of: technical problem solving and engineering design, ethical decision-making, teamwork, and communicating to diverse audiences.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "KAAP105",
+        "title": "Freshman Seminar in Exercise Science",
+        "credit": "1",
+        "description": "Overview of University of Delaware resources, policies and intellectual culture. Introduces subdisciplines of the exercise science discipline: biomechanics, exercise physiology, and motor control, including familiarization with types of laboratory research and career opportunities.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "KAAP155",
+        "title": "Lifestyle Awareness - Athletic Trainers",
+        "credit": "3",
+        "description": "Exploration into the basic principles of healthy lifestyle awareness for students seeking careers in health care. Serves as the First Year Experience (FYE) requirement for all Sports Health students.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "LLCU111",
+        "title": "First Year Seminar: Intro to World Language Learning",
+        "credit": "3",
+        "description": "This course will encompass first-year seminar objectives, along with basic fundamentals of language learning.  Students will explore what it means to learn language collaboratively, and across a variety of contexts and will focus on students’ own language learning and its relationship to instruction.  Students will also participate in a field experience, visiting a local dual language immersion school. An alternate assignment will be given to those student for whom this observation proves a hardship",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "MAST100",
+        "title": "Marine Science Colloquium I",
+        "credit": "2",
+        "description": "Broad introduction to academic life at the University of Delaware and the breadth of contemporary marine science research conducted in the field; introduces array of faculty research including biological, physical, chemical, geological marine science and marine policy. Mandatory day-long field trip to the UD Lewes campus for introduction to sampling techniques, coastal environments, and campus resources. Primarily intended for Marine Science Majors in the fall semester of their freshman year.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "NURS100",
+        "title": "New Student Connections",
+        "credit": "1",
+        "description": "Provides first semester students in College of Health and Nursing Sciences opportunities to explore and become familiar with the college and university. Students acquire information on campus resources and gain practical skills helpful for a successful transition to college.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
+        "code": "UNIV 101",
+        "title": "First Year Experience I",
+        "credit": "1",
+        "description": "The seminar is designed to help students adjust to college life. Led by faculty who will work closely with a peer mentor and others to help ensure that the first semester is successful and provides the foundation for your future success at UD. Opportunity for class discussion while utilizing the common reader, class assignments and university wide programming. Highlights our commitment at UD to being a community that recognizes and appreciates diversity and difference.",
+        "preReq": "N/A",
+        "taken": false
+    },
+    {
         "code": "CISC108",
         "title": "Introduction to Computer Science I",
         "credit": 3,

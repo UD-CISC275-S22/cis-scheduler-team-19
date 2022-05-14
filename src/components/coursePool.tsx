@@ -68,38 +68,46 @@ export function CoursePool({
                         placeholder="Search your course"
                         onChange={(event) => setQuery(event.target.value)}
                     />
+                    <Container
+                        style={{
+                            padding: "10px 20px",
+                            textAlign: "center",
+                            width: "300px",
+                            minHeight: "200px",
+                            boxSizing: "border-box"
+                        }}
+                    >
+                        <Row>
+                            {COURSEPOOL.filter((course) => {
+                                if (query === "") {
+                                    return courses;
+                                } else if (
+                                    course.code
+                                        .toLowerCase()
+                                        .includes(query.toLowerCase())
+                                ) {
+                                    return courses;
+                                }
+                            }).map((course) => {
+                                return (
+                                    <Container
+                                        key={course.code}
+                                        style={{ marginBottom: "4px" }}
+                                    >
+                                        <Button
+                                            onClick={() => chooseCourse(course)}
+                                            size="sm"
+                                            variant="outline-secondary"
+                                        >
+                                            {course.code}
+                                        </Button>
+                                    </Container>
+                                );
+                            })}
+                        </Row>
+                    </Container>
                     <Container>
                         <Row>
-                            <Col>
-                                {COURSEPOOL.filter((course) => {
-                                    if (query === "") {
-                                        return courses;
-                                    } else if (
-                                        course.code
-                                            .toLowerCase()
-                                            .includes(query.toLowerCase())
-                                    ) {
-                                        return courses;
-                                    }
-                                }).map((course) => {
-                                    return (
-                                        <Container
-                                            key={course.code}
-                                            style={{ marginBottom: "4px" }}
-                                        >
-                                            <Button
-                                                onClick={() =>
-                                                    chooseCourse(course)
-                                                }
-                                                size="sm"
-                                                variant="outline-secondary"
-                                            >
-                                                {course.code}
-                                            </Button>
-                                        </Container>
-                                    );
-                                })}
-                            </Col>
                             <Col>
                                 <Row>
                                     <Col>
@@ -126,17 +134,17 @@ export function CoursePool({
                                                             Pre-requirement:{" "}
                                                             {course.preReq}
                                                         </Card.Text>
+                                                        <Button
+                                                            variant="outline-success"
+                                                            onClick={addCourses}
+                                                        >
+                                                            Add
+                                                        </Button>
                                                     </Card.Body>
                                                 </Card>
                                             </div>
                                         ))}
                                         <div>
-                                            <Button
-                                                size="sm"
-                                                onClick={addCourses}
-                                            >
-                                                Add Course
-                                            </Button>
                                             <Button
                                                 size="sm"
                                                 variant="danger"

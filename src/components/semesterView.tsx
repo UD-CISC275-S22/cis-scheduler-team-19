@@ -53,6 +53,23 @@ export function SemesterView({
         );
     }
 
+    function resetCourse() {
+        setCourses(courses);
+    }
+
+    function moveCourse(code: string) {
+        const targeting = semester;
+        if (targeting === undefined) {
+            setCourses([...courses]);
+            setCourses(
+                courses.filter(
+                    (course: Course): boolean => course.code !== code
+                )
+            );
+        }
+        setShowAddModal(false);
+    }
+
     function removeCourse(code: string) {
         setCourses(
             courses.filter((course: Course): boolean => course.code !== code)
@@ -108,6 +125,8 @@ export function SemesterView({
                     courses={courses}
                     editCourse={editCourse}
                     removeCourse={removeCourse}
+                    moveCourse={moveCourse}
+                    resetCourse={resetCourse}
                 ></CourseList>
                 <div>
                     <Button

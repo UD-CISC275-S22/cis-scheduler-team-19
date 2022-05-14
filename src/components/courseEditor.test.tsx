@@ -18,6 +18,7 @@ describe("CourseList Component tests", () => {
                 course={course}
                 editCourse={() => []}
                 removeCourse={() => []}
+                moveCourse={() => []}
             />
         );
     });
