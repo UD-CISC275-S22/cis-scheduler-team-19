@@ -70,11 +70,15 @@ export function CoursePool({
                     />
                     <Container
                         style={{
-                            padding: "10px 20px",
                             textAlign: "center",
-                            width: "300px",
-                            minHeight: "200px",
-                            boxSizing: "border-box"
+                            overflowY: "scroll",
+                            height: "15vh",
+                            width: "auto",
+                            border: "solid",
+                            borderWidth: "0.5px",
+                            borderRadius: "8px",
+                            borderColor: "black",
+                            padding: "5px"
                         }}
                     >
                         <Row>

@@ -52,9 +52,14 @@ export function SemesterView({
             )
         );
     }
-
-    function resetCourse() {
-        setCourses(courses);
+    // cannot work
+    function resetCourse(code: string) {
+        const defaultCourse = courses.filter(
+            (course: Course) => course.code === code
+        );
+        if (defaultCourse.length > 0) {
+            editCourse(code, { ...defaultCourse[0] });
+        }
     }
 
     function moveCourse(code: string) {
