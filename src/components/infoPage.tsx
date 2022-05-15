@@ -180,7 +180,7 @@ export function InputInfo(): JSX.Element {
 
     return submit ? (
         <>
-            <Navbar expand="lg" bg="primary" variant="dark">
+            <Navbar expand="lg" bg="dark" variant="dark">
                 <Container fluid>
                     <Navbar.Brand
                         href="https://www.cis.udel.edu/"
@@ -214,6 +214,7 @@ export function InputInfo(): JSX.Element {
                                 aria-controls="example-fade-text"
                                 aria-expanded={open}
                                 className="me-3"
+                                variant="dark"
                             >
                                 {name}
                                 {"'s"} schedule status
@@ -315,7 +316,11 @@ export function InputInfo(): JSX.Element {
                 </Col>
             </Form.Group>
             <div>
-                <Button className="m-4" onClick={startEditing}>
+                <Button
+                    variant="outline-dark"
+                    className="m-4"
+                    onClick={startEditing}
+                >
                     Confirm
                 </Button>
             </div>

@@ -50,7 +50,9 @@ export function CoursePool({
     return (
         <>
             {" "}
-            <Button onClick={handleShow}>Course Search 🔍</Button>
+            <Button variant="outline-dark" onClick={handleShow}>
+                Course Search 🔍
+            </Button>
             <Offcanvas
                 show={show}
                 onHide={handleClose}

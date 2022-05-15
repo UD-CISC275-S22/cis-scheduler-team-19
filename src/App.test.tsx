@@ -3,10 +3,10 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import { InputInfo } from "./components/infoPage";
 
-test("renders the course name somewhere", () => {
+test("There is an uploaded picture as background instead of words", () => {
     render(<App />);
     const linkElement = screen.getByText(
-        /Welcome to the scheduler system made for CISC undergraduate students!/i
+        /Scheduler System for CISC undergraduates/i
     );
     expect(linkElement).toBeInTheDocument();
 });
