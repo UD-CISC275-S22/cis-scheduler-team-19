@@ -29,25 +29,27 @@ export function CourseList({
                     </tr>
                 </thead>
                 <tbody>
-                    {courses.map((course: Course) => (
+                    {courses.map((currentCourse: Course) => (
                         <tr
-                            key={course.code}
+                            key={currentCourse.code}
                             className="bg-light border m-2 p-2"
                         >
-                            <td>{course.code}</td>
-                            <td>{course.title}</td>
-                            <td>{course.description}</td>
-                            <td>{course.preReq}</td>
-                            <td>{course.credit}</td>
+                            <td>{currentCourse.code}</td>
+                            <td>{currentCourse.title}</td>
+                            <td>{currentCourse.description}</td>
+                            <td>{currentCourse.preReq}</td>
+                            <td>{currentCourse.credit}</td>
                             <td>
                                 <CourseEditor
                                     editCourse={editCourse}
-                                    course={course}
+                                    course={currentCourse}
                                     removeCourse={removeCourse}
                                     moveCourse={moveCourse}
                                 ></CourseEditor>
                                 <Button
-                                    onClick={() => resetCourse(course.code)}
+                                    onClick={() =>
+                                        resetCourse(currentCourse.code)
+                                    }
                                     className="reset-course-btn"
                                     data-testid="reset-btn"
                                 >
