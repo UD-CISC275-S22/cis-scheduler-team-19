@@ -29,7 +29,7 @@ export function CourseList({
                     </tr>
                 </thead>
                 <tbody>
-                    {courses.map((currentCourse: Course) => (
+                    {courses?.map((currentCourse: Course) => (
                         <tr
                             key={currentCourse.code}
                             className="bg-light border m-2 p-2"
