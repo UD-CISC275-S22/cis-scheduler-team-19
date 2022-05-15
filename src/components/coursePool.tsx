@@ -33,7 +33,7 @@ export function CoursePool({
     }
 
     function addCourses() {
-        courses.map((course): void =>
+        courses?.map((course): void =>
             addCourseList([
                 {
                     code: course.code,
