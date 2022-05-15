@@ -32,7 +32,7 @@ export function SemesterView({
     }
 
     function addCourse(newCourse: Course) {
-        const existing = courses?.find(
+        const existing = courses.find(
             (course: Course): boolean => course.code === newCourse.code
         );
         if (existing === undefined) {
