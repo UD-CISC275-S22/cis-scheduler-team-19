@@ -54,7 +54,7 @@ export function CourseEditor({
                         <Form.Label sm={2}>Course Code:</Form.Label>
                         <Col>
                             <Form.Control
-                                value={course.code}
+                                value={tempCourse.code}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) =>
@@ -71,7 +71,7 @@ export function CourseEditor({
                         <Form.Label sm={2}>Course Title:</Form.Label>
                         <Col>
                             <Form.Control
-                                value={course.title}
+                                value={tempCourse.title}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) =>
@@ -88,7 +88,7 @@ export function CourseEditor({
                         <Form.Label sm={2}>Course Credit:</Form.Label>
                         <Col>
                             <Form.Select
-                                value={course.credit}
+                                value={tempCourse.credit}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLSelectElement>
                                 ) =>
@@ -113,7 +113,7 @@ export function CourseEditor({
                             <Form.Control
                                 as="textarea"
                                 rows={3}
-                                value={course.description}
+                                value={tempCourse.description}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLTextAreaElement>
                                 ) =>
@@ -132,7 +132,7 @@ export function CourseEditor({
                             <Form.Control
                                 as="textarea"
                                 rows={3}
-                                value={course.preReq}
+                                value={tempCourse.preReq}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLTextAreaElement>
                                 ) =>
@@ -147,7 +147,7 @@ export function CourseEditor({
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
-                        onClick={() => moveCourse(course.code)}
+                        onClick={() => moveCourse(tempCourse.code)}
                         variant="light"
                         className="me-4"
                     >
@@ -160,7 +160,7 @@ export function CourseEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => removeCourse(course.code)}
+                        onClick={() => removeCourse(tempCourse.code)}
                         variant="danger"
                         className="me-8"
                     >

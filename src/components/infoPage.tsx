@@ -52,7 +52,7 @@ const PLAN = ciscData.map(
 );
 
 let loadedData = PLAN;
-const saveDataKey = "MY-PAGE-DATA";
+const saveDataKey = "MY-PLAN-DATA";
 const previousData = localStorage.getItem(saveDataKey);
 if (previousData !== null) {
     loadedData = JSON.parse(previousData);
@@ -278,7 +278,11 @@ export function InputInfo(): JSX.Element {
                 </pre>
                 <Form.Group controlId="exampleForm">
                     <Form.Label>Upload a file</Form.Label>
-                    <Form.Control type="file" onChange={uploadFile} />
+                    <Form.Control
+                        type="file"
+                        onChange={uploadFile}
+                        style={{ width: "400px" }}
+                    />
                 </Form.Group>
             </div>
         </>
