@@ -7,7 +7,7 @@
                 "id": 3,
                 "title": "Fall Semester",
                 "year": "2022",
-                "courseList": [
+                "courses": [
                     {
                         "id": 1,
                         "code": "MATH241",
@@ -32,7 +32,7 @@
                 "id": 4,
                 "title": "Spring Semester",
                 "year": "2022",
-                "courseList": [
+                "courses": [
                     {
                         "id": 2,
                         "code": "MATH242",

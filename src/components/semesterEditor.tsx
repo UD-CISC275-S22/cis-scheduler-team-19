@@ -1,37 +1,39 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import { Course } from "../interfaces/course";
+// import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
+// import { CourseEditor } from "./courseEditor";
 
 export function SemesterEditor({
     changeEditing,
     semester,
     editSemester,
-    clearCourses //clear all the courses in a semester
+    deleteSemester
 }: {
     changeEditing: () => void;
     semester: Semester;
-    editSemester: (id: number, newSemseter: Semester) => void;
-    clearCourses: (id: number) => void;
+    editSemester: (code: string, newSemseter: Semester) => void;
+    deleteSemester: (code: string) => void;
 }): JSX.Element {
     const [title, setTitle] = useState<string>(semester.title);
     const [year, setYear] = useState<string>(semester.year);
-    const [courseList, setCourseList] = useState<Course[]>(semester.courseList);
 
     function save() {
-        editSemester(semester.id, {
+        editSemester(semester.title, {
             ...semester,
             title: title,
             year: year,
-            courseList: courseList
+            courses: semester.courses
         });
+        changeEditing();
     }
 
     function cancel() {
         changeEditing();
     }
 
-    return <Container>
+    return (
+        <Container>
             <Row>
                 <Col>
                     {/* Title */}
@@ -48,14 +50,14 @@ export function SemesterEditor({
                             />
                         </Col>
                     </Form.Group>
-                    {/* Release Year */}
+                    {/* Year */}
                     <Form.Group controlId="formSemesterYear" as={Row}>
                         <Form.Label column sm={2}>
                             Year:
                         </Form.Label>
                         <Col>
                             <Form.Control
-                                type="string"
+                                type="number"
                                 value={year}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
@@ -63,29 +65,21 @@ export function SemesterEditor({
                             />
                         </Col>
                     </Form.Group>
-                    {/* Rating */}
-                    <Form.Group controlId="formCourseList" as={Row}>
-                        <Form.Label column sm={2}>
-                            Course:
-                        </Form.Label>
-                        <Col>
-                            <Form.Control
-                                type="array"
-                                value={courseList}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setCourseList(courseList)}
-                        /></Col>
-                    </Form.Group>
                     <Button onClick={save} variant="success" className="me-4">
                         Save
                     </Button>
                     <Button onClick={cancel} variant="warning" className="me-5">
                         Cancel
                     </Button>
+                    <Button
+                        onClick={() => deleteSemester(semester.title)}
+                        variant="danger"
+                        className="me-8"
+                    >
+                        Delete
+                    </Button>
                 </Col>
             </Row>
         </Container>
     );
-}
 }

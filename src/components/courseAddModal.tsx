@@ -15,15 +15,15 @@ export function CourseAddModal({
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [credit, setCredit] = useState<string>("");
+    const [preReq, setPreReq] = useState<string>("");
 
     function saveChanges() {
         addCourse({
-            id: 0,
             code: code,
             title: title,
             credit: credit,
             description: description,
-            preReq: "",
+            preReq: preReq,
             taken: true
         });
         handleClose();
@@ -78,18 +78,38 @@ export function CourseAddModal({
                             />
                         </Col>
                     </Row>
+                    {/* PreReq */}
+                    <Row>
+                        <Form.Label column sm={3}>
+                            Course PreReq:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                value={preReq}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setPreReq(event.target.value)}
+                            />
+                        </Col>
+                    </Row>
                     {/* Credit */}
                     <Row>
                         <Form.Label column sm={3}>
                             Course Credit:
                         </Form.Label>
                         <Col>
-                            <Form.Control
+                            <Form.Select
                                 value={credit}
                                 onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
+                                    event: React.ChangeEvent<HTMLSelectElement>
                                 ) => setCredit(event.target.value)}
-                            />
+                            >
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </Form.Select>
                         </Col>
                     </Row>
                 </Form.Group>

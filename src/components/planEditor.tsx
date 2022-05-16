@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import { Semester } from "../interfaces/semester";
 import { Plan } from "../interfaces/plan";
-import { SemesterEditor } from "./semesterEditot";
 
 export function PlanEditor({
     changeEditing,
@@ -12,21 +10,15 @@ export function PlanEditor({
 }: {
     changeEditing: () => void;
     plan: Plan;
-    editPlan: (id: number, newPlan: Plan) => void;
-    deletePlan: (id: number) => void;
+    editPlan: (title: string, newPlan: Plan) => void;
+    deletePlan: (title: string) => void;
 }): JSX.Element {
-    // const [id, setId] = useState<number>(plan.id);
     const [title, setTitle] = useState<string>(plan.title);
-    const [semesters, setSemesters] = useState<Semester[]>(plan.semester);
-    // const [publish, setPublish] = useState<boolean>(plan.publish);
-
-    const semester = semesters.map((semester: Semester): Semester => semester);
-
     function save() {
-        editPlan(plan.id, {
+        editPlan(plan.title, {
             ...plan,
             title: title,
-            semester: semesters,
+            semesters: plan.semesters,
             publish: true
         });
     }
@@ -35,22 +27,6 @@ export function PlanEditor({
         changeEditing();
     }
 
-    function editSemester(id: number, newSemester: Semester) {
-        setSemesters(
-            semesters.map(
-                (semester: Semester): Semester =>
-                    semester.id === id ? newSemester : semester
-            )
-        );
-    }
-
-    function deleteSemester(id: number) {
-        setSemesters(
-            semesters.filter(
-                (semester: Semester): boolean => semester.id !== id
-            )
-        );
-    }
     return (
         <Container>
             <Row>
@@ -69,14 +45,6 @@ export function PlanEditor({
                             />
                         </Col>
                     </Form.Group>
-                    {/* Semester */}
-                    <SemesterEditor
-                        changeEditing={changeEditing}
-                        semester={semester}
-                        editSemester={editSemester}
-                        deleteSemester={deleteSemester}
-                    ></SemesterEditor>
-                    {/* Save/Cancel */}
                     <Button onClick={save} variant="success" className="me-4">
                         Save
                     </Button>
@@ -84,7 +52,7 @@ export function PlanEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => deletePlan(plan.id)}
+                        onClick={() => deletePlan(plan.title)}
                         variant="danger"
                         className="me-8"
                     >

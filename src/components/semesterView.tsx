@@ -1,69 +1,31 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import { CourseList } from "./courseList";
-<<<<<<< HEAD
-import { SemesterEditor } from "./semesterEditor";
-
-export function SemesterView({
-    semester,
-    courses,
-    editCourse,
-    removeCourse
-    //editSemester,
-    //clearCourses //clear all courses in a semester
-}: {
-    semester: Semester;
-    courses: Course[];
-    editCourse: (id: number, newCourse: Course) => void;
-    removeCourse: (id: number) => void;
-    //editSemester: (id: number, newSemseter: Semester) => void;
-    //clearCourses: (id: number) => void;
-}): JSX.Element {
-    
-    const [editing, setEditing] = useState<boolean>(false);
-
-    function changeEditing(){
-        setEditing(!editing);
-    }
-
-    return editing ? (
-       <Button onClick={changeEditing}>Edit</Button>
-    ) : (<Container>
-            <Row>
-                <Col>
-                    <h3>{semester.title}</h3>
-                    <CourseList
-                        courses = {courses}
-                        editCourse={editCourse}
-                        removeCourse={removeCourse}
-                    ></CourseList>
-                </Col>
-            </Row>
-        </Container>
-=======
 import { CourseAddModal } from "./courseAddModal";
-import { SemesterEditor } from "./semesterEditot";
+import { SemesterEditor } from "./semesterEditor";
+import { CoursePool } from "./coursePool";
 
 export function SemesterView({
     semester,
-    //courses,
-    //editCourse,
-    //removeCourse,
     editSemester,
     deleteSemester
 }: {
     semester: Semester;
-    //courses: Course[];
-    //editCourse: (id: number, newCourse: Course) => void;
-    //removeCourse: (id: number) => void;
-    editSemester: (id: number, newSemseter: Semester) => void;
-    deleteSemester: (id: number) => void;
+    editSemester: (title: string, newSemseter: Semester) => void;
+    deleteSemester: (title: string) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
-    const [courses, setCourse] = useState<Course[]>(semester.courseList);
+    const courses = semester.courses;
+    function setCourses(newCourses: Course[]) {
+        editSemester(semester.title, { ...semester, courses: newCourses });
+    }
     const [showAddModal, setShowAddModal] = useState(false);
+    // alerts if users want to clear all course
+    const [show, setShow] = useState(false);
+    // after clearing courses, clear button disabled
+    const [disable, setDisable] = React.useState(false);
 
     function changeEditing() {
         setEditing(!editing);
@@ -71,31 +33,65 @@ export function SemesterView({
 
     function addCourse(newCourse: Course) {
         const existing = courses.find(
-            (course: Course): boolean => course.id === newCourse.id
+            (course: Course): boolean => course.code === newCourse.code
         );
         if (existing === undefined) {
-            setCourse([...courses, newCourse]);
+            setCourses([...courses, newCourse]);
         }
     }
 
-    function editCourse(id: number, newCourse: Course) {
-        setCourse(
+    function addCourseList(newCourses: Course[]) {
+        newCourses.map((course): void => addCourse(course));
+    }
+
+    function editCourse(code: string, newCourse: Course) {
+        setCourses(
             courses.map(
                 (course: Course): Course =>
-                    course.id === id ? newCourse : course
+                    course.code === code ? newCourse : course
             )
         );
     }
+    // cannot work
+    // function resetCourse() {
+    //     setCourses(courses.map((course: Course): Course => ({ ...course })));
+    // }
 
-    function removeCourse(id: number) {
-        setCourse(
-            courses.filter((course: Course): boolean => course.id !== id)
+    function moveCourse(code: string) {
+        const targeting = semester;
+        if (targeting === undefined) {
+            setCourses([...courses]);
+            setCourses(
+                courses.filter(
+                    (course: Course): boolean => course.code !== code
+                )
+            );
+        }
+        setShowAddModal(false);
+    }
+
+    function removeCourse(code: string) {
+        setCourses(
+            courses.filter((course: Course): boolean => course.code !== code)
         );
         setShowAddModal(false);
     }
 
     function deleteAllCourse() {
-        setCourse([]);
+        setCourses([]);
+        setShow(!show);
+        if (courses !== []) {
+            setDisable(!disable);
+        }
+    }
+
+    function cancel() {
+        setShow(!show);
+    }
+    // This function is for skipSemester, but not quite sure if we need a addSemester at the same time,
+    // since for it bascially funtions as deleteSemester
+    function skipSemester() {
+        deleteSemester(semester.title);
     }
 
     const handleCloseAddModal = () => setShowAddModal(false);
@@ -111,11 +107,26 @@ export function SemesterView({
     ) : (
         <div>
             <div>
-                <h3>{semester.title}</h3>
+                <h3>
+                    {semester.title} {semester.year}{" "}
+                    <Button variant="light" onClick={changeEditing}>
+                        ✏️
+                    </Button>
+                    <Button
+                        variant="light"
+                        onClick={skipSemester}
+                        style={{ float: "right" }}
+                    >
+                        ⏭️
+                    </Button>
+                </h3>
+                <CoursePool addCourseList={addCourseList}></CoursePool>
                 <CourseList
                     courses={courses}
                     editCourse={editCourse}
                     removeCourse={removeCourse}
+                    moveCourse={moveCourse}
+                    // resetCourse={resetCourse}
                 ></CourseList>
                 <div>
                     <Button
@@ -123,14 +134,31 @@ export function SemesterView({
                         className="m-4"
                         onClick={handleShowAddModal}
                     >
-                        Add New
+                        New Course
                     </Button>
+                    <Alert show={show} variant="danger">
+                        <Alert.Heading>Warning ⚠️</Alert.Heading>
+                        <p>Are you sure to delete all courses?</p>
+                        <hr />
+                        <div className="d-flex justify-content-end">
+                            <Button onClick={cancel} variant="outline-success">
+                                Wait a second
+                            </Button>
+                            <Button
+                                onClick={deleteAllCourse}
+                                variant="outline-danger"
+                            >
+                                No doubt
+                            </Button>
+                        </div>
+                    </Alert>
                     <Button
                         variant="danger"
                         className="m-4"
-                        onClick={deleteAllCourse}
+                        disabled={disable}
+                        onClick={() => setShow(true)}
                     >
-                        Clear All
+                        Clear All Courses
                     </Button>
                     <CourseAddModal
                         show={showAddModal}
@@ -140,6 +168,5 @@ export function SemesterView({
                 </div>
             </div>
         </div>
->>>>>>> 0edb8cc9bc616f81b2ebe3ef1f7280f968b9c68d
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import { Plan } from "../interfaces/plan";
 import { PlanView } from "./planView";
 
@@ -9,22 +9,23 @@ export function PlanList({
     editPlan
 }: {
     plans: Plan[];
-    deletePlan: (id: number) => void;
-    editPlan: (id: number, newPlan: Plan) => void;
+    deletePlan: (title: string) => void;
+    editPlan: (title: string, newPlan: Plan) => void;
 }): JSX.Element {
     return (
-        <div>
-            <Stack gap={3}>
-                {plans.map((plan: Plan) => (
-                    <div key={plan.id} className="bg-light border m-2 p-2">
+        <Accordion defaultActiveKey={["0"]} alwaysOpen>
+            {plans.map((plan, index) => (
+                <Accordion.Item eventKey={index + ""} key={plan.title}>
+                    <Accordion.Header>{plan.title}</Accordion.Header>
+                    <Accordion.Body>
                         <PlanView
                             plan={plan}
                             editPlan={editPlan}
                             deletePlan={deletePlan}
                         ></PlanView>
-                    </div>
-                ))}
-            </Stack>
-        </div>
+                    </Accordion.Body>
+                </Accordion.Item>
+            ))}
+        </Accordion>
     );
 }

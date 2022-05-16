@@ -11,13 +11,12 @@ export function PlanAddModal({
     handleClose: () => void;
     addPlan: (newPlan: Plan) => void;
 }) {
-    const [id, setId] = useState<string>("");
+    const [title, setTitle] = useState<string>("");
 
     function saveChanges() {
         addPlan({
-            id: parseInt(id),
-            title: "",
-            semester: [],
+            title: title,
+            semesters: [],
             publish: true
         });
         handleClose();
@@ -26,20 +25,20 @@ export function PlanAddModal({
     return (
         <Modal show={show} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-                <Modal.Title>Add New Movie</Modal.Title>
+                <Modal.Title>Add New Plan</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {/* Title */}
                 <Form.Group controlId="formMovieId" as={Row}>
                     <Form.Label column sm={3}>
-                        YouTube ID:
+                        Plan ID:
                     </Form.Label>
                     <Col>
                         <Form.Control
-                            value={id}
+                            value={title}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
-                            ) => setId(event.target.value)}
+                            ) => setTitle(event.target.value)}
                         />
                     </Col>
                 </Form.Group>
