@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Form, Modal, ButtonGroup } from "react-bootstrap";
+import { Button, Row, Col, Form, Modal, Alert } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
 // It's actually a courseEditorModal
-
 export function CourseEditor({
     course,
     editCourse,
@@ -20,6 +19,8 @@ export function CourseEditor({
 
     const [showAddModal, setShowAddModal] = useState(false);
 
+    const [show, setShow] = useState(false);
+
     const handleClose = () => setShowAddModal(false);
     const handleShow = () => setShowAddModal(true);
 
@@ -35,14 +36,6 @@ export function CourseEditor({
     const defaultpreReq = course.preReq;
 
     function resetCourse() {
-        editCourse(course.code, {
-            ...course,
-            code: defaultcode,
-            title: defaulttitle,
-            credit: defaultcredit,
-            description: defaultdescription,
-            preReq: defaultpreReq
-        });
         setTempCourse({
             code: defaultcode,
             title: defaulttitle,
@@ -51,8 +44,6 @@ export function CourseEditor({
             preReq: defaultpreReq,
             taken: true
         });
-        changeEditing();
-        handleClose();
     }
 
     function save() {
@@ -183,36 +174,52 @@ export function CourseEditor({
                         Move
                     </Button>
                     <Button
-                        onClick={() => resetCourse()}
+                        onClick={resetCourse}
                         className="reset-course-btn"
                         data-testid="reset-btn"
                         variant="outline-dark"
                     >
                         Reset
                     </Button>
-                    <ButtonGroup>
-                        <Button
-                            onClick={save}
-                            variant="success"
-                            className="me-3"
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            onClick={cancel}
-                            variant="warning"
-                            className="me-4"
-                        >
-                            Cancel
-                        </Button>
-                        <Button
-                            onClick={() => removeCourse(tempCourse.code)}
+                    <>
+                        <Alert
+                            show={show}
                             variant="danger"
-                            className="me-5"
+                            onClose={() => setShow(!show)}
+                            dismissible
                         >
-                            Remove
-                        </Button>
-                    </ButtonGroup>
+                            <Alert.Heading>Notice</Alert.Heading>
+                            <p>
+                                Before leaving, are you sure saving changes you
+                                have made!
+                            </p>
+                            <hr />
+                            <div className="d-flex justify-content-end">
+                                <Button onClick={save} variant="outline-light">
+                                    Do it!
+                                </Button>
+                            </div>
+                        </Alert>
+                        {!show && (
+                            <Button
+                                onClick={() => setShow(!show)}
+                                variant="success"
+                                className="me-3"
+                            >
+                                Save
+                            </Button>
+                        )}
+                    </>
+                    <Button onClick={cancel} variant="warning" className="me-4">
+                        Cancel
+                    </Button>
+                    <Button
+                        onClick={() => removeCourse(tempCourse.code)}
+                        variant="danger"
+                        className="me-5"
+                    >
+                        Remove
+                    </Button>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
