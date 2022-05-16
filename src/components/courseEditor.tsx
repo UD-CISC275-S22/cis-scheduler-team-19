@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Form, Modal } from "react-bootstrap";
+import { Button, Row, Col, Form, Modal, ButtonGroup } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
 // It's actually a courseEditorModal
@@ -28,6 +28,33 @@ export function CourseEditor({
         setShowAddModal(false);
     }
 
+    const defaultcode = course.code;
+    const defaulttitle = course.title;
+    const defaultcredit = course.credit;
+    const defaultdescription = course.description;
+    const defaultpreReq = course.preReq;
+
+    function resetCourse() {
+        editCourse(course.code, {
+            ...course,
+            code: defaultcode,
+            title: defaulttitle,
+            credit: defaultcredit,
+            description: defaultdescription,
+            preReq: defaultpreReq
+        });
+        setTempCourse({
+            code: defaultcode,
+            title: defaulttitle,
+            credit: defaultcredit,
+            description: defaultdescription,
+            preReq: defaultpreReq,
+            taken: true
+        });
+        changeEditing();
+        handleClose();
+    }
+
     function save() {
         editCourse(course.code, {
             ...tempCourse
@@ -43,7 +70,9 @@ export function CourseEditor({
 
     return (
         <div>
-            <Button onClick={handleShow}>Edit</Button>
+            <Button variant="light" onClick={handleShow}>
+                Edit
+            </Button>
             <Modal show={showAddModal} onHide={handleClose} animation={true}>
                 <Modal.Header closeButton>
                     <Modal.Title>Course</Modal.Title>
@@ -153,19 +182,37 @@ export function CourseEditor({
                     >
                         Move
                     </Button>
-                    <Button onClick={save} variant="success" className="me-4">
-                        Save
-                    </Button>
-                    <Button onClick={cancel} variant="warning" className="me-5">
-                        Cancel
-                    </Button>
                     <Button
-                        onClick={() => removeCourse(tempCourse.code)}
-                        variant="danger"
-                        className="me-8"
+                        onClick={() => resetCourse()}
+                        className="reset-course-btn"
+                        data-testid="reset-btn"
+                        variant="outline-dark"
                     >
-                        Remove
+                        Reset
                     </Button>
+                    <ButtonGroup>
+                        <Button
+                            onClick={save}
+                            variant="success"
+                            className="me-3"
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            onClick={cancel}
+                            variant="warning"
+                            className="me-4"
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            onClick={() => removeCourse(tempCourse.code)}
+                            variant="danger"
+                            className="me-5"
+                        >
+                            Remove
+                        </Button>
+                    </ButtonGroup>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>

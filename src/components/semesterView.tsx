@@ -53,14 +53,9 @@ export function SemesterView({
         );
     }
     // cannot work
-    function resetCourse(code: string) {
-        const defaultCourse = courses.filter(
-            (course: Course) => course.code === code
-        );
-        if (defaultCourse.length > 0) {
-            editCourse(code, { ...defaultCourse[0] });
-        }
-    }
+    // function resetCourse() {
+    //     setCourses(courses.map((course: Course): Course => ({ ...course })));
+    // }
 
     function moveCourse(code: string) {
         const targeting = semester;
@@ -131,7 +126,7 @@ export function SemesterView({
                     editCourse={editCourse}
                     removeCourse={removeCourse}
                     moveCourse={moveCourse}
-                    resetCourse={resetCourse}
+                    // resetCourse={resetCourse}
                 ></CourseList>
                 <div>
                     <Button

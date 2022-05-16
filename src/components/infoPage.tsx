@@ -17,6 +17,7 @@ import { Semester } from "../interfaces/semester";
 import { Course } from "../interfaces/course";
 import ciscData from "../data/cisc_plans.json";
 import { PlanAddModal } from "./planAddModal";
+import { PlanStatusModal } from "./planStatusModal";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -63,13 +64,15 @@ export function InputInfo(): JSX.Element {
     const [year, setYear] = useState<string>(DEFAULT_YEAR);
     const [plans, setPlans] = useState<Plan[]>(loadedData);
     const [submit, setSubmit] = useState<boolean>(false);
+    // control plan add modal
     const [showAddModal, setShowAddModal] = useState(false);
+    // control plan status modal
+    const [showPAddModal, setPShowAddModal] = useState(false);
     // alerts if users want to clear all plans
     const [show, setShow] = useState(false);
     // after clearing courses, clear button disabled
     const [disable, setDisable] = React.useState(false);
-    const [open, setOpen] = useState(false);
-    const [content, setContent] = useState<string>("No file data uploaded");
+    // const [content, setContent] = useState<string>("No file data uploaded");
 
     function updateName(event: ChangeEvent) {
         setName(event.target.value);
@@ -122,6 +125,9 @@ export function InputInfo(): JSX.Element {
         setShow(!show);
     }
 
+    const handlePCloseAddModal = () => setPShowAddModal(false);
+    const handlePShowAddModal = () => setPShowAddModal(true);
+
     const handleCloseAddModal = () => setShowAddModal(false);
     const handleShowAddModal = () => setShowAddModal(true);
 
@@ -158,25 +164,25 @@ export function InputInfo(): JSX.Element {
     //     pom.click();
     // }
 
-    function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
-        // Might have removed the file, need to check that the files exist
-        if (event.target.files && event.target.files.length) {
-            // Get the first filename
-            const filename = event.target.files[0];
-            // Create a reader
-            const reader = new FileReader();
-            // Create lambda callback to handle when we read the file
-            reader.onload = (loadEvent) => {
-                // Target might be null, so provide default error value
-                const newContent =
-                    loadEvent.target?.result || "Data was not loaded";
-                // FileReader provides string or ArrayBuffer, force it to be string
-                setContent(newContent as string);
-            };
-            // Actually read the file
-            reader.readAsText(filename);
-        }
-    }
+    // function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
+    //     // Might have removed the file, need to check that the files exist
+    //     if (event.target.files && event.target.files.length) {
+    //         // Get the first filename
+    //         const filename = event.target.files[0];
+    //         // Create a reader
+    //         const reader = new FileReader();
+    //         // Create lambda callback to handle when we read the file
+    //         reader.onload = (loadEvent) => {
+    //             // Target might be null, so provide default error value
+    //             const newContent =
+    //                 loadEvent.target?.result || "Data was not loaded";
+    //             // FileReader provides string or ArrayBuffer, force it to be string
+    //             setContent(newContent as string);
+    //         };
+    //         // Actually read the file
+    //         reader.readAsText(filename);
+    //     }
+    // }
 
     return submit ? (
         <>
@@ -210,15 +216,17 @@ export function InputInfo(): JSX.Element {
                         </Nav>
                         <>
                             <Button
-                                onClick={() => setOpen(!open)}
-                                aria-controls="example-fade-text"
-                                aria-expanded={open}
                                 className="me-3"
                                 variant="dark"
+                                onClick={handlePShowAddModal}
                             >
                                 {name}
                                 {"'s"} schedule status
                             </Button>
+                            <PlanStatusModal
+                                show={showPAddModal}
+                                handleClose={handlePCloseAddModal}
+                            ></PlanStatusModal>
                         </>
                     </Navbar.Collapse>
                 </Container>
@@ -272,7 +280,7 @@ export function InputInfo(): JSX.Element {
             ></PlanAddModal>
             <Button onClick={saveData}>💾</Button>
             {/* <Button variant="light" onClick={() => downloadBlob(content.flat(), "Your Acaedmic Plan.CSV", )}>🚀</Button> */}
-            <div>
+            {/* <div>
                 <pre style={{ overflow: "scroll", height: "100px" }}>
                     {content}
                 </pre>
@@ -284,7 +292,7 @@ export function InputInfo(): JSX.Element {
                         style={{ width: "400px" }}
                     />
                 </Form.Group>
-            </div>
+            </div> */}
         </>
     ) : (
         <div>
