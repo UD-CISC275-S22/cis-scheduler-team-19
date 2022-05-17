@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { InputInfo } from "./components/infoPage";
 
 test("There is an uploaded picture as background instead of words", () => {
     render(<App />);
@@ -11,13 +10,29 @@ test("There is an uploaded picture as background instead of words", () => {
     expect(linkElement).toBeInTheDocument();
 });
 
-test("There is an user name input box.", () => {
-    render(<InputInfo />);
-    const inputBox = screen.getByRole("textbox");
-    expect(inputBox).toBeInTheDocument();
+test("There is a button labeled Welcome!", () => {
+    const EditButton = screen.getByRole("button", {
+        name: /Welcome!/i
+    });
+    expect(EditButton).toBeInTheDocument();
 });
 
-test("There is a select box for user to choose academic year", () => {
-    render(<InputInfo />);
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
+test("Clearing the plan works", () => {
+    const [, second, third, fourth, fifth, , clear] =
+        screen.queryAllByRole("button");
+    third.click();
+    second.click();
+    fifth.click();
+    let currentPlan = screen.queryAllByRole("listitem");
+    expect(currentPlan).toHaveLength(3);
+    expect(currentPlan[0].textContent).toEqual(third.textContent);
+    expect(currentPlan[1].textContent).toEqual(second.textContent);
+    expect(currentPlan[2].textContent).toEqual(fifth.textContent);
+    clear.click();
+    currentPlan = screen.queryAllByRole("listitem");
+    expect(currentPlan).toHaveLength(0);
+    fourth.click();
+    currentPlan = screen.queryAllByRole("listitem");
+    expect(currentPlan).toHaveLength(1);
+    expect(currentPlan[0].textContent).toEqual(fourth.textContent);
 });
