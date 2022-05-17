@@ -18,8 +18,7 @@ export function PlanEditor({
         editPlan(plan.title, {
             ...plan,
             title: title,
-            semesters: plan.semesters,
-            publish: true
+            semesters: plan.semesters
         });
     }
 

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { Modal, Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
-export function PlanStatusModal({
-    show,
-    handleClose
-}: {
-    show: boolean;
-    handleClose: () => void;
-}) {
+export function ImportCSV() {
+    const [visible, setVisible] = useState<boolean>(false);
     const [content, setContent] = useState<string>("No file data uploaded");
 
     function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
@@ -29,12 +24,11 @@ export function PlanStatusModal({
             reader.readAsText(filename);
         }
     }
+
     return (
-        <Modal show={show} onHide={handleClose} animation={true}>
-            <Modal.Header closeButton>
-                <Modal.Title>Plan Status</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+        <div>
+            <Button onClick={() => setVisible(!visible)}>Import</Button>
+            {visible && (
                 <div>
                     <pre style={{ overflow: "scroll", height: "100px" }}>
                         {content}
@@ -48,7 +42,7 @@ export function PlanStatusModal({
                         />
                     </Form.Group>
                 </div>
-            </Modal.Body>
-        </Modal>
+            )}
+        </div>
     );
 }

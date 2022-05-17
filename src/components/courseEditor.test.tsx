@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { CourseEditor } from "./courseEditor";
 import { cleanup } from "@testing-library/react";
 
-describe("CourseList Component tests", () => {
+describe("CourseEditor Component tests", () => {
     beforeEach(() => {
         const course = {
             code: "",

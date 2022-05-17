@@ -5,6 +5,4 @@ export interface Plan {
     title: string;
     /** The list of several semesters */
     semesters: Semester[];
-    /** Wheather the plan can be shown on the page */
-    publish: boolean;
 }
