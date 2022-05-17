@@ -16,8 +16,7 @@ export function PlanAddModal({
     function saveChanges() {
         addPlan({
             title: title,
-            semesters: [],
-            publish: true
+            semesters: []
         });
         handleClose();
     }

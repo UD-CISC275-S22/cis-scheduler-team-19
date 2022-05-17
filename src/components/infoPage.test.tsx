@@ -1,23 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { InputInfo } from "./infoPage";
-import userEvent from "@testing-library/user-event";
 
 describe("InputInfo Component tests", () => {
     beforeEach(() => {
         render(<InputInfo />);
     });
 
-    test("Cannot leave input box blank and drop down box original", () => {
-        const confirm = screen.getByRole("button", { name: /Confirm/i });
-        const nameBox = screen.getByRole("textbox");
-        userEvent.type(nameBox, "");
-        confirm.click();
-        expect(window.alert("Please enter your name"));
-        const select = screen.getByRole("combobox");
-        userEvent.selectOptions(select, "Choose your Academic Year");
-        confirm.click();
-        expect(window.alert("Please choose your Academic Year"));
+    test("There is a button labeled Welcome!", () => {
+        const EditButton = screen.getByRole("button", {
+            name: /Welcome!/i
+        });
+        expect(EditButton).toBeInTheDocument();
     });
 
     test("Clearing the plan works", () => {
