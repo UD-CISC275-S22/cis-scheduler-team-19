@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Col, Row } from "react-bootstrap";
-import { Plan } from "../interfaces/plan";
+import { Plan } from "../../interfaces/plan";
 
 export function PlanAddModal({
     show,

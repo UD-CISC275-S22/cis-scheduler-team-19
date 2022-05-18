@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { Course } from "../interfaces/course";
-import { CourseEditor } from "./courseEditor";
+import { Course } from "../../interfaces/course";
+import { CourseEditorModal } from "../modal/courseEditorModal";
 
 export function CourseList({
     courses,
@@ -40,12 +40,12 @@ export function CourseList({
                             <td>{course.preReq}</td>
                             <td>{course.credit}</td>
                             <td>
-                                <CourseEditor
+                                <CourseEditorModal
                                     editCourse={editCourse}
                                     course={course}
                                     removeCourse={removeCourse}
                                     moveCourse={moveCourse}
-                                ></CourseEditor>
+                                ></CourseEditorModal>
                             </td>
                         </tr>
                     ))}

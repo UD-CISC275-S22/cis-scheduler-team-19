@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import { Plan } from "../interfaces/plan";
+// import { Course } from "../interfaces/course";
+import { Semester } from "../../interfaces/semester";
+// import { CourseEditor } from "./courseEditor";
 
-export function PlanEditor({
+export function SemesterEditor({
     changeEditing,
-    plan,
-    editPlan,
-    deletePlan
+    semester,
+    editSemester,
+    deleteSemester
 }: {
     changeEditing: () => void;
-    plan: Plan;
-    editPlan: (title: string, newPlan: Plan) => void;
-    deletePlan: (title: string) => void;
+    semester: Semester;
+    editSemester: (code: string, newSemseter: Semester) => void;
+    deleteSemester: (code: string) => void;
 }): JSX.Element {
-    const [title, setTitle] = useState<string>(plan.title);
+    const [title, setTitle] = useState<string>(semester.title);
+    const [year, setYear] = useState<string>(semester.year);
+
     function save() {
-        editPlan(plan.title, {
-            ...plan,
+        editSemester(semester.title, {
+            ...semester,
             title: title,
-            semesters: plan.semesters
+            year: year,
+            courses: semester.courses
         });
+        changeEditing();
     }
 
     function cancel() {
@@ -31,7 +37,7 @@ export function PlanEditor({
             <Row>
                 <Col>
                     {/* Title */}
-                    <Form.Group controlId="formPlanTitle" as={Row}>
+                    <Form.Group controlId="formSemesterTitle" as={Row}>
                         <Form.Label column sm={2}>
                             Title:
                         </Form.Label>
@@ -44,6 +50,21 @@ export function PlanEditor({
                             />
                         </Col>
                     </Form.Group>
+                    {/* Year */}
+                    <Form.Group controlId="formSemesterYear" as={Row}>
+                        <Form.Label column sm={2}>
+                            Year:
+                        </Form.Label>
+                        <Col>
+                            <Form.Control
+                                type="number"
+                                value={year}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setYear(event.target.value)}
+                            />
+                        </Col>
+                    </Form.Group>
                     <Button onClick={save} variant="success" className="me-4">
                         Save
                     </Button>
@@ -51,7 +72,7 @@ export function PlanEditor({
                         Cancel
                     </Button>
                     <Button
-                        onClick={() => deletePlan(plan.title)}
+                        onClick={() => deleteSemester(semester.title)}
                         variant="danger"
                         className="me-8"
                     >

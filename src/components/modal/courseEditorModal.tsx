@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Button, Row, Col, Form, Modal, Alert } from "react-bootstrap";
-import { Course } from "../interfaces/course";
+import { Course } from "../../interfaces/course";
 
-// It's actually a courseEditorModal
-export function CourseEditor({
+export function CourseEditorModal({
     course,
     editCourse,
     removeCourse,

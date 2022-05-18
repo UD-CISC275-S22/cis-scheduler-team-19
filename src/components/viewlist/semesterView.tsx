@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
-import { Semester } from "../interfaces/semester";
-import { Course } from "../interfaces/course";
+import { Semester } from "../../interfaces/semester";
+import { Course } from "../../interfaces/course";
 import { CourseList } from "./courseList";
-import { CourseAddModal } from "./courseAddModal";
-import { SemesterEditor } from "./semesterEditor";
-import { CoursePool } from "./coursePool";
+import { CourseAddModal } from "../modal/courseAddModal";
+import { SemesterEditor } from "../editor/semesterEditor";
+import { CoursePool } from "../coursePool";
 
 export function SemesterView({
     semester,
@@ -52,10 +52,6 @@ export function SemesterView({
             )
         );
     }
-    // cannot work
-    // function resetCourse() {
-    //     setCourses(courses.map((course: Course): Course => ({ ...course })));
-    // }
 
     function moveCourse(code: string) {
         const targeting = semester;
@@ -110,14 +106,14 @@ export function SemesterView({
                 <h3>
                     {semester.title} {semester.year}{" "}
                     <Button variant="light" onClick={changeEditing}>
-                        ✏️
+                        ✏️Edit
                     </Button>
                     <Button
                         variant="light"
                         onClick={skipSemester}
                         style={{ float: "right" }}
                     >
-                        ⏭️
+                        ⏭️Skip
                     </Button>
                 </h3>
                 <CoursePool addCourseList={addCourseList}></CoursePool>

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { CourseEditor } from "./courseEditor";
+import { CourseEditorModal } from "./courseEditorModal";
 import { cleanup } from "@testing-library/react";
 
 describe("CourseEditor Component tests", () => {
@@ -14,7 +14,7 @@ describe("CourseEditor Component tests", () => {
             taken: true
         };
         render(
-            <CourseEditor
+            <CourseEditorModal
                 course={course}
                 editCourse={() => []}
                 removeCourse={() => []}
