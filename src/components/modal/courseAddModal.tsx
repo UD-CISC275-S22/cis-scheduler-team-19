@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Col, Row } from "react-bootstrap";
-import { Course } from "../interfaces/course";
+import { Course } from "../../interfaces/course";
 
 export function CourseAddModal({
     show,

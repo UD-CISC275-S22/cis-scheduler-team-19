@@ -1,13 +1,14 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Button, Container, Nav, Navbar, Alert } from "react-bootstrap";
-import { PlanList } from "./components/planList";
+import { Button, Alert } from "react-bootstrap";
+import { PlanList } from "./components/viewlist/planList";
 import { Plan } from "./interfaces/plan";
 import { Semester } from "./interfaces/semester";
 import { Course } from "./interfaces/course";
 import ciscData from "./data/cisc_plans.json";
-import { PlanAddModal } from "./components/planAddModal";
+import { PlanAddModal } from "./components/modal/planAddModal";
 import { ImportCSV } from "./components/importCSV";
+import { NavbarFeature } from "./components/NavbarFeature";
 
 const PLAN = ciscData.map(
     (plan): Plan => ({
@@ -95,37 +96,7 @@ function App(): JSX.Element {
                 Scheduler System for CISC undergraduates
             </header>
             <>
-                <Navbar expand="lg" bg="dark" variant="dark">
-                    <Container fluid>
-                        <Navbar.Brand
-                            href="https://www.cis.udel.edu/"
-                            target="popup"
-                        >
-                            UD CISC
-                        </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Navbar.Collapse id="navbarScroll">
-                            <Nav
-                                className="me-auto my-2 my-lg-0"
-                                style={{ maxHeight: "100px" }}
-                                navbarScroll
-                            >
-                                <Nav.Link
-                                    href="https://catalog.udel.edu/preview_program.php?catoid=47&poid=34727"
-                                    target="popup"
-                                >
-                                    CS BS
-                                </Nav.Link>
-                                <Nav.Link
-                                    href="https://catalog.udel.edu/preview_program.php?catoid=47&poid=34726"
-                                    target="popup"
-                                >
-                                    CS BA
-                                </Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
+                <NavbarFeature></NavbarFeature>
                 <PlanList
                     plans={plans}
                     editPlan={editPlan}

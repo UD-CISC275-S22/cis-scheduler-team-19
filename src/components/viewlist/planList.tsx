@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import { Plan } from "../interfaces/plan";
+import { Plan } from "../../interfaces/plan";
 import { PlanView } from "./planView";
 
 export function PlanList({

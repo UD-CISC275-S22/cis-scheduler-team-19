@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { Semester } from "../interfaces/semester";
-import { Plan } from "../interfaces/plan";
-import { PlanEditor } from "./planEditor";
+import { Semester } from "../../interfaces/semester";
+import { Plan } from "../../interfaces/plan";
+import { PlanEditor } from "../editor/planEditor";
 import { SemesterList } from "./semesterList";
-import { SemesterAddModal } from "./semesterAddModal";
+import { SemesterAddModal } from "../modal/semesterAddModal";
 import { Alert, Button } from "react-bootstrap";
 
 export function PlanView({
